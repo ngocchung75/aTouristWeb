@@ -1,0 +1,57 @@
+@charset "utf-8";
+/* -------------------------------------------
+
+	Name:		Asean Tourist (print)
+	Date:		2013/04/08
+	Author:		Paul Wisniowski		
+				http://wisniowski.pro
+			   		   
+---------------------------------------------  */
+* { margin: 0; padding: 0; }
+
+html { font-size: 100.01%; }
+body { background: #fff; font-size: 60%; }
+
+body, textarea, input, select, option, button { color: #000; font-family: Calibri, Helvetica, Arial, sans-serif; line-height: 1.4; }
+li, dt, dd, p, figure, th, td, caption, pre, legend { font-size: 1.5em; } /*---*/ li *, li li, dt *, dd *, p *, figure *, th *, td *, legend * { font-size: 1em; }
+ul, ol, dl, p, figure, table, pre, h1, h2, h3, h4, h5, h6, legend { margin-bottom: 1em; }
+
+article, aside, div, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; margin-bottom: 2em; }
+	
+	
+/*! Layout --------- */
+#top { margin: 0 0 1em; padding: 0 0 0.5em; border-bottom: 1px solid #ccc; }
+	#top h1 a { color: #000; text-decoration: none; }
+#content { }
+	#content a:after { content: " (" attr(href) ") "; color: #555; font-size: 0.8em; font-style: italic; }
+#footer { margin: 1em 0 0; padding: 1em 0 0; border-top: 1px solid #ccc; }
+
+
+/*! Columns --------- */
+
+
+/*! Modules --------- */
+
+
+/*! Defaults --------- */
+h1, h2, h3, h4, h5, h6 { margin: 1.25em 0 0.5em; color: #000; font-family: Cambria, Georgia, serif; }
+	h1 { margin-top: 0; font-size: 2.4em; }
+	h2 { font-size: 2.0em; }
+	h3 { font-size: 1.8em; }
+	h4 { font-size: 1.6em; }
+	h5 { font-size: 1.5em; text-transform: uppercase; }
+	h6 { font-size: 1.4em; text-transform: uppercase; }
+
+a { color: #09f; text-decoration: underline; }
+
+img { max-width: 100% !important; border-width: 0; image-rendering: optimizeQuality; -ms-interpolation-mode: bicubic; }
+
+ul, ol, dd, blockquote { padding-left: 2em; }
+	ul ul, ol ol, ul ol, ol ul { margin-bottom: 0; }
+
+table { display: table; border-collapse: collapse; border-spacing: 0; }
+	table th, table td { padding: 0.3em 0.6em; border: 1px solid #ccc; }
+
+
+/*! Hiding --------- */
+#skip, nav, form, .link-a, .link-b, .link-c, .link-d, .link, .more { position: absolute; left: -3000em; top: -3000em; }

@@ -1,0 +1,22 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+    </package>
+    
+    <package name="example" namespace="/view" extends="struts-default">
+        <action name="HelloWorld" class="example.HelloWorld">
+            <result>view/HelloWorld.jsp</result>
+        </action>
+    </package>
+    
+    <package name="aTouristWeb" namespace="/" extends="struts-default">
+        <action name="login" class="controller.LoginAuthAction">
+            <result name="success">view/Welcome.jsp</result>
+            <result name="error">view/Login.jsp</result>
+        </action>
+    </package>
+</struts>
