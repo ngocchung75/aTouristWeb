@@ -7,16 +7,11 @@
     <package name="default" extends="struts-default">
     </package>
     
-    <package name="example" namespace="/view" extends="struts-default">
-        <action name="HelloWorld" class="example.HelloWorld">
-            <result>view/HelloWorld.jsp</result>
+    <package name="aTouristWeb" namespace="/admin" extends="struts-default">
+        <action name="login" class="control.LoginAuthAction">
+            <result name="success">welcome.jsp</result>
+            <result name="error">login.jsp</result>
         </action>
     </package>
     
-    <package name="aTouristWeb" namespace="/" extends="struts-default">
-        <action name="login" class="controller.LoginAuthAction">
-            <result name="success">view/Welcome.jsp</result>
-            <result name="error">view/Login.jsp</result>
-        </action>
-    </package>
 </struts>

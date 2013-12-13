@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,27 +29,29 @@
             <div id="login-content">
                 <a href="" id="login-image" target="_blank"></a>
                 <h3>Admin Login</h3>
-                <form action="http://localhost/HotelBooking/index.php?controller=Admin&amp;action=login" method="post" id="frmLoginAdmin" class="login-form">
-                    <input type="hidden" name="login_user" value="1" />
+                <form action="login" method="post" id="frmLoginAdmin" class="login-form">
                     <table class="login-table" cellpadding="0" cellspacing="0">
                         <tr>
                             <th>Username:</th>
                             <th colspan="2">Password:</th>
                         </tr>
                         <tr>
-                            <td><input name="login_username" type="text" class="text-login w250" id="login_username" /></td>
-                            <td><input name="login_password" type="password" class="text-login w250" id="login_password" /></td>
-                            <td><input type="submit" value="" class="button button_login" /></td>
+                            <td><input name="username" type="text" class="text-login w250" id="username" /></td>
+                            <td><input name="password" type="password" class="text-login w250" id="password" /></td>
+                            <td><input type="submit" method="execute" value="" class="button button_login" /></td>
                         </tr>
                     </table>
-                    <ul id="login-errors">
-                        <li><label for="login_username" class="error">Username is required</label></li>
-                        <li><label for="login_password" class="error">Password is required</label></li>
-                    </ul>
-                </form>			</div>
+
+                    <s:if test="hasActionErrors()">
+                        <div class="errors">
+                            <s:actionerror/>
+                        </div>
+                    </s:if>
+                </form>			
+            </div>
 
             <div class="footer">
-                <a href="http://www.phpjabbers.com/" target="_blank">PHP Scripts</a> Copyright &copy; 2013 <a href="http://www.stivasoft.com/" target="_blank">StivaSoft Ltd</a>
+                Copyright &copy; 2013 - 2014 by <a href="http://atourist.net/" target="_blank">Bamboo Co., Ltd</a>
             </div>
         </div>
     </body>
