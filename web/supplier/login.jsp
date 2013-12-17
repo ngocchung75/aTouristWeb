@@ -28,7 +28,7 @@
         <div id="container">
             <div id="login-content">
                 <a href="" id="login-image" target="_blank"></a>
-                <h3>Admin Login</h3>
+                <h3>Supplier Login</h3>
                 <form action="login" method="post" id="frmLoginAdmin" class="login-form">
                     <table class="login-table" cellpadding="0" cellspacing="0">
                         <tr>
