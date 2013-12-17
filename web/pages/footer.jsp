@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<p>Copyright &copy; <span class="date">2013 - 2014</span>. All rights reseved <a href="./">aTourist</a></p>
+<p>Copyright &copy; 2013 - 2014 by <a href="./" target="_blank">Bamboo Co., Ltd</a>. All rights reseved.</p>
 <ul id="social">
     <li class="rs"><a rel="external" href="./">RSS</a></li>
     <li class="tw"><a rel="external" href="./">Twitter</a></li>
