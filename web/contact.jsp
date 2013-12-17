@@ -70,7 +70,7 @@
                 </form>
                 <aside>
                     <h3>Location Map</h3>
-                    <figure class="map-a"><img src="temp/622x318.gif"  alt="Placeholder" width="622" height="318"></figure>
+                    <figure class="map-a"><img src="temp/map.jpg"  alt="Placeholder" width="622" height="318"></figure>
                 </aside>
             </article>
             <footer id="footer">
