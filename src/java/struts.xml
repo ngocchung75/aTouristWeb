@@ -7,9 +7,21 @@
     <package name="default" extends="struts-default">
     </package>
     
-    <package name="aTouristWeb" namespace="/admin" extends="struts-default">
-        <action name="login" class="control.LoginAuthAction">
-            <result name="success">welcome.jsp</result>
+    <package name="aTouristWeb-users" namespace="/" extends="struts-default">
+        
+    </package>
+    
+    
+    <package name="aTouristWeb-admin" namespace="/admin" extends="struts-default">
+        <action name="login-admin" class="control.LoginAuthAction">
+            <result name="success" type="redirect">welcome.jsp</result>
+            <result name="error">login.jsp</result>
+        </action>
+    </package>
+    
+    <package name="aTouristWeb-supplier" namespace="/supplier" extends="struts-default">
+        <action name="login-supplier" class="control.LoginAuthAction">
+            <result name="success" type="redirect">welcome.jsp</result>
             <result name="error">login.jsp</result>
         </action>
     </package>
