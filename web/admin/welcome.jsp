@@ -22,6 +22,11 @@
         <script type="text/javascript" src="js/jquery.ui.tabs.min.js"></script>	
     </head>
     <body>
+        <s:if test="#session.logined != 'true' || #session.RoleID != 1">
+            <%
+                response.sendRedirect("login.jsp");
+            %>
+        </s:if>
         <div id="container">
             <div id="header">
                 <a href="" id="header-image" target="_blank"></a>
