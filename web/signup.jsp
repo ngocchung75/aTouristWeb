@@ -1,17 +1,20 @@
 <%-- 
-    Document   : index
-    Created on : Nov 10, 2013, 2:08:18 AM
+    Document   : signup
+    Created on : Dec 20, 2013, 10:57:15 AM
     Author     : CHUNG TOOC
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
-<html lang="en" class="a">
+<html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Homepage : Asean Tourist</title>
         <%@include file="pages/header.jsp" %>
+        <link rel="stylesheet" type="text/css" href="styles/signup.css">
+        <script type="text/javascript" src="javascript/scriptgeneral.min.js"></script>
+        <script type="text/javascript" src="javascript/scriptgeneral_home.min.js"></script>
     </head>
     <body>
         <div id="root">
@@ -23,13 +26,11 @@
                 </nav>
                 <%@include file="pages/search.jsp" %>
             </header>         
-            <article id="home">
-                <%@include file="pages/bg.jsp" %>
-                <s:form action="booknow.action" method="post">
-                    <%@include file="pages/booknow.jsp" %>
-                </s:form>
+            <article id="content" class="cols-b">
+                <%@include file="pages/signin-up.jsp" %>
             </article>
             <footer id="footer">
+                <%@include file="pages/footer1.jsp" %>
                 <%@include file="pages/footer.jsp" %>
             </footer>
         </div>
@@ -37,5 +38,14 @@
         <script type="text/javascript">
             head.js('javascript/jquery.min.js', 'javascript/jquery-ui.min.js', 'javascript/scripts.js', 'javascript/mobile.js');
         </script>
+        <script type="text/javascript">
+            function submitForm() {
+                $.ajax({type: 'POST', url: 'email-action.php', data: $('#homefrm1').serialize(), success: function(response) {
+                        $('#alert').find('.message').html(response);
+                    }});
+                return false;
+            }
+        </script>
+
     </body>
 </html>

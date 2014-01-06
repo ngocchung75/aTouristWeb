@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<div class="form-c">
 <fieldset>
     <legend>Book now</legend>
     <h3><span>01.</span> What?</h3>
@@ -68,4 +69,4 @@
         </span>
     </p>
     <p class="submit"><button type="submit">Proceed</button></p>
-</fieldset>
+</fieldset></div>

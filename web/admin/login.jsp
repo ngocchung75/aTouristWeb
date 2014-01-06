@@ -43,7 +43,7 @@
                     </table>
 
                     <s:if test="hasActionErrors()">
-                        <div class="errors">
+                        <div class="errors" style="color:red; font-size:12px; text-align:left; padding-left:0;">
                             <s:actionerror/>
                         </div>
                     </s:if>

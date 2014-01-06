@@ -3,14 +3,30 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.custom.i18n.resources"
+              value="ApplicationResources" />
+    
     <!-- Configuration for the default package. -->
-    <package name="default" extends="struts-default">
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="login-user" class="control.LoginAuthAction">
+            <result name="success">mydashboard.jsp</result>
+            <result name="error">signup.jsp</result>
+        </action>
+         <action name="signup-user" class="control.AddAccountAction">
+            <result name="success">mydashboard.jsp</result>
+            <result name="error">signup.jsp</result>
+        </action>
+        <action name="change-pass" class="control.ChangePassAction">
+            <result name="success">changepass.jsp</result>
+            <result name="error">changepass.jsp</result>
+        </action>
+        <action name="my-profile" class="control.MyProfileAction">
+            <result name="success">myprofile.jsp</result>
+            <result name="error">myprofile.jsp</result>
+        </action>
     </package>
-    
-    <package name="aTouristWeb-users" namespace="/" extends="struts-default">
-        
-    </package>
-    
     
     <package name="aTouristWeb-admin" namespace="/admin" extends="struts-default">
         <action name="login-admin" class="control.LoginAuthAction">

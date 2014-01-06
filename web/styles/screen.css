@@ -72,8 +72,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 #nav > ul.primary > li > ul li { margin: 0; padding: 2px 0 3px; background: none; font-size: .857em; }
 #nav > ul.primary > li > ul li a { color: #727272; text-decoration: none; }
 #nav > ul.primary > li > ul li a:hover, #nav > ul.primary > li > ul li a:focus, #nav > ul.primary > li > ul li a:active { color: #ff5757; }
-#nav > ul.secondary { position: absolute; right: 50%; top: 20px; z-index: 5; margin: 0 -300px 0 0; }
-#nav > ul.secondary > li { position: relative; float: left; margin: 0; padding: 0 13px 10px; background: url(../images/sprite-a.png) 0 -320px no-repeat; font-size: 1.2em; line-height: 16px; }
+#nav > ul.secondary { position: absolute; top: 20px; z-index: 5; margin: 0 -300px 0 670px; }
+#nav > ul.secondary > li { position: relative; float: left; margin: 0; padding: 0 13px 10px; font-size: 1.2em; line-height: 16px; }
 #nav > ul.secondary > li > a, #nav > ul.secondary > li > span { display: block; float: left; width: 36px; background: url(../images/sprite-a.png) 100% -349px no-repeat; color: #088ad5; }
 #root #nav > ul.secondary > li.gb { background: url(../images/flags/gb.png) no-repeat; }
 #nav > ul.secondary > li:first-child { padding-left: 30px; background: none; }
@@ -93,7 +93,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 #search input { position: relative; z-index: 1; width: 105px; height: 22px; padding: 0 29px 0 10px; border: 0; background: #ce260c; color: #ffc9c1; font-style: italic; line-height: 22px; outline: none; }
 #search input { box-shadow: 0 1px 0 #ed5a43; -moz-box-shadow: 0 1px 0 #ed5a43; -webkit-box-shadow: 0 1px 0 #ed5a43; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
 #search button { display: block; overflow: hidden; position: absolute; right: 0; top: 0; z-index: 3; width: 22px; height: 22px; padding: 0; border: 0; background: url(../images/sprite-a.png) -4px -49px no-repeat; text-indent: -3000em; }
-#top .tel { position: absolute; left: 50%; top: 23px; margin: 0 0 0 -107px; padding: 0 0 0 19px; background: url(../images/sprite-a.png) 0 -247px no-repeat; color: #666; font-size: 1.2em; font-family: 'Lithos'; line-height: 1.2; text-transform: uppercase; }
+#top .tel { position: absolute; left: 50%; top: 23px; margin: 0 0 0 -170px; padding: 0 0 0 19px; background: url(../images/sprite-a.png) 0 -247px no-repeat; color: #666; font-size: 1.2em; font-family: 'Lithos'; line-height: 1.2; text-transform: uppercase; }
 #top .tel span { display: block; padding: 2px 4px 0; font-family: 'Lithos_black'; font-size: 1.083em; }
 #top .link-a { position: absolute; right: 50%; top: 20px; margin: 0 -480px 0 0; }
 #breadcrumbs { width: 960px; min-width: 960px; margin: 0 auto 17px; padding: 0 0 6px; border-bottom: 1px solid #e3e3e3; color: #ff8977; text-align: right; }
@@ -708,7 +708,7 @@ img { border-width: 0; image-rendering: optimizeQuality; -ms-interpolation-mode:
 /*-------------------------------------------------------------------------------------------*/
 ul, ol, dd, blockquote { padding-left: 40px; }
 ul { list-style: none; padding-left: 0; }
-ul li { margin-left: -2px; padding-left: 23px; background: url(../images/li-a.png) 0 6px no-repeat; }
+ul li { margin-left: 0px; padding-left: 0px;}
 ul ul, ul ol, ol ol, ol ul { margin-bottom: 0; }
 
 .list-a { list-style: none; padding: 0; }
@@ -990,7 +990,7 @@ svg:not(:root) { overflow: hidden; }
 @media only screen and (max-width: 800px) {
     #top h1, #nav > ul.primary, #content, #breadcrumbs, #footer > nav, #footer > p, #root > h2, #root > p { width: 740px; min-width: 740px; }
     #nav > ul.primary { margin-left: -370px; }
-    #nav > ul.secondary { margin-right: -220px; margin-top: -10px; }
+    #nav > ul.secondary { margin-right: -440px; margin-top: -10px; }
     #top .link-a { margin-right: -380px; margin-top: -10px; }
     #search { top: 44px; margin-right: -370px; }
     #top .tel { margin-left: -120px; }

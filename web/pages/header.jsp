@@ -11,6 +11,7 @@
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="javascript/head.js"></script>
+<script type="text/javascript" src="javascript/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="styles/screen.css" media="screen">
 <link rel="stylesheet" type="text/css" href="styles/print.css" media="print">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">

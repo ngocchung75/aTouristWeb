@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,25 +18,8 @@
             <header id="top">
                 <h1><a href="./" accesskey="h"></a></h1>
                 <nav id="nav">
-                    <ul class="primary">
-                        <li><a accesskey="1" href="./">Home</a> <em>(1)</em></li>
-                        <li><a accesskey="2" href="#">Hotel List</a> <em>(2)</em></li>
-                        <li><a accesskey="3" href="aboutus.jsp">About us</a> <em>(3)</em></li>
-                        <li class="active"><a accesskey="4" href="contact.jsp">Contact</a> <em>(4)</em></li>
-                    </ul>
-                    <ul class="secondary">
-                        <li>
-                            <div id="google_translate_element"></div><script>
-                                function googleTranslateElementInit() {
-                                    new google.translate.TranslateElement({
-                                        pageLanguage: 'en',
-                                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-                                    }, 'google_translate_element');
-                                }
-                            </script><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                        </li>
-                    </ul>
-                    <p class="link-a"><a href="./">Login</a> <a href="./">Register</a></p>
+                    <%@include file="pages/nav.jsp" %>
+                    <p class="link-a"><a id="go" name="login" href="./signup.jsp">Login</a> <a id="go" name="signup" href="./signup.jsp">Register</a></p>
                 </nav>
                 <%@include file="pages/search.jsp" %>
             </header>         
@@ -74,49 +58,13 @@
                 </aside>
             </article>
             <footer id="footer">
-                <nav>
-                    <div class="vcard">
-                        <h3>Contact us <span class="fn org">Asean Tourist</span></h3>
-                        <ul class="list-a">
-                            <li><span>Tell</span> <span class="tel">(84) - 972 878 218</span></li>
-                            <li><span>Email</span> <a class="email">contact//atourist/net</a></li>
-                            <li class="adr"><span>Add</span> <span class="street-address">182 - Nguyen Van Linh Street</span>, <span class="locality">Danang</span> City, <span class="country-name">Vietnam</span></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Support &amp; Help</h3>
-                        <ul>
-                            <li><a href="./">Payment options</a></li>
-                            <li><a href="./">FAQ</a></li>
-                            <li><a href="./">Privacy &amp; Policy</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>Information</h3>
-                        <ul>
-                            <li><a href="./">My account</a></li>
-                            <li><a href="./">Sit map</a></li>
-                            <li><a href="./">Order history</a></li>
-                        </ul>
-                    </div>
-                    <form action="./" method="post">
-                        <fieldset>
-                            <legend>Newsletter</legend>
-                            <p>Lorem emphasised est dolor sit ams...</p>
-                            <p>
-                                <label for="na">Enter your email</label>
-                                <input type="email" id="na" name="na" required>
-                                <button type="submit">Submit</button>
-                            </p>
-                        </fieldset>
-                    </form>
-                </nav>
+                <%@include file="pages/footer1.jsp" %>
                 <%@include file="pages/footer.jsp" %>
             </footer>
         </div>
         <script src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;language=en"></script>
         <script type="text/javascript">
-                                head.js('javascript/jquery.min.js', 'javascript/jquery-ui.min.js', 'javascript/scripts.js', 'javascript/mobile.js')
+                                head.js('javascript/jquery.min.js', 'javascript/jquery-ui.min.js', 'javascript/scripts.js', 'javascript/mobile.js');
         </script>
         <script type="text/javascript">
             function submitForm() {
