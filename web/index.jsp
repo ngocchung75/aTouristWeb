@@ -30,6 +30,7 @@
                 </s:form>
             </article>
             <footer id="footer">
+                <%@include file="pages/footer1.jsp" %>
                 <%@include file="pages/footer.jsp" %>
             </footer>
         </div>

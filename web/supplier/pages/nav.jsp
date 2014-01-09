@@ -11,10 +11,7 @@
     <li><a href="./welcome.jsp" class="nav-rooms"></a></li>					
     <li><a href="./welcome.jsp" class="nav-reports"></a></li>
     <li><a href="./welcome.jsp" class="nav-invoices"></a></li>
-    <li><a href="./welcome.jsp" class="nav-install"></a></li>
-    <li><a href="./welcome.jsp" class="nav-options"></a></li>
-    <li><a href="./welcome.jsp" class="nav-preview" target="_blank"></a></li>
-    <li><a href="./welcome.jsp" class="nav-logout"></a></li>
+    <li><a href="./logout.jsp" class="nav-logout"></a></li>
 </ul>
 <ul class="subnav">
     <li><a href="./welcome.jsp" class="">Find</a></li>

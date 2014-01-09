@@ -33,7 +33,7 @@ public class ChangePassAction extends ActionSupport implements SessionAware {
             addActionError("Invalid Current Password");
             error = true;
         } else if(user.changePass(user1, this.NewPassword.toString())){
-            addActionError("Change password successful");
+            addActionError("Your Password has been updated successfully!");
             error = false;
         }else {
             addActionError("System error has occurred please try again later.");

@@ -14,4 +14,4 @@
 <script type="text/javascript" src="javascript/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="styles/screen.css" media="screen">
 <link rel="stylesheet" type="text/css" href="styles/print.css" media="print">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">

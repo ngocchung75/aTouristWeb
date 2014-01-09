@@ -101,7 +101,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 #breadcrumbs li { display: inline; position: relative; left: 10px; padding: 0 11px 0 12px; background: url(../images/sprite-a.png) 0 -420px no-repeat; font-size: 1.2em; }
 #breadcrumbs li:first-child { padding-left: 0; background: none; }
 #breadcrumbs li a { color: #8e8e8e; }
-#content { width: 960px; min-width: 960px; margin: 0 auto; padding: 0 0 38px; }
+#content { width: 960px; min-width: 960px; margin: 0 auto; padding: 0 0 38px; margin-top: 50px;}
 #content:after { content: ""; display: block; overflow: hidden; clear: both; height: 0; }
 #root > .vcard.a { margin: 0; padding: 7px 0 16px; border: 0; }
 #root > .vcard.a h2, #root > .vcard.a h3, #root > .vcard.a h4 { margin: 0 0 8px; color: #4a4a4a; font-size: 2.4em; }
@@ -180,7 +180,7 @@ html.a #footer { padding: 0; }
 .cols-a:after { content: ""; display: block; overflow: hidden; clear: both; height: 0; }
 .cols-a > *:first-child { float: left; width: 693px; }
 .cols-a > aside { position: relative; top: -1px; float: right; width: 202px; padding: 14px 19px 0; border: 1px solid #eee; background: #fbfbfb; color: #666; }
-.cols-a > aside { box-shadow: 0 0 1px #e6e6e6; -moz-box-shadow: 0 0 1px #e6e6e6; -webkit-box-shadow: 0 0 1px #e6e6e6; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+.cols-a > aside { box-shadow: 0 0 1px #e6e6e6; -moz-box-shadow: 0 0 1px #e6e6e6; -webkit-box-shadow: 0 0 1px #e6e6e6; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; margin-top: 65px;}
 
 .cols-b { width: 100%; }
 .cols-b:after { content: ""; display: block; overflow: hidden; clear: both; height: 0; }
@@ -289,7 +289,7 @@ html.a #footer { padding: 0; }
 #root .module-b .check-b { position: relative; top: 3px; float: left; margin: 0 0 6px; }
 
 .news-a { position: relative; z-index: 1; color: #666; }
-.news-a article { position: relative; min-height: 122px; padding: 26px 160px 9px 149px; border-top: 1px dashed #e5e5e5; }
+.news-a article { position: relative; min-height: 122px; padding: 26px 20px 9px 149px; border-top: 1px dashed #e5e5e5; }
 .news-a article:first-child { border-top-style: solid; }
 .news-a article header { padding: 0 0 9px; color: #898989; } 
 .news-a article header h2 { margin: 0 0 4px; color: #545353; font-size: 1.6em; font-weight: 700; }
@@ -476,7 +476,7 @@ html.a #footer { padding: 0; }
 .scroller-a .jspArrowDown { background-position: -195px -121px; }
 
 .tabs-a { margin: 0 0 20px; }
-.tabs-a:last-child { margin-bottom: 0; }
+.tabs-a:last-child { margin-bottom: 0; margin-top: 10px;}
 .tabs-a.last-child { margin-bottom: 0; }
 .tabs-a > ul { overflow: hidden; position: absolute; left: -3000em; top: -3000em; list-style: none; width: 100%; margin: 0; padding: 0; }
 .js .tabs-a > ul { position: relative; left: 0; top: 0; }
@@ -528,7 +528,7 @@ html.a #footer { padding: 0; }
 .ui-datepicker td a.ui-state-hover { background: #ededed; color: #b1b1b1; }
 
 .vcard.a { margin: 0 0 8px; padding: 26px 0 18px; border-bottom: 1px solid #f2f2f2; color: #666; text-align: center; }
-.vcard.a h2, .vcard.a h3, .vcard.a h4 { margin: 0 0 6px; color: #399fe4; font-size: 1.6em; }
+.vcard.a h2, .vcard.a h3, .vcard.a h4 { margin: 0 0 6px; color: #399fe4; font-size: 2em; }
 .vcard.a p { margin: 0 0 3px; font-size: 1.3em; }
 .vcard.a p.adr .fit-a { display: -moz-inline-stack; display: inline-block; position: relative; top: 1px; width: 9px; height: 12px; margin: 0 9px 0 0; background: url(../images/sprite-a.png) 0 -545px no-repeat; }
 .ie8 .vcard.a p.adr .fit-a { top: 2px; background-position: 0 -544px; }
@@ -589,7 +589,7 @@ sub { bottom: -0.25em; }
 .scheme-b > span { position: relative; left: 5px; top: 8px; font-size: 1.7em; }
 .scheme-b > span span { position: relative; left: 1px; top: 9px; font-size: .6em; }
 .scheme-c { position: relative; padding: 0 0 32px; color: #1a90e0; font-size: 1.4em; }
-#root .scheme-c > span { position: absolute; right: 0; top: -9px; color: #ff5f46; font-size: 3.3em; font-weight: 700; font-family: Arial, Helvetica, sans-serif; text-shadow: 1px 1px 0 #d6d6d6; }
+#root .scheme-c > span { position: absolute; right: 0; top: -9px; color: #ff5f46; font-size: 2.3em; font-weight: 700; font-family: Arial, Helvetica, sans-serif; text-shadow: 1px 1px 0 #d6d6d6; }
 #root .scheme-c > span span { position: relative; top: -13px; font-size: .6em; }
 .scheme-d, #root .scheme-d { display: block; overflow: hidden; position: relative; width: 114px; height: 85px; padding: 18px 0 0 22px; background: url(../images/sprite-a.png) 0 -780px no-repeat; color: #fff; font-size: 4em; font-family: Arial, Helvetica, sans-serif; font-weight: 700; text-shadow: 1px 1px 1px #ca4b37; text-align: center; }
 .scheme-d, #root .scheme-d { border-radius: 0 6px 0 0; -moz-border-radius: 0 6px 0 0; -webkit-border-radius: 0 6px 0 0; }
@@ -1097,3 +1097,18 @@ svg:not(:root) { overflow: hidden; }
     float: right;
     margin-top: -35px;
 }
+.button-book {
+    font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    background: #3F9D4A; 
+    border: none;
+    width: auto;
+    height: 40px;
+    overflow: visible;
+    font-size: 1.4em;
+    color: #FFF;
+    padding: 7px 10px;  
+    border-radius: 4px; 
+    -webkit-border-radius: 4px; 
+    -moz-border-radius: 4px; 
+    font-weight: bold; 
+    text-shadow: 0 1px 0 rgba(0,0,0,0.4);}

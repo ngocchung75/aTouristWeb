@@ -38,7 +38,7 @@
     <h3><span>04.</span> Who?</h3>
     <p class="select-a">
         <span>
-            <label for="fce">Rooms</label>
+            <label for="fce">No. Rooms</label>
             <select id="fce" name="fce">
                 <option>01</option>
                 <option>02</option>
@@ -48,18 +48,8 @@
             </select>
         </span>
         <span>
-            <label for="fcf">Adults</label>
+            <label for="fcf">No. Peoples</label>
             <select id="fcf" name="fcf">
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
-                <option>05</option>
-            </select>
-        </span>
-        <span>
-            <label for="fcg">Child</label>
-            <select id="fcg" name="fcg">
                 <option>01</option>
                 <option>02</option>
                 <option>03</option>
