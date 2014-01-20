@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <ul class="primary">
     <li><a accesskey="1" href="./">Home</a> <em>(1)</em></li>
-    <li><a accesskey="2" href="hotellist.jsp">Hotel List</a> <em>(2)</em></li>
+    <li><a accesskey="2" href="GetAllHotel">Hotel List</a> <em>(2)</em></li>
     <li><a accesskey="3" href="index-b.jsp">Hot Deal</a> <em>(3)</em></li>
     <li><a accesskey="4" href="aboutus.jsp">About us</a> <em>(4)</em></li>
     <li><a accesskey="5" href="contact.jsp">Contact</a> <em>(5)</em></li>
@@ -23,6 +23,6 @@
             }
         </script><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     </li>
-        <div style="width: 200px;"></div>
-    
+    <div style="width: 200px;"></div>
 </ul>
+<p class="link-a"><a id="go" name="login" href="./signup.jsp">Login</a> <a id="go" name="signup" href="./signup.jsp">Register</a></p>

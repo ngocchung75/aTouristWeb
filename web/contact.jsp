@@ -18,8 +18,11 @@
             <header id="top">
                 <h1><a href="./" accesskey="h"></a></h1>
                 <nav id="nav">
-                    <%@include file="pages/nav.jsp" %>
-                    <p class="link-a"><a id="go" name="login" href="./signup.jsp">Login</a> <a id="go" name="signup" href="./signup.jsp">Register</a></p>
+                    <s:if test="#session.logined != 'true'">
+                        <%@include file="pages/nav.jsp" %>
+                    </s:if><s:else>
+                        <%@include file="pages/nav-user.jsp" %>
+                    </s:else>
                 </nav>
                 <%@include file="pages/search.jsp" %>
             </header>         

@@ -14,12 +14,16 @@
         <%@include file="pages/header.jsp" %>
     </head>
     <body>
+        <s:if test="#session.logined != 'true'">
+            <%
+                response.sendRedirect("signup.jsp");
+            %>
+        </s:if>
         <div id="root">
             <header id="top">
                 <h1><a href="./" accesskey="h"></a></h1>
                 <nav id="nav">
-                    <%@include file="pages/nav.jsp" %>
-                    <p class="link-a"><a id="go" name="login" href="./signup.jsp">Login</a> <a id="go" name="signup" href="./signup.jsp">Register</a></p>
+                    <%@include file="pages/nav-user.jsp" %>
                 </nav>
                 <%@include file="pages/search.jsp" %>
             </header>         

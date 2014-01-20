@@ -3,7 +3,13 @@
     Created on : Jan 10, 2014, 3:15:01 AM
     Author     : CHUNG TOOC
 --%>
-
+<%@page import="model.CityBean"%>
+<%@page import="model.HotelBean"%>
+<%@page import="java.util.List"%>
+<%
+    List<HotelBean> tophotellist = (List<HotelBean>) session.getValue("top_hotel");
+    List<CityBean> citylist = (List<CityBean>) session.getValue("city_list");
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
@@ -18,8 +24,11 @@
             <header id="top">
                 <h1><a href="./" accesskey="h"></a></h1>
                 <nav id="nav">
-                    <%@include file="pages/nav.jsp" %>
-                    <p class="link-a"><a id="go" name="login" href="./signup.jsp">Login</a> <a id="go" name="signup" href="./signup.jsp">Register</a></p>
+                    <s:if test="#session.logined != 'true'">
+                        <%@include file="pages/nav.jsp" %>
+                    </s:if><s:else>
+                        <%@include file="pages/nav-user.jsp" %>
+                    </s:else>
                 </nav>
                 <%@include file="pages/search.jsp" %>
             </header>         
@@ -35,67 +44,60 @@
                     <h2 class="header-a">Hot deal</h2>
 
                     <div class="news-b">
+                        <%for (int i = 0; i < tophotellist.size(); i++) {
+                        %>
                         <article>
                             <header>
-                                <figure><img src="temp/217x131.gif"  alt="Placeholder" width="217" height="131"> <span class="a">Hot</span></figure>
-                                <h2><a href="#">Sheraton hanoi Hotel</a></h2>
+                                <figure><img src="<%=tophotellist.get(i).getHotelImage()%>"  alt="Placeholder" width="217" height="131"> <span class="a">Hot</span></figure>
+                                <h2><a href="GetDetailHotel?HotelID=<%=tophotellist.get(i).getHotelID()%>"><%=tophotellist.get(i).getHotelName()%></a></h2>
+                                <p><span class="rating-a <%=tophotellist.get(i).getHotelRating()%>">5/5</span></p><br>
                             </header>
-                            <p>Lorem ipsum dolor sit saelas met lo nsecttur ads ipi deese cing...</p>
-                            <p class="scheme-e"><span>$</span>900 <a href="hoteldetails.jsp">Book</a></p>
-                            <p class="link-b"><a href="hoteldetails.jsp">View Details</a></p>
+                            <p><%=tophotellist.get(i).getHotelDesShort()%></p>
+                            <p class="scheme-e"><span>$</span><%=tophotellist.get(i).getHotelPriceFrom()%> <a href="GetDetailHotel?HotelID=<%=tophotellist.get(i).getHotelID()%>">Book</a></p>
+                            <p class="link-b"><a href="GetDetailHotel?HotelID=<%=tophotellist.get(i).getHotelID()%>">View Details</a></p>
                         </article>
-                        <article>
-                            <header>
-                                <figure><img src="temp/217x131(1).gif"  alt="Placeholder" width="217" height="131"> <span class="a">Hot</span></figure>
-                                <h2><a href="#">Taj hanoi Hotel</a></h2>
-                            </header>
-                            <p>Lorem ipsum dolor sit saelas met lo nsecttur ads ipi deese cing...</p>
-                            <p class="scheme-e"><span>$</span>450 <a href="hoteldetails.jsp">Book</a></p>
-                            <p class="link-b"><a href="hoteldetails.jsp">View Details</a></p>
-                        </article>
-                        <article>
-                            <header>
-                                <figure><img src="temp/217x131(2).gif"  alt="Placeholder" width="217" height="131"> <span class="a">Hot</span></figure>
-                                <h2><a href="#">Hanoi Sheraton Hotel</a></h2>
-                            </header>
-                            <p>Lorem ipsum dolor sit saelas met lo nsecttur ads ipi deese cing...</p>
-                            <p class="scheme-e"><span>$</span>355 <a href="hoteldetails.jsp">Book</a></p>
-                            <p class="link-b"><a href="hoteldetails.jsp">View Details</a></p>
-                        </article>
-                        <article>
-                            <header>
-                                <figure><img src="temp/217x131(3).gif"  alt="Placeholder" width="217" height="131"> <span class="a">Hot</span></figure>
-                                <h2><a href="#">Lorem Impsum Hotel</a></h2>
-                            </header>
-                            <p>Lorem ipsum dolor sit saelas met lo nsecttur ads ipi deese cing...</p>
-                            <p class="scheme-e"><span>$</span>600 <a href="hoteldetails.jsp">Book</a></p>
-                            <p class="link-b"><a href="hoteldetails.jsp">View Details</a></p>
-                        </article>
-                        <article>
-                            <header>
-                                <figure><img src="temp/217x131(4).gif"  alt="Placeholder" width="217" height="131"> <span class="a">Hot</span></figure>
-                                <h2><a href="#">Just Another Hotel</a></h2>
-                            </header>
-                            <p>Lorem ipsum dolor sit saelas met lo nsecttur ads ipi deese cing...</p>
-                            <p class="scheme-e"><span>$</span>250 <a href="hoteldetails.jsp">Book</a></p>
-                            <p class="link-b"><a href="hoteldetails.jsp">View Details</a></p>
-                        </article>
-                        <article>
-                            <header>
-                                <figure><img src="temp/217x131(5).gif"  alt="Placeholder" width="217" height="131"> <span class="a">Hot</span></figure>
-                                <h2><a href="#">Sheraton hanoi Hotel</a></h2>
-                            </header>
-                            <p>Lorem ipsum dolor sit saelas met lo nsecttur ads ipi deese cing...</p>
-                            <p class="scheme-e"><span>$</span>500 <a href="hoteldetails.jsp">Book</a></p>
-                            <p class="link-b"><a href="hoteldetails.jsp">View Details</a></p>
-                        </article>
+                        <%}%>
 
                     </div>
                 </div>
                 <aside>
-                    <s:form action="booknow.action" method="post">
-                        <%@include file="pages/booknow.jsp" %>
-                    </s:form>
+                    <s:form action="GetSearchResult" method="GetSearchResult">
+                        <div class="form-c">
+                            <fieldset>
+                                <legend>Book now</legend>
+                                <h3><span>01.</span> What?</h3>
+                                <ul class="check-c">
+                                    <li><label for="fcaa"><input type="radio" id="fcaa" name="fca" checked="checked"> Hotels</label></li>
+                                    <li><label for="fcab"><input type="radio" id="fcab" name="fca" disabled="disabled"> Flights</label></li>
+                                    <li><label for="fcac"><input type="radio" id="fcac" name="fca" disabled="disabled"> Cars</label></li>
+                                    <li><label for="fcad"><input type="radio" id="fcad" name="fca" disabled="disabled"> Rent car</label></li>
+                                    <li><label for="fcae"><input type="radio" id="fcae" name="fca" disabled="disabled"> Cruise</label></li>
+                                    <li><label for="fcaf"><input type="radio" id="fcaf" name="fca" disabled="disabled"> All</label></li>
+                                </ul>
+                                <h3><span>02.</span> Where?</h3>
+                                <p class="select-c">
+                                    <label for="fcb">Location</label>
+                                    <select id="fcb" name="fcb">
+                                        <%for (int i = 0; i < citylist.size(); i++) {
+                                        %>
+                                        <option value="<%=citylist.get(i).getCityID()%>"><%=citylist.get(i).getHotelCity()%></option>
+                                        <%}%>
+                                    </select>
+                                </p>
+                                <h3><span>03.</span> When?</h3>
+                                <p class="date-a">
+                                    <span>
+                                        <label for="fcc">Check in</label>
+                                        <input type="text" id="fcc" name="fcc" required>
+                                    </span>
+                                    <span>
+                                        <label for="fcd">Check Out</label>
+                                        <input type="text" id="fcd" name="fcd" required>
+                                    </span>
+                                </p>
+                                <p class="submit"><button type="submit">Search</button></p>
+                            </fieldset>
+                        </s:form>
                 </aside>
             </article>
             <footer id="footer">

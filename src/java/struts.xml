@@ -11,11 +11,11 @@
     <!-- Configuration for the default package. -->
     <package name="default" namespace="/" extends="struts-default">
         <action name="login-user" class="control.LoginAuthAction">
-            <result name="success">mydashboard.jsp</result>
+            <result name="success">pages/check-book.jsp</result>
             <result name="error">signup.jsp</result>
         </action>
          <action name="signup-user" class="control.AddAccountAction">
-            <result name="success">mydashboard.jsp</result>
+            <result name="success">pages/check-book.jsp</result>
             <result name="error">signup.jsp</result>
         </action>
         <action name="change-pass" class="control.ChangePassAction">
@@ -25,6 +25,37 @@
         <action name="my-profile" class="control.MyProfileAction">
             <result name="success">myprofile.jsp</result>
             <result name="error">myprofile.jsp</result>
+        </action>
+        
+        <action name="GetAllHotel" method="GetAllHotel" class="control.HotelListAction">
+            <result name="success">hotellist.jsp</result>
+            <result name="error">hotellist.jsp</result>
+        </action>
+        <action name="GetDetailHotel" method="GetDetailHotel" class="control.HotelListAction">
+            <result name="success">hoteldetails.jsp</result>
+            <result name="error">hotellist.jsp</result>
+        </action>
+        <action name="GetTopHotel" method="GetTopHotel" class="control.HotelListAction">
+            <result name="success">index-b.jsp</result>
+            <result name="error">index-b.jsp</result>
+        </action>
+        
+        <action name="GetSearchResult" method="GetSearchResult" class="control.SearchResultAction">
+            <result name="success">search-result.jsp</result>
+            <result name="error">search-result.jsp</result>
+        </action>
+        <action name="GetSearchDetail" method="GetDetailHotel" class="control.HotelListAction">
+            <result name="success">search-details.jsp</result>
+            <result name="error">search-result.jsp</result>
+        </action>
+        
+        <action name="HotelDetailBook" method="GetHotelDetailBook" class="control.SearchResultAction">
+            <result name="success">prebook.jsp</result>
+            <result name="error">GetAllHotel</result>
+        </action>
+        <action name="GetBookingView" method="GetBookingView" class="control.BookingAction">
+            <result name="success">booking-view.jsp</result>
+            <result name="error">booking-view.jsp</result>
         </action>
     </package>
     

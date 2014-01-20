@@ -3,7 +3,11 @@
     Created on : Jan 8, 2014, 10:11:06 AM
     Author     : CHUNG TOOC
 --%>
-
+<%@page import="model.HotelBean"%>
+<%@page import="java.util.List"%>
+<%
+    List<HotelBean> hotellist = (List<HotelBean>) session.getValue("all_hotel");
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
@@ -18,8 +22,11 @@
             <header id="top">
                 <h1><a href="./" accesskey="h"></a></h1>
                 <nav id="nav">
-                    <%@include file="pages/nav.jsp" %>
-                    <p class="link-a"><a id="go" name="login" href="./signup.jsp">Login</a> <a id="go" name="signup" href="./signup.jsp">Register</a></p>
+                    <s:if test="#session.logined != 'true'">
+                        <%@include file="pages/nav.jsp" %>
+                    </s:if><s:else>
+                        <%@include file="pages/nav-user.jsp" %>
+                    </s:else>
                 </nav>
                 <%@include file="pages/search.jsp" %>
             </header>         
@@ -44,42 +51,21 @@
                         </fieldset>
                     </form>
                     <div class="news-a">
-                        <article>
-                            <header>
-                                <h2><a href="#">Novotel Danang Hotel</a></h2>
-                                <figure><img src="temp/novotel.jpg" alt="Placeholder" width="128" height="102"></figure>
-                                <p>36 Bach Dang Street, Han River, Da Nang, Vietnam</p><div class="fit-a"></div>
-                            </header>
-                            <p>Conveniently located in Da Nang, Novotel Danang Premier Han River is a great base from which to explore this vibrant city...</p>
-                            <footer>
-                                <p class="link-b"><a href="hoteldetails.jsp">View Details</a></p>
-                            </footer>
-                        </article>
-                        <article>
-                            <header>
-                                <h2><a href="#">Muong Thanh Hotel</a></h2>
-                                <figure><img src="temp/muongthanh.jpg" alt="Placeholder" width="128" height="102"></figure>
-                                <p>962 Ngo Quyen, Son Tra District, Han River, Da Nang, Vietnam</p><div class="fit-a"></div>
-                            </header>
-                            <p>If what you're looking for is a conveniently located hotel in Da Nang, look no further than Muong Thanh Da Nang Hotel...</p>
-                            <footer>
-                                <p class="link-b"><a href="hoteldetails.jsp">View Details</a></p>
-                            </footer>
-                        </article>
 
-                        <footer>
-                            <nav class="pagination-a">
-                                <p>Page 01 of 06</p>
-                                <ol>
-                                    <li class="prev"><a href="./">Previous</a></li>
-                                    <li class="active"><a href="./" style="cursor: default; text-decoration: none;">01</a></li>
-                                    <li><a href="./">02</a></li>
-                                    <li><a href="./">03</a></li>
-                                    <li><a href="./">04</a></li>
-                                    <li class="next"><a href="./">Next</a></li>
-                                </ol>
-                            </nav>
-                        </footer>
+                        <%for (int i = 0; i < hotellist.size(); i++) {
+                        %>
+                        <article>
+                            <header>
+                                <h2><a href="GetDetailHotel?HotelID=<%=hotellist.get(i).getHotelID()%>"><%=hotellist.get(i).getHotelName()%></a></h2> <p class="rating-a <%=hotellist.get(i).getHotelRating()%>">5/5</p>
+                                <figure><img src="<%=hotellist.get(i).getHotelImage()%>" alt="Placeholder" width="128" height="102"></figure>
+                                <p><%=hotellist.get(i).getHotelAddress()%><%=hotellist.get(i).getHotelCity()%></p><div class="fit-a"></div>
+                            </header>
+                            <p><%=hotellist.get(i).getHotelDesShort()%></p>
+                            <footer>
+                                <p class="link-b"><a href="GetDetailHotel?HotelID=<%=hotellist.get(i).getHotelID()%>">View Details</a></p>
+                            </footer>
+                        </article>
+                        <%}%>
                     </div>
                 </div>
                 <aside>

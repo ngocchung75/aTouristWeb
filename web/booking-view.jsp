@@ -3,7 +3,17 @@
     Created on : Jan 10, 2014, 1:19:43 AM
     Author     : CHUNG TOOC
 --%>
-
+<%@page import="model.NoRoomBean"%>
+<%@page import="model.RoomBean"%>
+<%@page import="java.util.List"%>
+<%@page import="model.HotelBean"%>
+<%@page import="control.SearchResultAction"%>
+<%
+    SearchResultAction listbooknow = (SearchResultAction) session.getValue("list-booknow");
+    HotelBean detail_hotel = (HotelBean) session.getValue("detail_hotel");
+    List<RoomBean> listroom = (List<RoomBean>) session.getValue("list-room");
+    List<NoRoomBean> noroomlist = (List<NoRoomBean>) session.getValue("noroom-list");
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
@@ -14,12 +24,16 @@
         <%@include file="pages/header.jsp" %>
     </head>
     <body>
+        <s:if test="#session.logined != 'true'">
+            <%
+                response.sendRedirect("signup.jsp");
+            %>
+        </s:if>
         <div id="root">
             <header id="top">
                 <h1><a href="./" accesskey="h"></a></h1>
                 <nav id="nav">
-                    <%@include file="pages/nav.jsp" %>
-                    <p class="link-a"><a id="go" name="login" href="./signup.jsp">Login</a> <a id="go" name="signup" href="./signup.jsp">Register</a></p>
+                    <%@include file="pages/nav-user.jsp" %>
                 </nav>
                 <%@include file="pages/search.jsp" %>
             </header>         
@@ -32,11 +46,11 @@
                             <li><span>Full Name</span> Chung Tooc</li>
                             <li><span>Email Address</span> chung@gmail.com</li>
                             <li><span>Address</span> Danang, Vietnam</li>
-                            <li><span>Mobile</span> 0972878218</li>
+                            <li><span>Mobile</span> 0972878218 ${sessionScope.getURL} ${sessionScope.userName}</li>
                         </ul>
 
                         <h4 class="scheme-g">Accept and confirm</h4>
-                        <p class="check-a"><label for="feo"><input type="checkbox" id="feo" name="feo"> I agree to the booking conditions.</label></p>
+                        <p class="check-a"><label for="feo"><input type="checkbox" id="feo" name="feo" checked="checked"> I agree to the booking conditions.</label></p>
                         <p class="scheme-h">Grand Total : <span><span>$</span>790</span></p>
                         <p class="link-c"><button type="submit">Submit</button></p>
                     </div>

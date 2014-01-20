@@ -17,6 +17,11 @@
         <script type="text/javascript" src="javascript/scriptgeneral_home.min.js"></script>
     </head>
     <body>
+        <s:if test="#session.logined == 'true'">
+            <%
+                response.sendRedirect("GetTopHotel");
+            %>
+        </s:if>
         <div id="root">
             <header id="top">
                 <h1><a href="./" accesskey="h"></a></h1>
