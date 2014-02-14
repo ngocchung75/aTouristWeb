@@ -21,7 +21,7 @@ Issues Manage: https://github.com/ngocchung75/aTouristWeb/issues
 
 Trello: https://trello.com/b/lnbwmEkY/capstone2-d18cmu
 
-Demo: http://demo.atourist.net/
+Demo: http://demo.atourist.net/aTouristWeb
 
 Mentor: M.Sc Nguyen Duc Man - mannd@duytan.edu.vn - Skype: mand.123
 
