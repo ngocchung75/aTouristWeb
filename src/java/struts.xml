@@ -69,16 +69,16 @@
             <result name="error">login.jsp</result>
         </action>
         <action name="GetAllUserView" method="GetAllUserView" class="control.ManageUserAction">
-            <result name="success">manageusers.jsp</result>
-            <result name="error">manageusers.jsp</result>
+            <result name="success">manage-users.jsp</result>
+            <result name="error">manage-users.jsp</result>
         </action>
         <action name="DeleteUser" method="DeleteUser" class="control.ManageUserAction">
             <result name="success" type="redirect">GetAllUserView</result>
-            <result name="error">manageusers.jsp</result>
+            <result name="error">manage-users.jsp</result>
         </action>
         <action name="UpdateUser" method="UpdateUser" class="control.ManageUserAction">
             <result name="success" type="redirect">GetAllUserView</result>
-            <result name="error">manageusers.jsp</result>
+            <result name="error">manage-users.jsp</result>
         </action>
     </package>
     
