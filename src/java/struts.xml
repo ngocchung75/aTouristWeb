@@ -57,12 +57,28 @@
             <result name="success">booking-view.jsp</result>
             <result name="error">booking-view.jsp</result>
         </action>
+        <action name="BookingSubmit" method="BookingSubmit" class="control.BookingAction">
+            <result name="success">booking-confirm.jsp</result>
+            <result name="error">booking-view.jsp</result>
+        </action>
     </package>
     
     <package name="aTouristWeb-admin" namespace="/admin" extends="struts-default">
         <action name="login-admin" class="control.LoginAuthAction">
             <result name="success" type="redirect">welcome.jsp</result>
             <result name="error">login.jsp</result>
+        </action>
+        <action name="GetAllUserView" method="GetAllUserView" class="control.ManageUserAction">
+            <result name="success">manageusers.jsp</result>
+            <result name="error">manageusers.jsp</result>
+        </action>
+        <action name="DeleteUser" method="DeleteUser" class="control.ManageUserAction">
+            <result name="success" type="redirect">GetAllUserView</result>
+            <result name="error">manageusers.jsp</result>
+        </action>
+        <action name="UpdateUser" method="UpdateUser" class="control.ManageUserAction">
+            <result name="success" type="redirect">GetAllUserView</result>
+            <result name="error">manageusers.jsp</result>
         </action>
     </package>
     

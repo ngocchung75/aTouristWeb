@@ -48,40 +48,7 @@
                                 <s:actionerror/>
                             </div>
                         </s:if>
-                        <a href="AddNewUser">Add New User</a>
-                        </br></br>
-                        <table>
-                            <tr>
-                                <th>User ID</th>
-                                <th>UserName</th>
-                                <th>Full Name</th>
-                                <th>Gender</th>
-                                <th>Year Of Birth</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Address</th>
-                                <th>Created</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            <%for (int i = 0; i < userlist.size(); i++) {
-                            %>
-                            <tr>
-                                <td><%=userlist.get(i).getUserID()%></td>
-                                <td><%=userlist.get(i).getUserName()%></td>
-                                <td><%=userlist.get(i).getFullName()%></td>
-                                <td><%=userlist.get(i).getGender()%></td>
-                                <td><%=userlist.get(i).getYearOfBirth()%></td>
-                                <td><%=userlist.get(i).getEmail()%></td>
-                                <td><%=userlist.get(i).getPhone()%></td>
-                                <td><%=userlist.get(i).getUserAddress()%></td>
-                                <td><%=userlist.get(i).getCreated()%></td>
-                                <td><a href="UpdateUser?UserID=<%=userlist.get(i).getUserID()%>">Edit</a></td>
-                                <td><a href="DeleteUser?UserID=<%=userlist.get(i).getUserID()%>">Delete</a></td>
-                            </tr>
-                            <%}%>
-                        </table>
-                        </br></br>
+                        
                     </div> <!-- content -->
 
                 </div> <!-- page-middle -->

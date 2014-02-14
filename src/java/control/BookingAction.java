@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionSupport;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,10 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import model.BookingBean;
 import model.CityBean;
 import model.HotelBean;
 import model.NoRoomBean;
 import model.RoomBean;
+import model.RoomBookBean;
+import model.SearchRoom;
 import org.apache.struts2.ServletActionContext;
 import static org.apache.struts2.StrutsStatics.HTTP_REQUEST;
 import org.apache.struts2.interceptor.SessionAware;
@@ -43,6 +47,8 @@ public class BookingAction extends ActionSupport implements SessionAware {
     private String roomsel10;
 
     private Map<String, Object> sessionMap;
+    RoomBean roombean;
+    BookingBean bookingbean;
 
     public BookingAction() {
     }
@@ -76,6 +82,8 @@ public class BookingAction extends ActionSupport implements SessionAware {
         List<NoRoomBean> noroomlist = null;
         noroomlist = new ArrayList();
         NoRoomBean noroom;
+        int nights = Integer.parseInt(listbooknow.getToNight());
+        double grandTotal = 0;
 
         HttpServletRequest request;
         request = ServletActionContext.getRequest();
@@ -98,7 +106,79 @@ public class BookingAction extends ActionSupport implements SessionAware {
             noroomlist.add(noroom);
         }
 
+        List<RoomBookBean> roombooklist = null;
+        roombooklist = new ArrayList();
+        RoomBookBean roombook;
+
+        for (int i = 0; i < noroomlist.size(); i++) {
+            int noroombook;
+            noroombook = Integer.parseInt(noroomlist.get(i).getNoRoomCount());
+            if (noroombook > 0) {
+                int noIDRoom = Integer.parseInt(noroomlist.get(i).getNoRoomID());
+                roombean = new RoomBean();
+                SearchRoom searchRoom = new SearchRoom();
+                roombean = searchRoom.getRoomDetail(noIDRoom);
+                double roomPrice = roombean.getRoomPrice();
+                double totalPrice = totalPrice = noroombook * nights * roomPrice;
+                grandTotal = grandTotal + totalPrice;
+
+                String NoRoomCount1 = noroomlist.get(i).getNoRoomCount();
+
+                roombook = new RoomBookBean(noIDRoom, roombean.getHotelID(), roombean.getRTypeName(),
+                        roombean.getRNumPeople(), roombean.getRCount(), roombean.getRoomDes(),
+                        roombean.getRImage(), roombean.getRoomPrice(), NoRoomCount1, totalPrice);
+                roombooklist.add(roombook);
+            }
+        }
+
+        sessionMap.put("grandTotal", grandTotal);
+        session.put("grand-Total", grandTotal);
         session.put("noroom-list", noroomlist);
+        session.put("roombook-list", roombooklist);
+        return "success";
+    }
+
+    public String BookingSubmit() throws ClassNotFoundException, SQLException, ParseException {
+        Map session = ActionContext.getContext().getSession();
+        SearchResultAction listbooknow = (SearchResultAction) session.get("list-booknow");
+        HotelBean detail_hotel = (HotelBean) session.get("detail_hotel");
+        List<RoomBean> listroom;
+        listroom = (List<RoomBean>) session.get("list-room");
+        List<NoRoomBean> noroomlist;
+        noroomlist = (List<NoRoomBean>) session.get("noroom-list");
+        List<RoomBookBean> roombooklist;
+        roombooklist = (List<RoomBookBean>) session.get("roombook-list");
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        int userID = (Integer) sessionMap.get("UserID");
+        int night = Integer.valueOf(listbooknow.getToNight());
+        String strDateStart = listbooknow.getFcc();
+        String strDateEnd = listbooknow.getFcd();
+
+        java.util.Date dateStart = formatter.parse(strDateStart);
+        java.sql.Date dateStart1 = new java.sql.Date(dateStart.getTime());
+
+        java.util.Date dateEnd = formatter.parse(strDateEnd);
+        java.sql.Date dateEnd1 = new java.sql.Date(dateEnd.getTime());
+
+        for (int i = 0; i < roombooklist.size(); i++) {
+            bookingbean = new BookingBean();
+
+            int BookID1 = 1;
+            int UserID1 = userID;
+            int RoomID1 = roombooklist.get(i).getRoomID();
+            int HotelID1 = roombooklist.get(i).getHotelID();
+            Date StartDate1 = dateStart1;
+            Date EndDate1 = dateEnd1;
+            int RCountBook1 = roombooklist.get(i).getRCount();
+            int Nights1 = night;
+            double RPrices1 = roombooklist.get(i).getRoomPrice();
+            double Total1 = roombooklist.get(i).getPriceTotal();
+            int StatusID1 = 1;
+
+            int check = bookingbean.addBooking(BookID1, UserID1, RoomID1, HotelID1, StartDate1, EndDate1,
+                    RCountBook1, Nights1, RPrices1, Total1, StatusID1);
+        }
+
         return "success";
     }
 

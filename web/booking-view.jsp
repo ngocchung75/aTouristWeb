@@ -3,6 +3,7 @@
     Created on : Jan 10, 2014, 1:19:43 AM
     Author     : CHUNG TOOC
 --%>
+<%@page import="model.RoomBookBean"%>
 <%@page import="model.NoRoomBean"%>
 <%@page import="model.RoomBean"%>
 <%@page import="java.util.List"%>
@@ -13,6 +14,7 @@
     HotelBean detail_hotel = (HotelBean) session.getValue("detail_hotel");
     List<RoomBean> listroom = (List<RoomBean>) session.getValue("list-room");
     List<NoRoomBean> noroomlist = (List<NoRoomBean>) session.getValue("noroom-list");
+    List<RoomBookBean> roombooklist = (List<RoomBookBean>) session.getValue("roombook-list");
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
@@ -37,41 +39,56 @@
                 </nav>
                 <%@include file="pages/search.jsp" %>
             </header>         
-            <form id="content" action="./" method="post" class="form-e">
+            <form id="content" action="BookingSubmit" method="post" class="form-e">
                 <fieldset class="cols-d">
                     <div>
                         <h3>Travel Information</h3>
                         <h4 class="scheme-g">Traveller Infomation</h4>
                         <ul class="list-c">
-                            <li><span>Full Name</span> Chung Tooc</li>
-                            <li><span>Email Address</span> chung@gmail.com</li>
-                            <li><span>Address</span> Danang, Vietnam</li>
-                            <li><span>Mobile</span> 0972878218 ${sessionScope.getURL} ${sessionScope.userName}</li>
+                            <li><span>Full Name</span> ${sessionScope.FullName}</li>
+                            <li><span>Email Address</span> ${sessionScope.Email}</li>
+                            <li><span>Address</span> ${sessionScope.UserAddress}</li>
+                            <li><span>Mobile</span> ${sessionScope.Phone}</li>
                         </ul>
 
+                        <h4 class="scheme-g">Rooms Infomation</h4>
+                        <div class="news-a">
+                            <%for (int i = 0; i < roombooklist.size(); i++) {
+                            %>
+                            <article>
+                                <header>
+                                    <h2><a href="#"><%=roombooklist.get(i).getRTypeName()%></a></h2> 
+                                    <figure><img src="<%=roombooklist.get(i).getRImage()%>" alt="<%=roombooklist.get(i).getRTypeName()%>" width="128" height="102"></figure>
+                                    <div class="fit-a"></div>
+                                </header>
+                                <ul class="list-c">
+                                    <li><span>No. Rooms:</span> <%=roombooklist.get(i).getNoRoomCount()%></li>
+                                    <li><span>Time:</span> <%=listbooknow.getToNight()%> Nights</li>
+                                    <li><span>Price per night:</span> <%=roombooklist.get(i).getRoomPrice()%></li>
+                                    <li><span>Total:</span> <%=roombooklist.get(i).getPriceTotal()%></li>
+                                </ul>
+                            </article>
+                            <%}%>
+                        </div>
+
+                        <div style="border-top: 1px dashed #e5e5e5;border-top-style: solid;"></div>
                         <h4 class="scheme-g">Accept and confirm</h4>
                         <p class="check-a"><label for="feo"><input type="checkbox" id="feo" name="feo" checked="checked"> I agree to the booking conditions.</label></p>
-                        <p class="scheme-h">Grand Total : <span><span>$</span>790</span></p>
+                        <p class="scheme-h">Grand Total : <span><span>$</span>${sessionScope.grandTotal}</span></p>
                         <p class="link-c"><button type="submit">Submit</button></p>
                     </div>
                     <aside>
                         <h3>Hotel Summary</h3>
                         <div class="vcard a">
-                            <h4 class="fn org">Novotel Danang Hotel</h4>
-                            <p class="adr">No.36 Bach Dang Street, Han River, Da Nang, Vietnam</p>
+                            <h4 class="fn org"><%=detail_hotel.getHotelName()%></h4>
+                            <p class="adr"><%=detail_hotel.getHotelAddress()%><%=detail_hotel.getHotelCity()%></p>
                         </div>
                         <ul class="list-c">
-                            <li><span>Email Address</span> Novotel@gmail.com</li>
-                            <li><span>Mobile</span> 05113.333.333</li>
-                        </ul>
-                        <h4 class="scheme-g">Summary</h4>
-                        <ul class="list-c">
-                            <li><span>Room</span> Single Room</li>
-                            <li><span>No. Rooms</span> 1</li>
-                            <li><span>Price per night</span> $360</li>
-                            <li><span>Check in</span> 20 - Jan - 2014</li>
-                            <li><span>Check out</span> 22 - Jan - 2014</li>
-                            <li><span>Time</span> 02 Nights</li>
+                            <li><span>Email Address</span> <%=detail_hotel.getHotelEmail()%></li>
+                            <li><span>Mobile</span> <%=detail_hotel.getHotelPhone()%></li>
+                            <li><span>Check in</span> <%=listbooknow.getFcc()%></li>
+                            <li><span>Check out</span> <%=listbooknow.getFcd()%></li>
+                            <li><span>Time</span> <%=listbooknow.getToNight()%> Nights</li>
                         </ul>
 
                     </aside>

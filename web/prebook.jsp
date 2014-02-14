@@ -70,7 +70,7 @@
                                                 <figure><img src="<%=listroom.get(i).getRImage()%>" alt="<%=listroom.get(i).getRTypeName()%>" width="128" height="102"></figure>
                                                 <div class="fit-a"></div>
                                             </header>
-                                            <p style="color: #ff5f46; font-weight: 700; font-size: 1.23em;">$360 / night</p>
+                                            <p style="color: #ff5f46; font-weight: 700; font-size: 1.23em;">$<%=listroom.get(i).getRoomPrice()%> / night</p>
                                             <p>People max: <%=listroom.get(i).getRNumPeople()%></p>
                                             <p>Room info: <%=listroom.get(i).getRoomDes()%></p>
                                             <p>No. Rooms: <select id="roomsel<%=listroom.get(i).getRoomID()%>" name="roomsel<%=listroom.get(i).getRoomID()%>">

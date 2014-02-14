@@ -71,12 +71,13 @@ public class SearchRoom {
             Date StartDate1 = rs.getDate(5);
             Date EndDate1 = rs.getDate(6);
             int RCountBook1 = rs.getInt(7);
-            double RPrices1 = rs.getDouble(8);
-            double Total1 = rs.getDouble(9);
-            int StatusID1 = rs.getInt(10);
+            int Nights1 = rs.getInt(8);
+            double RPrices1 = rs.getDouble(9);
+            double Total1 = rs.getDouble(10);
+            int StatusID1 = rs.getInt(11);
 
             booking = new BookingBean(BookID1, UserID1, RoomID1, HotelID1, StartDate1, EndDate1,
-                    RCountBook1, RPrices1, Total1, StatusID1);
+                    RCountBook1, Nights1, RPrices1, Total1, StatusID1);
             bookinglist.add(booking);
         }
         return bookinglist;
@@ -96,6 +97,32 @@ public class SearchRoom {
             }
         }
         return RCount - roomBusy;
+    }
+
+    public RoomBean getRoomDetail(int RoomID) throws ClassNotFoundException, SQLException {
+        ConnectDatabase connect = new ConnectDatabase();
+        java.sql.Connection cnn = connect.Connect();
+        String sql = "select * from atourist_rooms where RoomID='" + RoomID + "';";
+        java.sql.Statement st = cnn.createStatement();
+        ResultSet rs;
+        rs = st.executeQuery(sql);
+
+        if (rs.next()) {
+            RoomBean room;
+            int RoomID1 = rs.getInt(1);
+            int HotelID1 = rs.getInt(2);
+            String RTypeName1 = rs.getString(3);
+            int RNumPeople1 = rs.getInt(4);
+            int RCount1 = rs.getInt(5);
+            String RoomDes1 = rs.getString(6);
+            String RImage1 = rs.getString(7);
+            double RoomPrice1 = rs.getDouble(8);
+
+            room = new RoomBean(RoomID1, HotelID1, RTypeName1, RNumPeople1, RCount1, RoomDes1, RImage1, RoomPrice1);
+            return room;
+        } else {
+            return null;
+        }
     }
 
 }

@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -40,6 +42,19 @@ public class UserBean {
         // TODO Auto-generated constructor stub
     }
 
+    public UserBean(int UserID, int RoleID, String UserName, String FullName, String Gender, String YearOfBirth, String Email, String Phone, String UserAddress, Date Created) {
+        this.UserID = UserID;
+        this.RoleID = RoleID;
+        this.UserName = UserName;
+        this.FullName = FullName;
+        this.Gender = Gender;
+        this.YearOfBirth = YearOfBirth;
+        this.Email = Email;
+        this.Phone = Phone;
+        this.UserAddress = UserAddress;
+        this.Created = Created;
+    }
+
     public UserBean(int UserID, int RoleID, String UserName, String FullName, String Gender, String YearOfBirth, String Email, String Phone, String UserAddress) {
         this.UserID = UserID;
         this.RoleID = RoleID;
@@ -50,6 +65,7 @@ public class UserBean {
         this.Email = Email;
         this.Phone = Phone;
         this.UserAddress = UserAddress;
+        this.Created = Created;
     }
 
     public boolean checkLogin(String user, String pass) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -203,6 +219,158 @@ public class UserBean {
             userID = rs.getInt("UserID");
         }
         return userID;
+    }
+
+    public void addUser(UserBean user) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
+        String temp = user.getUserPass();
+        String pass = HashMD5.convertToMD5(temp);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date date = new java.util.Date();
+        String dateNow = dateFormat.format(date).toString();
+
+        int userID = userIDLast();
+        userID++;
+
+        ConnectDatabase connect = new ConnectDatabase();
+        java.sql.Connection cnn = connect.Connect();
+        String insert_account = "insert into atourist_users values(?,?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement pre = (PreparedStatement) cnn.prepareStatement(insert_account);
+
+        // Parameters start with 1
+        pre.setInt(1, userID);
+        pre.setInt(2, user.getRoleID());
+        pre.setString(3, user.getUserName());
+        pre.setString(4, pass);
+        pre.setString(5, user.getFullName());
+        pre.setString(6, user.getGender());
+        pre.setString(7, user.getYearOfBirth());
+        pre.setString(8, user.getEmail());
+        pre.setString(9, user.getPhone());
+        pre.setString(10, user.getUserAddress());
+        pre.setDate(11, Date.valueOf(dateNow));
+
+        pre.executeUpdate();
+        cnn.close();
+        pre.close();
+    }
+
+    public int deleteUser(int userId) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
+        ConnectDatabase connect = new ConnectDatabase();
+        java.sql.Connection cnn = connect.Connect();
+        String delete_account = "delete from atourist_users where UserID=?";
+        PreparedStatement pre = (PreparedStatement) cnn.prepareStatement(delete_account);
+        pre.setInt(1, userId);
+        
+        int check = pre.executeUpdate();
+        cnn.close();
+        pre.close();
+        return check;
+    }
+
+    public void updateUser(UserBean user) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
+        ConnectDatabase connect = new ConnectDatabase();
+        java.sql.Connection cnn = connect.Connect();
+        String insert_account = "Update atourist_users set RoleID=?, UserName=?, FullName=?, Gender=?, YearOfBirth=?, Email=?, Phone=?, UserAddress=? where UserID=?";
+        PreparedStatement pre = (PreparedStatement) cnn.prepareStatement(insert_account);
+
+        // Parameters start with 1
+        pre.setInt(1, user.getRoleID());
+        pre.setString(2, user.getUserName());
+        pre.setString(3, user.getFullName());
+        pre.setString(4, user.getGender());
+        pre.setString(5, user.getYearOfBirth());
+        pre.setString(6, user.getEmail());
+        pre.setString(7, user.getPhone());
+        pre.setString(8, user.getUserAddress());
+        pre.setInt(9, user.getUserID());
+
+        pre.executeUpdate();
+        cnn.close();
+        pre.close();
+
+    }
+
+    public List<UserBean> getAllUsers() throws ClassNotFoundException, SQLException {
+        List<UserBean> usersliss = new ArrayList<UserBean>();
+
+        ConnectDatabase connect = new ConnectDatabase();
+        java.sql.Connection cnn = connect.Connect();
+        String sql = "select * from atourist_users";
+        java.sql.Statement st = cnn.createStatement();
+        ResultSet rs;
+        rs = st.executeQuery(sql);
+        while (rs.next()) {
+            UserBean user;
+            int UserID1 = rs.getInt(1);
+            int RoleID1 = rs.getInt(2);
+            String UserName1 = rs.getString(3);
+            String FullName1 = rs.getString(5);
+            String Gender1 = rs.getString(6);
+            String YearOfBirth1 = rs.getString(7);
+            String Email1 = rs.getString(8);
+            String Phone1 = rs.getString(9);
+            String UserAddress1 = rs.getString(10);
+            Date Created1 = rs.getDate(11);
+
+            user = new UserBean(UserID1, RoleID1, UserName1, FullName1, Gender1, YearOfBirth1, Email1, Phone1, UserAddress1, Created1);
+            usersliss.add(user);
+        }
+        return usersliss;
+    }
+    
+    public List<UserBean> getAllUsersRole(int roleid) throws ClassNotFoundException, SQLException {
+        List<UserBean> usersliss = new ArrayList<UserBean>();
+
+        ConnectDatabase connect = new ConnectDatabase();
+        java.sql.Connection cnn = connect.Connect();
+        String sql = "select * from atourist_users where RoleID='" + roleid + "';";
+        java.sql.Statement st = cnn.createStatement();
+        ResultSet rs;
+        rs = st.executeQuery(sql);
+        while (rs.next()) {
+            UserBean user;
+            int UserID1 = rs.getInt(1);
+            int RoleID1 = rs.getInt(2);
+            String UserName1 = rs.getString(3);
+            String FullName1 = rs.getString(5);
+            String Gender1 = rs.getString(6);
+            String YearOfBirth1 = rs.getString(7);
+            String Email1 = rs.getString(8);
+            String Phone1 = rs.getString(9);
+            String UserAddress1 = rs.getString(10);
+            Date Created1 = rs.getDate(11);
+
+            user = new UserBean(UserID1, RoleID1, UserName1, FullName1, Gender1, YearOfBirth1, Email1, Phone1, UserAddress1, Created1);
+            usersliss.add(user);
+        }
+        return usersliss;
+    }
+
+    public UserBean getUserID(int userId) throws ClassNotFoundException, SQLException {
+        ConnectDatabase connect = new ConnectDatabase();
+        java.sql.Connection cnn = connect.Connect();
+        String sql = "select * from atourist_users where UserID='" + userId + "';";
+        java.sql.Statement st = cnn.createStatement();
+        ResultSet rs;
+        rs = st.executeQuery(sql);
+        if (rs.next()) {
+            UserBean user;
+            int UserID1 = rs.getInt(1);
+            int RoleID1 = rs.getInt(2);
+            String UserName1 = rs.getString(3);
+            String FullName1 = rs.getString(5);
+            String Gender1 = rs.getString(6);
+            String YearOfBirth1 = rs.getString(7);
+            String Email1 = rs.getString(8);
+            String Phone1 = rs.getString(9);
+            String UserAddress1 = rs.getString(10);
+            Date Created1 = rs.getDate(11);
+
+            user = new UserBean(UserID1, RoleID1, UserName1, FullName1, Gender1, YearOfBirth1, Email1, Phone1, UserAddress1, Created1);
+            return user;
+        } else {
+            return null;
+        }
     }
 
     public int getUserID() {

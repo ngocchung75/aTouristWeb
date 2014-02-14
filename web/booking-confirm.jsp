@@ -28,47 +28,9 @@
                 <%@include file="pages/search.jsp" %>
             </header>         
             <h2 style="margin-top: 50px;"><span>Thank you</span>, your booking is complete</h2>  
-            <p>Your comfirmation number is ID <span>223686</span></p>          
-            <article id="content" class="cols-d">
-                <div>
-                    <h3>Travel Information</h3>
-                    <h4 class="scheme-g">Traveller Infomation</h4>
-                    <ul class="list-c">
-                        <li><span>Full Name</span> Chung Tooc</li>
-                        <li><span>Email Address</span> chung@gmail.com</li>
-                        <li><span>Address</span> Danang, Vietnam</li>
-                        <li><span>Mobile</span> 0972878218</li>
-                    </ul>
-                    <h4 class="scheme-g">Payment</h4>
-                    <p>Lorem ipsum dolor sit saelas met, consecttur ads ipi deese cing elit. Mauris fringilla bibe endums. Lorem ipsum dolor sit saelas met, consecttur ads ipi deese cing elit. Mauris fringilla </p>
-                    <h4 class="scheme-g">Special Request</h4>
-                    <p>Lorem ipsum dolor sit saelas met, consecttur ads ipi deese cing elit. Mauris fringilla bibe endums. Lorem ipsum dolor sit saelas met, consecttur ads ipi deese cing elit. Mauris fringilla </p>
-                    <h4 class="scheme-g">Payment Bao Kim</h4>
-                    <p class="link-c"><a href="./">Bao Kim</a></p>
-                </div>
-                <aside>
-                    <h3>Hotel Summary</h3>
-                    <div class="vcard a">
-                        <h4 class="fn org">Novotel Danang Hotel</h4>
-                        <p class="adr">No.36 Bach Dang Street, Han River, Da Nang, Vietnam</p>
-                    </div>
-                    <ul class="list-c">
-                        <li><span>Email Address</span> Novotel@gmail.com</li>
-                        <li><span>Mobile</span> 05113.333.333</li>
-                    </ul>
-                    <h4 class="scheme-g">Summary</h4>
-                    <ul class="list-c">
-                        <li><span>Room</span> Single Room</li>
-                        <li><span>No. Rooms</span> 1</li>
-                        <li><span>Price per night</span> $360</li>
-                        <li><span>Check in</span> 20 - Jan - 2014</li>
-                        <li><span>Check out</span> 22 - Jan - 2014</li>
-                        <li><span>Time</span> 02 Nights</li>
-                        <li><span>Grand Total</span> $790</li>
-                        <li><span>Status</span> Pending</li>
-                    </ul>
-                </aside>
-            </article>
+            <p>Please see the <a id="lbtMyAccount" href="mydashboard.jsp">My Bookings</a> for more details.</p>          
+
+            <center> <img src="img/complete-check-md.png" width="222" height="222"></center></br></br>
 
             <footer id="footer">
                 <%@include file="pages/footer1.jsp" %>
