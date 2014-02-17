@@ -270,8 +270,8 @@ public class UserBean {
     public void updateUser(UserBean user) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
         ConnectDatabase connect = new ConnectDatabase();
         java.sql.Connection cnn = connect.Connect();
-        String insert_account = "Update atourist_users set RoleID=?, UserName=?, FullName=?, Gender=?, YearOfBirth=?, Email=?, Phone=?, UserAddress=? where UserID=?";
-        PreparedStatement pre = (PreparedStatement) cnn.prepareStatement(insert_account);
+        String update_account = "Update atourist_users set RoleID=?, UserName=?, FullName=?, Gender=?, YearOfBirth=?, Email=?, Phone=?, UserAddress=? where UserID=?";
+        PreparedStatement pre = (PreparedStatement) cnn.prepareStatement(update_account);
 
         // Parameters start with 1
         pre.setInt(1, user.getRoleID());

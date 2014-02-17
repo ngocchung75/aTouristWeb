@@ -68,6 +68,8 @@
             <result name="success" type="redirect">welcome.jsp</result>
             <result name="error">login.jsp</result>
         </action>
+        
+        <!-- Configuration for the Manage Users -->
         <action name="GetAllUserView" method="GetAllUserView" class="control.ManageUserAction">
             <result name="success">manage-users.jsp</result>
             <result name="error">manage-users.jsp</result>
@@ -80,6 +82,97 @@
             <result name="success" type="redirect">GetAllUserView</result>
             <result name="error">manage-users.jsp</result>
         </action>
+        <!-- Configuration for the Manage Status -->
+        <action name="GetAllStatusView" method="GetAllStatusView" class="control.ManageStatusAction">
+            <result name="success">manage-status.jsp</result>
+            <result name="error">manage-status.jsp</result>
+        </action>
+        <action name="AddNewStatus" method="AddNewStatus" class="control.ManageStatusAction">
+            <result name="success" type="redirect">GetAllStatusView</result>
+            <result name="error">manage-status.jsp</result>
+        </action>
+        <action name="UpdateStatus" method="UpdateStatus" class="control.ManageStatusAction">
+            <result name="success" type="redirect">GetAllStatusView#openUpdate</result>
+            <result name="error">manage-status.jsp</result>
+        </action>
+        <action name="SaveUpdateStatus" method="SaveUpdateStatus" class="control.ManageStatusAction">
+            <result name="success" type="redirect">GetAllStatusView</result>
+            <result name="error">manage-status.jsp</result>
+        </action>
+        <action name="DeleteStatus" method="DeleteStatus" class="control.ManageStatusAction">
+            <result name="success" type="redirect">GetAllStatusView</result>
+            <result name="error">manage-status.jsp</result>
+        </action>
+        
+        <!-- Configuration for the Manage City -->
+        <action name="GetAllCityView" method="GetAllCityView" class="control.ManageCityAction">
+            <result name="success">manage-city.jsp</result>
+            <result name="error">manage-city.jsp</result>
+        </action>
+        <action name="AddNewCity" method="AddNewCity" class="control.ManageCityAction">
+            <result name="success" type="redirect">GetAllCityView</result>
+            <result name="error">manage-city.jsp</result>
+        </action>
+        <action name="UpdateCity" method="UpdateCity" class="control.ManageCityAction">
+            <result name="success" type="redirect">GetAllCityView#openUpdate</result>
+            <result name="error">manage-city.jsp</result>
+        </action>
+        <action name="SaveUpdateCity" method="SaveUpdateCity" class="control.ManageCityAction">
+            <result name="success" type="redirect">GetAllCityView</result>
+            <result name="error">manage-city.jsp</result>
+        </action>
+        <action name="DeleteCity" method="DeleteCity" class="control.ManageCityAction">
+            <result name="success" type="redirect">GetAllCityView</result>
+            <result name="error">manage-city.jsp</result>
+        </action>
+        
+        <!-- Configuration for the Manage Role -->
+        <action name="GetAllRoleView" method="GetAllRoleView" class="control.ManageRoleAction">
+            <result name="success">manage-role.jsp</result>
+            <result name="error">manage-role.jsp</result>
+        </action>
+        <action name="AddNewRole" method="AddNewRole" class="control.ManageRoleAction">
+            <result name="success" type="redirect">GetAllRoleView</result>
+            <result name="error">manage-role.jsp</result>
+        </action>
+        <action name="UpdateRole" method="UpdateRole" class="control.ManageRoleAction">
+            <result name="success" type="redirect">GetAllRoleView#openUpdate</result>
+            <result name="error">manage-role.jsp</result>
+        </action>
+        <action name="SaveUpdateRole" method="SaveUpdateRole" class="control.ManageRoleAction">
+            <result name="success" type="redirect">GetAllRoleView</result>
+            <result name="error">manage-role.jsp</result>
+        </action>
+        <action name="DeleteRole" method="DeleteRole" class="control.ManageRoleAction">
+            <result name="success" type="redirect">GetAllRoleView</result>
+            <result name="error">manage-role.jsp</result>
+        </action>
+        
+        <!-- Configuration for the Manage TopHotel -->
+        <action name="GetAllTopHotelView" method="GetAllTopHotelView" class="control.ManageTopHotelAction">
+            <result name="success">manage-tophotel.jsp</result>
+            <result name="error">manage-tophotel.jsp</result>
+        </action>
+        <action name="AddNewTopHotel" method="AddNewTopHotel" class="control.ManageTopHotelAction">
+            <result name="success" type="redirect">GetAllTopHotelView</result>
+            <result name="error">manage-tophotel.jsp</result>
+        </action>
+        <action name="UpdateTopHotel" method="UpdateTopHotel" class="control.ManageTopHotelAction">
+            <result name="success" type="redirect">GetAllTopHotelView#openUpdate</result>
+            <result name="error">manage-tophotel.jsp</result>
+        </action>
+        <action name="SaveUpdateTopHotel" method="SaveUpdateTopHotel" class="control.ManageTopHotelAction">
+            <result name="success" type="redirect">GetAllTopHotelView</result>
+            <result name="error">manage-tophotel.jsp</result>
+        </action>
+        <action name="DeleteTopHotel" method="DeleteTopHotel" class="control.ManageTopHotelAction">
+            <result name="success" type="redirect">GetAllTopHotelView</result>
+            <result name="error">manage-tophotel.jsp</result>
+        </action>
+        
+        <!-- Configuration for the default package. -->
+        
+        
     </package>
     
     <package name="aTouristWeb-supplier" namespace="/supplier" extends="struts-default">

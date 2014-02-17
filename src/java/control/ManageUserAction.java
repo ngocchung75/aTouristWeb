@@ -14,7 +14,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import model.HotelBean;
 import model.UserBean;
 import org.apache.struts2.interceptor.SessionAware;
 

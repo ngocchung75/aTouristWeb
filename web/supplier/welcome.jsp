@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>aTourist Service 1.0 | Home</title>
+        <title>aTourist Service 1.0 | Supplier Home</title>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <link type="text/css" rel="stylesheet" href="libs/jquery/ui/css/flick/jquery.ui.core.css" />
         <link type="text/css" rel="stylesheet" href="libs/jquery/ui/css/flick/jquery.ui.theme.css" />
@@ -30,15 +30,12 @@
         <div id="container">
             <div id="header">
                 <a href="" id="header-image" target="_blank"></a>
-                <ul class="nav">
-                    <li><a href="./welcome.jsp" class="nav-home focus"></a></li>
-                    <li><a href="./welcome.jsp" class="nav-bookings"></a></li>
-                    <li><a href="./welcome.jsp" class="nav-rooms"></a></li>					
-                    <li><a href="./welcome.jsp" class="nav-reports"></a></li>
-                    <li><a href="./welcome.jsp" class="nav-invoices"></a></li>
-                    <li><a href="./logout.jsp" class="nav-logout"></a></li>
-                </ul>
                 <ul class="subnav">
+                    <li><a href="./welcome.jsp" class="">Manage Booking</a></li>
+                    <li><a href="./welcome.jsp" class="">Manage Rooms</a></li>
+                    <li><a href="./welcome.jsp" class="">Manage Hotel</a></li>
+                    <li><a href="GetAllUserView" class="">My Profile</a></li>
+                    <li><a href="./welcome.jsp" class="focus">Home</a></li>
                 </ul>
             </div>
 
@@ -53,12 +50,11 @@
                 <div class="page-middle">
 
                     <div id="content">
-                        <a class="home" href="./welcome.jsp"><span class="home-bookings"></span>View and manage users</a>
-                        <a class="home" href="./welcome.jsp"><span class="home-rooms"></span>Room, Extras and Prices</a>
-                        <a class="home" href="./welcome.jsp"><span class="home-reports"></span>Reports</a>
-                        <a class="home" href="./welcome.jsp"><span class="home-invoices"></span>Invoices</a>
-                        <a class="home" href="./welcome.jsp"><span class="home-options"></span>Options and Account Details</a>
-                        <a class="home" href="./welcome.jsp"><span class="home-install"></span>Installation instructions</a>
+                        <a class="home" href="./welcome.jsp"><span class="home-options"></span>My Profile</a>
+                        <a class="home" href="./welcome.jsp"><span class="home-bookings"></span>Manage Hotel</a>
+                        <a class="home" href="./welcome.jsp"><span class="home-bookings"></span>Manage Rooms</a>
+                        <a class="home" href="./welcome.jsp"><span class="home-rooms"></span>Manage Booking</a>
+
                     </div> <!-- content -->
 
                 </div> <!-- page-middle -->
