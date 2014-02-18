@@ -8,7 +8,6 @@ package control;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionSupport;
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -18,7 +17,6 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import model.BookingBean;
-import model.CityBean;
 import model.HotelBean;
 import model.NoRoomBean;
 import model.RoomBean;
@@ -27,7 +25,6 @@ import model.SearchRoom;
 import org.apache.struts2.ServletActionContext;
 import static org.apache.struts2.StrutsStatics.HTTP_REQUEST;
 import org.apache.struts2.interceptor.SessionAware;
-import static org.jboss.com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 
 /**
  *
@@ -169,7 +166,7 @@ public class BookingAction extends ActionSupport implements SessionAware {
             int HotelID1 = roombooklist.get(i).getHotelID();
             Date StartDate1 = dateStart1;
             Date EndDate1 = dateEnd1;
-            int RCountBook1 = roombooklist.get(i).getRCount();
+            int RCountBook1 = Integer.parseInt(roombooklist.get(i).getNoRoomCount());
             int Nights1 = night;
             double RPrices1 = roombooklist.get(i).getRoomPrice();
             double Total1 = roombooklist.get(i).getPriceTotal();

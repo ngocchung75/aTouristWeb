@@ -14,7 +14,7 @@
             <result name="success">pages/check-book.jsp</result>
             <result name="error">signup.jsp</result>
         </action>
-         <action name="signup-user" class="control.AddAccountAction">
+        <action name="signup-user" class="control.AddAccountAction">
             <result name="success">pages/check-book.jsp</result>
             <result name="error">signup.jsp</result>
         </action>
@@ -49,6 +49,10 @@
             <result name="error">search-result.jsp</result>
         </action>
         
+        <action name="HotelSearchBook" method="GetSearchDetailBook" class="control.SearchResultAction">
+            <result name="success">prebook.jsp</result>
+            <result name="error">GetAllHotel</result>
+        </action>
         <action name="HotelDetailBook" method="GetHotelDetailBook" class="control.SearchResultAction">
             <result name="success">prebook.jsp</result>
             <result name="error">GetAllHotel</result>
@@ -74,14 +78,23 @@
             <result name="success">manage-users.jsp</result>
             <result name="error">manage-users.jsp</result>
         </action>
-        <action name="DeleteUser" method="DeleteUser" class="control.ManageUserAction">
+        <action name="AddNewUser" method="AddNewUser" class="control.ManageUserAction">
             <result name="success" type="redirect">GetAllUserView</result>
             <result name="error">manage-users.jsp</result>
         </action>
         <action name="UpdateUser" method="UpdateUser" class="control.ManageUserAction">
+            <result name="success" type="redirect">GetAllUserView#openUpdate</result>
+            <result name="error">manage-users.jsp</result>
+        </action>
+        <action name="SaveUpdateUser" method="SaveUpdateUser" class="control.ManageUserAction">
             <result name="success" type="redirect">GetAllUserView</result>
             <result name="error">manage-users.jsp</result>
         </action>
+        <action name="DeleteUser" method="DeleteUser" class="control.ManageUserAction">
+            <result name="success" type="redirect">GetAllUserView</result>
+            <result name="error">manage-users.jsp</result>
+        </action>
+        
         <!-- Configuration for the Manage Status -->
         <action name="GetAllStatusView" method="GetAllStatusView" class="control.ManageStatusAction">
             <result name="success">manage-status.jsp</result>
@@ -168,6 +181,28 @@
         <action name="DeleteTopHotel" method="DeleteTopHotel" class="control.ManageTopHotelAction">
             <result name="success" type="redirect">GetAllTopHotelView</result>
             <result name="error">manage-tophotel.jsp</result>
+        </action>
+        
+        <!-- Configuration for the Manage Hotel -->
+        <action name="GetAllHotelView" method="GetAllHotelView" class="control.ManageHotelAction">
+            <result name="success">manage-hotel.jsp</result>
+            <result name="error">manage-hotel.jsp</result>
+        </action>
+        <action name="AddNewHotel" method="AddNewHotel" class="control.ManageHotelAction">
+            <result name="success" type="redirect">GetAllHotelView</result>
+            <result name="error">manage-hotel.jsp</result>
+        </action>
+        <action name="UpdateHotel" method="UpdateHotel" class="control.ManageHotelAction">
+            <result name="success" type="redirect">GetAllHotelView#openUpdate</result>
+            <result name="error">manage-hotel.jsp</result>
+        </action>
+        <action name="SaveUpdateHotel" method="SaveUpdateHotel" class="control.ManageHotelAction">
+            <result name="success" type="redirect">GetAllHotelView</result>
+            <result name="error">manage-hotel.jsp</result>
+        </action>
+        <action name="DeleteHotel" method="DeleteHotel" class="control.ManageHotelAction">
+            <result name="success" type="redirect">GetAllHotelView</result>
+            <result name="error">manage-hotel.jsp</result>
         </action>
         
         <!-- Configuration for the default package. -->

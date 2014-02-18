@@ -3,10 +3,13 @@
     Created on : Dec 17, 2013, 8:43:15 PM
     Author     : CHUNG TOOC
 --%>
+<%@page import="model.RoleBean"%>
 <%@page import="java.util.List"%>
 <%@page import="model.UserBean"%>
 <%
     List<UserBean> userlist = (List<UserBean>) session.getValue("all_user");
+    List<RoleBean> rolelist = (List<RoleBean>) session.getValue("all_role");
+    UserBean updateUser = (UserBean) session.getValue("update_user");
 %>
 
 <%@taglib prefix="s" uri="/struts-tags"%>
@@ -24,11 +27,11 @@
             <div id="header">
                 <a href="" id="header-image" target="_blank"></a>
                 <ul class="subnav">
-                    <li><a href="./welcome.jsp" class="">Manage Status</a></li>
-                    <li><a href="./welcome.jsp" class="">Manage City</a></li>
-                    <li><a href="./welcome.jsp" class="">Manage Role</a></li>
-                    <li><a href="./welcome.jsp" class="">Manage Top Hotel</a></li>
-                    <li><a href="./welcome.jsp" class="">Manage Hotel</a></li>
+                    <li><a href="GetAllStatusView" class="">Manage Status</a></li>
+                    <li><a href="GetAllCityView" class="">Manage City</a></li>
+                    <li><a href="GetAllRoleView" class="">Manage Role</a></li>
+                    <li><a href="GetAllTopHotelView" class="">Manage Top Hotel</a></li>
+                    <li><a href="GetAllHotelView" class="">Manage Hotel</a></li>
                     <li><a href="GetAllUserView" class="focus">Manage User</a></li>
                     <li><a href="./welcome.jsp" class="">Home</a></li>
                 </ul>
@@ -51,12 +54,75 @@
                                 <s:actionerror/>
                             </div>
                         </s:if>
-                        <a href="AddNewUser">Add New User</a>
+                        <form action="AddNewUser" method="post">
+                            <b>Add New User</b></br></br>
+                            <table>
+                                <tr>
+                                    <td> 
+                                        UserName:</br>
+                                        <input id="UserNameNew" name="UserNameNew" placeholder="User Name" type="text" value=""></br></br>
+                                        Password:</br>
+                                        <input id="PasswordNew" name="PasswordNew" placeholder="Password" type="password" value=""></br></br>
+                                        Role Name:</br>
+                                        <select id="RoleIDNew" name="RoleIDNew">
+                                            <%for (int i = 0; i < rolelist.size(); i++) {
+                                            %>
+                                            <option value="<%=rolelist.get(i).getRoleID()%>"> <%=rolelist.get(i).getRoleName()%> </option>
+                                            <%}%>
+                                        </select></br>
+                                    </td>
+                                    <td> 
+                                        Full Name:</br>
+                                        <input id="FullNameNew" name="FullNameNew" placeholder="Full Name" type="text" value=""></br></br>
+                                        Gender:</br>
+                                        <input id="GenderNew" name="GenderNew" placeholder="Gender (Male/Female)" type="text" value=""></br></br>
+                                        Year Of Birth:</br>
+                                        <input id="YearOfBirthNew" name="YearOfBirthNew" placeholder="Year Of Birth" type="text" value=""></br></br>
+                                    </td>
+                                    <td> 
+                                        Email:</br>
+                                        <input id="EmailNew" name="EmailNew" placeholder="Email" type="text" value=""></br></br>
+                                        Phone:</br>
+                                        <input id="PhoneNew" name="PhoneNew" placeholder="Phone" type="text" value=""></br></br>
+                                        Address:</br>
+                                        <input id="AddressNew" name="AddressNew" placeholder="Address" type="text" value=""></br></br>
+                                    </td>
+                                </tr>
+                            </table>
+                            </br><input type="submit" value="Add New User" class="button-changepass"/>
+                        </form>
+                        <div id="openUpdate" class="modalDialog">
+                            <div>
+                                <a href="#close" title="Close" class="close">X</a>
+                                <form action="SaveUpdateUser" method="post">
+                                    <b>Update Top Hotel:</b></br></br>
+                                    UserID: <%=updateUser.getUserID()%> <input id="UserIDUpdate" name="UserIDUpdate" type="hidden" value="<%=updateUser.getUserID()%>"></br>
+                                    UserName: <%=updateUser.getUserName()%> <input id="UserNameUpdate" name="UserNameUpdate" placeholder="User Name" type="hidden" value="<%=updateUser.getUserName()%>"></br>
+                                    Role Name: <%=updateUser.getRoleName()%> <input id="RoleIDUpdate" name="RoleIDUpdate" type="hidden" value="<%=updateUser.getRoleID()%>"></br></br>
+                                    <input id="PasswordUpdate" name="PasswordUpdate" placeholder="Password" type="hidden" value="<%=updateUser.getUserPass()%>">
+                                    Full Name:</br>
+                                    <input id="FullNameUpdate" name="FullNameUpdate" placeholder="Full Name" type="text" value="<%=updateUser.getFullName()%>"></br></br>
+                                    Gender:</br>
+                                    <input id="GenderUpdate" name="GenderUpdate" placeholder="Gender (Male/Female)" type="text" value="<%=updateUser.getGender()%>"></br></br>
+                                    Year Of Birth:</br>
+                                    <input id="YearOfBirthUpdate" name="YearOfBirthUpdate" placeholder="Year Of Birth" type="text" value="<%=updateUser.getYearOfBirth()%>"></br></br>
+                                    Email:</br>
+                                    <input id="EmailUpdate" name="EmailUpdate" placeholder="Email" type="text" value="<%=updateUser.getEmail()%>"></br></br>
+                                    Phone:</br>
+                                    <input id="PhoneUpdate" name="PhoneUpdate" placeholder="Phone" type="text" value="<%=updateUser.getPhone()%>"></br></br>
+                                    Address:</br>
+                                    <input id="AddressUpdate" name="AddressUpdate" placeholder="Address" type="text" value="<%=updateUser.getUserAddress()%>"></br></br>
+                                    </br>
+                                    <input type="submit" value="Update User"/>
+                                </form>
+                            </div>
+                        </div>
                         </br></br>
                         <table>
                             <tr>
                                 <th>User ID</th>
                                 <th>UserName</th>
+                                <th>RoleName</th>
                                 <th>Full Name</th>
                                 <th>Gender</th>
                                 <th>Year Of Birth</th>
@@ -66,12 +132,15 @@
                                 <th>Created</th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             <%for (int i = 0; i < userlist.size(); i++) {
                             %>
                             <tr>
                                 <td><%=userlist.get(i).getUserID()%></td>
                                 <td><%=userlist.get(i).getUserName()%></td>
+                                <td><%=userlist.get(i).getRoleName()%></td>
                                 <td><%=userlist.get(i).getFullName()%></td>
                                 <td><%=userlist.get(i).getGender()%></td>
                                 <td><%=userlist.get(i).getYearOfBirth()%></td>
@@ -81,6 +150,8 @@
                                 <td><%=userlist.get(i).getCreated()%></td>
                                 <td><a href="UpdateUser?UserID=<%=userlist.get(i).getUserID()%>">Edit</a></td>
                                 <td><a href="DeleteUser?UserID=<%=userlist.get(i).getUserID()%>">Delete</a></td>
+                                <td><a href="UpdateUser?UserID=<%=userlist.get(i).getUserID()%>">Change Role</a></td>
+                                <td><a href="DeleteUser?UserID=<%=userlist.get(i).getUserID()%>">Change Pass</a></td>
                             </tr>
                             <%}%>
                         </table>

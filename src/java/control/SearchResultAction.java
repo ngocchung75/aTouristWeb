@@ -79,7 +79,7 @@ public class SearchResultAction extends ActionSupport implements SessionAware {
         return "success";
     }
 
-    public String GetHotelDetailBook() throws ParseException, ClassNotFoundException, SQLException {
+    public String GetSearchDetailBook() throws ParseException, ClassNotFoundException, SQLException {
         Map session = ActionContext.getContext().getSession();
         session.remove("searched");
 
@@ -105,6 +105,54 @@ public class SearchResultAction extends ActionSupport implements SessionAware {
         roomlist = new ArrayList();
         roomlist = searchRoom.getRoomHotel(hotelID, dateStart1, dateEnd1);
 
+        session.put("list-room", roomlist);
+        session.put("searched", "true");
+        if (roomlist.isEmpty()) {
+            addActionError("No Empty Rooms for " + detail_hotel.getHotelName() + ". Please go back and refine your search.");
+            return "success";
+        }
+        return "success";
+    }
+
+    public String GetHotelDetailBook() throws ParseException, ClassNotFoundException, SQLException {
+        Map session = ActionContext.getContext().getSession();
+        session.remove("searched");
+        session.remove("list-booknow");
+
+        CityBean city = new CityBean();
+        HotelBean detail_hotel = (HotelBean) session.get("detail_hotel");
+        SearchResultAction listbooknow = new SearchResultAction();
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+
+        int intWhere1;
+        intWhere1 = detail_hotel.getCityID();
+        String strWhere = city.getNameCity(intWhere1);
+        String strDateStart = this.fcc.toString();
+        String strDateEnd = this.fcd.toString();
+        java.util.Date dateStart = formatter.parse(strDateStart);
+        java.util.Date dateEnd = formatter.parse(strDateEnd);
+        int days = (int) ((dateEnd.getTime() - dateStart.getTime()) / (1000 * 60 * 60 * 24));
+
+        listbooknow.setFcb(strWhere);
+        listbooknow.setFcc(this.fcc);
+        listbooknow.setFcd(this.fcd);
+        listbooknow.setToNight(String.valueOf(days));
+
+        String strDateStart1 = this.fcc;
+        String strDateEnd1 = this.fcd;
+
+        java.util.Date dateStart1 = formatter.parse(strDateStart1);
+        java.sql.Date dateStart2 = new java.sql.Date(dateStart1.getTime());
+
+        java.util.Date dateEnd1 = formatter.parse(strDateEnd1);
+        java.sql.Date dateEnd2 = new java.sql.Date(dateEnd1.getTime());
+
+        SearchRoom searchRoom = new SearchRoom();
+        List<RoomBean> roomlist = null;
+        roomlist = new ArrayList();
+        roomlist = searchRoom.getRoomHotel(detail_hotel.getHotelID(), dateStart2, dateEnd2);
+
+        session.put("list-booknow", listbooknow);
         session.put("list-room", roomlist);
         session.put("searched", "true");
         if (roomlist.isEmpty()) {

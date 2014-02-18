@@ -27,6 +27,7 @@ public class UserBean {
 
     private int UserID;
     private int RoleID;
+    private String RoleName;
     private String UserName;
     private String UserPass;
     private String FullName;
@@ -65,6 +66,19 @@ public class UserBean {
         this.Email = Email;
         this.Phone = Phone;
         this.UserAddress = UserAddress;
+    }
+
+    public UserBean(int UserID, int RoleID, String RoleName, String UserName, String FullName, String Gender, String YearOfBirth, String Email, String Phone, String UserAddress, Date Created) {
+        this.UserID = UserID;
+        this.RoleID = RoleID;
+        this.RoleName = RoleName;
+        this.UserName = UserName;
+        this.FullName = FullName;
+        this.Gender = Gender;
+        this.YearOfBirth = YearOfBirth;
+        this.Email = Email;
+        this.Phone = Phone;
+        this.UserAddress = UserAddress;
         this.Created = Created;
     }
 
@@ -77,6 +91,8 @@ public class UserBean {
         pre.setString(1, user);
         pre.setString(2, pass1);
         ResultSet rs = pre.executeQuery();
+        cnn.close();
+        pre.close();
         return rs.next();
     }
 
@@ -133,8 +149,10 @@ public class UserBean {
             String UserAddress1 = rs.getString(10);
 
             user = new UserBean(UserID1, RoleID1, UserName1, FullName1, Gender1, YearOfBirth1, Email1, Phone1, UserAddress1);
+            cnn.close();
             return user;
         } else {
+            cnn.close();
             return null;
         }
     }
@@ -149,6 +167,7 @@ public class UserBean {
         if (rs.next()) {
             kq = true;
         }
+        cnn.close();
         return kq;
     }
 
@@ -162,6 +181,7 @@ public class UserBean {
         if (rs.next()) {
             kq = true;
         }
+        cnn.close();
         return kq;
     }
 
@@ -176,6 +196,7 @@ public class UserBean {
         if (rs.next()) {
             kq = true;
         }
+        cnn.close();
         return kq;
     }
 
@@ -191,6 +212,8 @@ public class UserBean {
         if (check != 0) {
             kq = true;
         }
+        st.close();
+        cnn.close();
         return kq;
     }
 
@@ -205,6 +228,8 @@ public class UserBean {
         if (check != 0) {
             kq = true;
         }
+        st.close();
+        cnn.close();
         return kq;
     }
 
@@ -218,6 +243,8 @@ public class UserBean {
         while (rs.next()) {
             userID = rs.getInt("UserID");
         }
+        st.close();
+        cnn.close();
         return userID;
     }
 
@@ -260,7 +287,7 @@ public class UserBean {
         String delete_account = "delete from atourist_users where UserID=?";
         PreparedStatement pre = (PreparedStatement) cnn.prepareStatement(delete_account);
         pre.setInt(1, userId);
-        
+
         int check = pre.executeUpdate();
         cnn.close();
         pre.close();
@@ -292,7 +319,6 @@ public class UserBean {
 
     public List<UserBean> getAllUsers() throws ClassNotFoundException, SQLException {
         List<UserBean> usersliss = new ArrayList<UserBean>();
-
         ConnectDatabase connect = new ConnectDatabase();
         java.sql.Connection cnn = connect.Connect();
         String sql = "select * from atourist_users";
@@ -301,8 +327,12 @@ public class UserBean {
         rs = st.executeQuery(sql);
         while (rs.next()) {
             UserBean user;
+            RoleBean roleBean = new RoleBean();
+            RoleBean role = new RoleBean();
             int UserID1 = rs.getInt(1);
             int RoleID1 = rs.getInt(2);
+            role = roleBean.getRoleWithID(RoleID1);
+            String RoleName1 = role.getRoleName();
             String UserName1 = rs.getString(3);
             String FullName1 = rs.getString(5);
             String Gender1 = rs.getString(6);
@@ -312,12 +342,13 @@ public class UserBean {
             String UserAddress1 = rs.getString(10);
             Date Created1 = rs.getDate(11);
 
-            user = new UserBean(UserID1, RoleID1, UserName1, FullName1, Gender1, YearOfBirth1, Email1, Phone1, UserAddress1, Created1);
+            user = new UserBean(UserID1, RoleID1, RoleName1, UserName1, FullName1, Gender1, YearOfBirth1, Email1, Phone1, UserAddress1, Created1);
             usersliss.add(user);
         }
+        cnn.close();
         return usersliss;
     }
-    
+
     public List<UserBean> getAllUsersRole(int roleid) throws ClassNotFoundException, SQLException {
         List<UserBean> usersliss = new ArrayList<UserBean>();
 
@@ -329,8 +360,12 @@ public class UserBean {
         rs = st.executeQuery(sql);
         while (rs.next()) {
             UserBean user;
+            RoleBean roleBean = new RoleBean();
+            RoleBean role = new RoleBean();
             int UserID1 = rs.getInt(1);
             int RoleID1 = rs.getInt(2);
+            role = roleBean.getRoleWithID(RoleID1);
+            String RoleName1 = role.getRoleName();
             String UserName1 = rs.getString(3);
             String FullName1 = rs.getString(5);
             String Gender1 = rs.getString(6);
@@ -340,9 +375,11 @@ public class UserBean {
             String UserAddress1 = rs.getString(10);
             Date Created1 = rs.getDate(11);
 
-            user = new UserBean(UserID1, RoleID1, UserName1, FullName1, Gender1, YearOfBirth1, Email1, Phone1, UserAddress1, Created1);
+            user = new UserBean(UserID1, RoleID1, RoleName1, UserName1, FullName1, Gender1, YearOfBirth1, Email1, Phone1, UserAddress1, Created1);
             usersliss.add(user);
         }
+        st.close();
+        cnn.close();
         return usersliss;
     }
 
@@ -355,8 +392,12 @@ public class UserBean {
         rs = st.executeQuery(sql);
         if (rs.next()) {
             UserBean user;
+            RoleBean roleBean = new RoleBean();
+            RoleBean role = new RoleBean();
             int UserID1 = rs.getInt(1);
             int RoleID1 = rs.getInt(2);
+            role = roleBean.getRoleWithID(RoleID1);
+            String RoleName1 = role.getRoleName();
             String UserName1 = rs.getString(3);
             String FullName1 = rs.getString(5);
             String Gender1 = rs.getString(6);
@@ -366,9 +407,13 @@ public class UserBean {
             String UserAddress1 = rs.getString(10);
             Date Created1 = rs.getDate(11);
 
-            user = new UserBean(UserID1, RoleID1, UserName1, FullName1, Gender1, YearOfBirth1, Email1, Phone1, UserAddress1, Created1);
+            user = new UserBean(UserID1, RoleID1, RoleName1, UserName1, FullName1, Gender1, YearOfBirth1, Email1, Phone1, UserAddress1, Created1);
+            st.close();
+            cnn.close();
             return user;
         } else {
+            st.close();
+            cnn.close();
             return null;
         }
     }
@@ -459,5 +504,13 @@ public class UserBean {
 
     public void setCreated(Date Created) {
         this.Created = Created;
+    }
+
+    public String getRoleName() {
+        return RoleName;
+    }
+
+    public void setRoleName(String RoleName) {
+        this.RoleName = RoleName;
     }
 }

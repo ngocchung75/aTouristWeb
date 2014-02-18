@@ -31,11 +31,11 @@
             <div id="header">
                 <a href="" id="header-image" target="_blank"></a>
                 <ul class="subnav">
-                    <li><a href="./welcome.jsp" class="">Manage Status</a></li>
-                    <li><a href="./welcome.jsp" class="">Manage City</a></li>
-                    <li><a href="./welcome.jsp" class="">Manage Role</a></li>
-                    <li><a href="./welcome.jsp" class="">Manage Top Hotel</a></li>
-                    <li><a href="./welcome.jsp" class="">Manage Hotel</a></li>
+                    <li><a href="GetAllStatusView" class="">Manage Status</a></li>
+                    <li><a href="GetAllCityView" class="">Manage City</a></li>
+                    <li><a href="GetAllRoleView" class="">Manage Role</a></li>
+                    <li><a href="GetAllTopHotelView" class="">Manage Top Hotel</a></li>
+                    <li><a href="GetAllHotelView" class="">Manage Hotel</a></li>
                     <li><a href="GetAllUserView" class="">Manage User</a></li>
                     <li><a href="./welcome.jsp" class="focus">Home</a></li>
                 </ul>
@@ -52,12 +52,12 @@
                 <div class="page-middle">
 
                     <div id="content">
-                        <a class="home" href="./welcome.jsp"><span class="home-options"></span>Manage User</a>
-                        <a class="home" href="./welcome.jsp"><span class="home-bookings"></span>Manage Hotel</a>
-                        <a class="home" href="./welcome.jsp"><span class="home-bookings"></span>Manage Top Hotel</a>
-                        <a class="home" href="./welcome.jsp"><span class="home-invoices"></span>Manage Role</a>
-                        <a class="home" href="./welcome.jsp"><span class="home-bookings"></span>Manage City</a>
-                        <a class="home" href="./welcome.jsp"><span class="home-invoices"></span>Manage Status</a>
+                        <a class="home" href="GetAllUserView"><span class="home-options"></span>Manage User</a>
+                        <a class="home" href="GetAllHotelView"><span class="home-bookings"></span>Manage Hotel</a>
+                        <a class="home" href="GetAllTopHotelView"><span class="home-bookings"></span>Manage Top Hotel</a>
+                        <a class="home" href="GetAllRoleView"><span class="home-invoices"></span>Manage Role</a>
+                        <a class="home" href="GetAllCityView"><span class="home-bookings"></span>Manage City</a>
+                        <a class="home" href="GetAllStatusView"><span class="home-invoices"></span>Manage Status</a>
                     </div> <!-- content -->
 
                 </div> <!-- page-middle -->

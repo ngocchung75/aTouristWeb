@@ -49,9 +49,9 @@ public class ManageTopHotelAction extends ActionSupport implements SessionAware 
 
         if (topHotel123 == null) {
             session.remove("update_topHotel");
-            TopHotelBean topHotelList1 = new TopHotelBean();
-            topHotelList1 = topHotelBean.getTopHotelWithID(1);
-            session.put("update_topHotel", topHotelList1);
+            TopHotelBean topHotelList12 = new TopHotelBean();
+            topHotelList12 = topHotelBean.getTopHotelWithID(1);
+            session.put("update_topHotel", topHotelList12);
         }
 
         session.put("all_topHotel", topHotelList);

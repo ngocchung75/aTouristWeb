@@ -26,11 +26,11 @@
             <div id="header">
                 <a href="" id="header-image" target="_blank"></a>
                 <ul class="subnav">
-                    <li><a href="./welcome.jsp" class="">Manage Status</a></li>
-                    <li><a href="./welcome.jsp" class="">Manage City</a></li>
-                    <li><a href="./welcome.jsp" class="">Manage Role</a></li>
-                    <li><a href="./welcome.jsp" class="focus">Manage Top Hotel</a></li>
-                    <li><a href="./welcome.jsp" class="">Manage Hotel</a></li>
+                    <li><a href="GetAllStatusView" class="">Manage Status</a></li>
+                    <li><a href="GetAllCityView" class="">Manage City</a></li>
+                    <li><a href="GetAllRoleView" class="">Manage Role</a></li>
+                    <li><a href="GetAllTopHotelView" class="focus">Manage Top Hotel</a></li>
+                    <li><a href="GetAllHotelView" class="">Manage Hotel</a></li>
                     <li><a href="GetAllUserView" class="">Manage User</a></li>
                     <li><a href="./welcome.jsp" class="">Home</a></li>
                 </ul>

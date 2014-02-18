@@ -81,7 +81,7 @@
                     <p class="scheme-a"><%=detail_hotel.getHotelAddress()%><%=detail_hotel.getHotelCity()%></p>
                     <p class="scheme-b">Price From <span>$<%=detail_hotel.getHotelPriceFrom()%> <span>/ Night</span></span></p>
 
-                    <form action="HotelDetailBook" method="GetHotelDetailBook" class="form-a">
+                    <form action="HotelSearchBook" method="GetSearchDetailBook" class="form-a">
                         <fieldset>
                             <h3><span>01.</span> What?</h3>
                             <p>Hotel</p>
@@ -98,7 +98,7 @@
                             <p><%=detail_hotel.getHotelName()%></p>
                             
                             <h3><span>05.</span> <b>Choose the Room</b></h3>
-                            <center><a href="HotelDetailBook"><img src="img/click-here.gif" alt="Choose the Room" width="100" height="40"></a> </center>
+                            <center><a href="HotelSearchBook"><img src="img/click-here.gif" alt="Choose the Room" width="100" height="40"></a> </center>
                         </fieldset>
                     </form>
                 </aside>
