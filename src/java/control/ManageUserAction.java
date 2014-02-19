@@ -52,10 +52,10 @@ public class ManageUserAction extends ActionSupport implements SessionAware {
     private String EmailUpdate;
     private String PhoneUpdate;
     private String AddressUpdate;
-    
+
     private int UserIDChangeRole;
     private int RoleIDChangeRole;
-    
+
     private int UserIDChangePassword;
     private String UserPassChangePassword;
 
@@ -98,8 +98,17 @@ public class ManageUserAction extends ActionSupport implements SessionAware {
         user.setPhone(this.PhoneNew);
         user.setUserAddress(this.AddressNew);
 
-        userBean.addUser(user);
-        return "success";
+        if (user.existUsername(user.getUserName())) {
+            addActionError("This Username already exists.");
+            return "error";
+        } else if (user.getUserPass().length() < 6) {
+            addActionError("Password is case sensitive, must be at least 6 characters.");
+            return "error";
+        } else {
+            userBean.addUser(user);
+            return "success";
+        }
+
     }
 
     public String SaveUpdateUser() throws ClassNotFoundException, SQLException, ParseException, NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -130,7 +139,7 @@ public class ManageUserAction extends ActionSupport implements SessionAware {
         session.put("update_user", userlist1);
         return "success";
     }
-    
+
     public String ChangeRoleUser() throws ClassNotFoundException, SQLException, ParseException {
         Map session = ActionContext.getContext().getSession();
         session.remove("update_user");
@@ -141,14 +150,14 @@ public class ManageUserAction extends ActionSupport implements SessionAware {
         session.put("update_user", userlist1);
         return "success";
     }
-    
+
     public String SaveChangeRoleUser() throws ClassNotFoundException, SQLException, ParseException, NoSuchAlgorithmException, UnsupportedEncodingException {
         userBean = new UserBean();
         userBean.changeRole(this.UserIDChangeRole, this.RoleIDChangeRole);
-        
+
         return "success";
     }
-    
+
     public String ChangePassUser() throws ClassNotFoundException, SQLException, ParseException {
         Map session = ActionContext.getContext().getSession();
         session.remove("update_user");
@@ -159,11 +168,11 @@ public class ManageUserAction extends ActionSupport implements SessionAware {
         session.put("update_user", userlist1);
         return "success";
     }
-    
+
     public String SaveChangePasswordUser() throws ClassNotFoundException, SQLException, ParseException, NoSuchAlgorithmException, UnsupportedEncodingException {
         userBean = new UserBean();
         userBean.changePassword(this.UserIDChangePassword, this.UserPassChangePassword);
-        
+
         return "success";
     }
 

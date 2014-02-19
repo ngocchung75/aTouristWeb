@@ -221,9 +221,6 @@
             <result name="error">manage-hotel.jsp</result>
         </action>
         
-        <!-- Configuration for the default package. -->
-        
-        
     </package>
     
     <package name="aTouristWeb-supplier" namespace="/supplier" extends="struts-default">
@@ -231,6 +228,48 @@
             <result name="success" type="redirect">welcome.jsp</result>
             <result name="error">login.jsp</result>
         </action>
+        <!-- Configuration for the Manage Supplier Profile -->
+        <action name="GetSupplierProfileView" method="GetSupplierProfileView" class="control.SupplierProfileAction">
+            <result name="success">manage-profile.jsp</result>
+            <result name="error" type="redirect">login.jsp</result>
+        </action>
+        <action name="SaveSupplierProfile" method="SaveSupplierProfile" class="control.SupplierProfileAction">
+            <result name="success" type="redirect">GetSupplierProfileView</result>
+            <result name="error">manage-profile.jsp</result>
+        </action>
+        
+        <!-- Configuration for the Manage Supplier Hotel -->
+        <action name="GetSupplierHotelView" method="GetSupplierHotelView" class="control.SupplierHotelAction">
+            <result name="success">manage-hotel.jsp</result>
+            <result name="error" type="redirect">login.jsp</result>
+        </action>
+        <action name="SaveSupplierHotel" method="SaveSupplierHotel" class="control.SupplierHotelAction">
+            <result name="success" type="redirect">GetSupplierHotelView</result>
+            <result name="error">manage-hotel.jsp</result>
+        </action>
+        
+        <!-- Configuration for the Manage Supplier Hotel -->
+        <action name="GetAllRoomView" method="GetAllRoomView" class="control.SupplierRoomAction">
+            <result name="success">manage-room.jsp</result>
+            <result name="error" type="redirect">login.jsp</result>
+        </action>
+        <action name="AddNewRoom" method="AddNewRoom" class="control.SupplierRoomAction">
+            <result name="success" type="redirect">GetAllRoomView</result>
+            <result name="error">manage-room.jsp</result>
+        </action>
+        <action name="UpdateRoom" method="UpdateRoom" class="control.SupplierRoomAction">
+            <result name="success" type="redirect">GetAllRoomView#openUpdate</result>
+            <result name="error">manage-room.jsp</result>
+        </action>
+        <action name="SaveUpdateRoom" method="SaveUpdateRoom" class="control.SupplierRoomAction">
+            <result name="success" type="redirect">GetAllRoomView</result>
+            <result name="error">manage-room.jsp</result>
+        </action>
+        <action name="DeleteRoom" method="DeleteRoom" class="control.SupplierRoomAction">
+            <result name="success" type="redirect">GetAllRoomView</result>
+            <result name="error">manage-room.jsp</result>
+        </action>
+        
     </package>
     
 </struts>

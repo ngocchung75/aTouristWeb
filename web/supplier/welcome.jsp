@@ -31,10 +31,11 @@
             <div id="header">
                 <a href="" id="header-image" target="_blank"></a>
                 <ul class="subnav">
+                    <li><a href="./logout.jsp" class="">Logout</a></li>
                     <li><a href="./welcome.jsp" class="">Manage Booking</a></li>
-                    <li><a href="./welcome.jsp" class="">Manage Rooms</a></li>
-                    <li><a href="./welcome.jsp" class="">Manage Hotel</a></li>
-                    <li><a href="GetAllUserView" class="">My Profile</a></li>
+                    <li><a href="GetAllRoomView" class="">Manage Rooms</a></li>
+                    <li><a href="GetSupplierHotelView" class="">Manage Hotel</a></li>
+                    <li><a href="GetSupplierProfileView" class="">My Profile</a></li>
                     <li><a href="./welcome.jsp" class="focus">Home</a></li>
                 </ul>
             </div>
@@ -50,8 +51,8 @@
                 <div class="page-middle">
 
                     <div id="content">
-                        <a class="home" href="./welcome.jsp"><span class="home-options"></span>My Profile</a>
-                        <a class="home" href="./welcome.jsp"><span class="home-bookings"></span>Manage Hotel</a>
+                        <a class="home" href="GetSupplierProfileView"><span class="home-options"></span>My Profile</a>
+                        <a class="home" href="GetSupplierHotelView"><span class="home-bookings"></span>Manage Hotel</a>
                         <a class="home" href="./welcome.jsp"><span class="home-bookings"></span>Manage Rooms</a>
                         <a class="home" href="./welcome.jsp"><span class="home-rooms"></span>Manage Booking</a>
 

@@ -207,6 +207,48 @@ public class HotelBean {
             return null;
         }
     }
+    
+    public HotelBean getHotelWithUserID(int userID) throws ClassNotFoundException, SQLException {
+        ConnectDatabase connect = new ConnectDatabase();
+        java.sql.Connection cnn = connect.Connect();
+        String sql = "select * from atourist_hotels where UserID='" + userID + "';";
+        java.sql.Statement st = cnn.createStatement();
+        ResultSet rs;
+        rs = st.executeQuery(sql);
+        if (rs.next()) {
+            HotelBean hotel;
+            UserBean user = new UserBean();
+            CityBean city = new CityBean();
+            int HotelID1 = rs.getInt(1);
+            int UserID1 = rs.getInt(2);
+            userBean = new UserBean();
+            user = userBean.getUserID(UserID1);
+            String UserName1 = user.getUserName();
+            String HotelName1 = rs.getString(3);
+            String HotelEmail1 = rs.getString(4);
+            String HotelPhone1 = rs.getString(5);
+            String HotelAddress1 = rs.getString(6);
+            int CityID1 = rs.getInt(7);
+            String HotelCity1 = city.getNameCity(CityID1);
+            String HotelMap1 = rs.getString(8);
+            String HotelRating1 = rs.getString(9);
+            String HotelDes1 = rs.getString(10);
+            String HotelDesShort1 = rs.getString(11);
+            String HotelPol1 = rs.getString(12);
+            String HotelFac1 = rs.getString(13);
+            String HotelImage1 = rs.getString(14);
+            String HotelWebsite1 = rs.getString(15);
+            String HotelPriceFrom1 = rs.getString(16);
+            String TimeCheckIn1 = rs.getString(17);
+            String TimeCheckOut1 = rs.getString(18);
+
+            hotel = new HotelBean(HotelID1, UserID1, UserName1, HotelName1, HotelEmail1, HotelPhone1, HotelAddress1, CityID1, HotelCity1,
+                    HotelMap1, HotelRating1, HotelDes1, HotelDesShort1, HotelPol1, HotelFac1, HotelImage1, HotelWebsite1, HotelPriceFrom1, TimeCheckIn1, TimeCheckOut1);
+            return hotel;
+        } else {
+            return null;
+        }
+    }
 
     public List<HotelBean> getTopHotel() throws ClassNotFoundException, SQLException {
         ConnectDatabase connect = new ConnectDatabase();

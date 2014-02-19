@@ -65,6 +65,7 @@ public class LoginAuthAction extends ActionSupport implements SessionAware {
             
 
             Map session = ActionContext.getContext().getSession();
+            session.put("session-userid", UserID1);
             session.put("session-role", RoleID1);
             session.put("session-gender", Gender1);
             session.put("logined", "true");

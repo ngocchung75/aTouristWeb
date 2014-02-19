@@ -61,6 +61,7 @@
                             </div>
                         </s:if>
                         <form action="AddNewHotel" method="post">
+                            <b>Add New Hotel</b></br></br>
                             New Hotel Name:
                             <input id="HotelNameNew" name="HotelNameNew" placeholder="Hotel Name" type="text" value=""></br>
                             User Manage:
