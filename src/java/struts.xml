@@ -94,6 +94,22 @@
             <result name="success" type="redirect">GetAllUserView</result>
             <result name="error">manage-users.jsp</result>
         </action>
+        <action name="ChangeRoleUser" method="ChangeRoleUser" class="control.ManageUserAction">
+            <result name="success" type="redirect">GetAllUserView#openChangeRole</result>
+            <result name="error">manage-users.jsp</result>
+        </action>
+        <action name="SaveChangeRoleUser" method="SaveChangeRoleUser" class="control.ManageUserAction">
+            <result name="success" type="redirect">GetAllUserView</result>
+            <result name="error">manage-users.jsp</result>
+        </action>
+        <action name="ChangePassUser" method="ChangePassUser" class="control.ManageUserAction">
+            <result name="success" type="redirect">GetAllUserView#openChangePassword</result>
+            <result name="error">manage-users.jsp</result>
+        </action>
+        <action name="SaveChangePasswordUser" method="SaveChangePasswordUser" class="control.ManageUserAction">
+            <result name="success" type="redirect">GetAllUserView</result>
+            <result name="error">manage-users.jsp</result>
+        </action>
         
         <!-- Configuration for the Manage Status -->
         <action name="GetAllStatusView" method="GetAllStatusView" class="control.ManageStatusAction">

@@ -23,15 +23,21 @@
         <%@include file="pages/head.jsp" %>
     </head>
     <body>
+        <s:if test="#session.logined != 'true' || #session.RoleID != 1">
+            <%
+                response.sendRedirect("login.jsp");
+            %>
+        </s:if>
         <div id="container">
             <div id="header">
                 <a href="" id="header-image" target="_blank"></a>
                 <ul class="subnav">
+                    <li><a href="./logout.jsp" class="">Logout</a></li>
                     <li><a href="GetAllStatusView" class="">Manage Status</a></li>
                     <li><a href="GetAllCityView" class="">Manage City</a></li>
                     <li><a href="GetAllRoleView" class="">Manage Role</a></li>
-                    <li><a href="GetAllTopHotelView" class="">Manage Top Hotel</a></li>
-                    <li><a href="GetAllHotelView" class="">Manage Hotel</a></li>
+                    <li><a href="GetAllTopHotelView" class="">Top Hotel</a></li>
+                    <li><a href="GetAllHotelView" class="">Hotel</a></li>
                     <li><a href="GetAllUserView" class="focus">Manage User</a></li>
                     <li><a href="./welcome.jsp" class="">Home</a></li>
                 </ul>
@@ -117,6 +123,37 @@
                                 </form>
                             </div>
                         </div>
+                        <div id="openChangeRole" class="modalDialog">
+                            <div>
+                                <a href="#close" title="Close" class="close">X</a>
+                                <form action="SaveChangeRoleUser" method="SaveChangeRoleUser">
+                                    <b>Change Role:</b></br></br>
+                                    UserID: <%=updateUser.getUserID()%> <input id="UserIDChangeRole" name="UserIDChangeRole" type="hidden" value="<%=updateUser.getUserID()%>"></br></br>
+                                    UserName: <%=updateUser.getUserName()%> </br></br>
+                                    Role Name:</br>
+                                    <select id="RoleIDChangeRole" name="RoleIDChangeRole">
+                                        <%for (int i = 0; i < rolelist.size(); i++) {
+                                        %>
+                                        <option value="<%=rolelist.get(i).getRoleID()%>"> <%=rolelist.get(i).getRoleName()%> </option>
+                                        <%}%>
+                                    </select></br></br>
+                                    <input type="submit" value="Change Role"/>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="openChangePassword" class="modalDialog">
+                            <div>
+                                <a href="#close" title="Close" class="close">X</a>
+                                <form action="SaveChangePasswordUser" method="SaveChangePasswordUser">
+                                    <b>Change Role:</b></br></br>
+                                    UserID: <%=updateUser.getUserID()%> <input id="UserIDChangePassword" name="UserIDChangePassword" type="hidden" value="<%=updateUser.getUserID()%>"></br></br>
+                                    UserName: <%=updateUser.getUserName()%> </br></br>
+                                    Password:</br> <input id="UserPassChangePassword" name="UserPassChangePassword" type="password" value="">
+                                    </br></br>
+                                    <input type="submit" value="Change Role"/>
+                                </form>
+                            </div>
+                        </div>
                         </br></br>
                         <table>
                             <tr>
@@ -150,8 +187,8 @@
                                 <td><%=userlist.get(i).getCreated()%></td>
                                 <td><a href="UpdateUser?UserID=<%=userlist.get(i).getUserID()%>">Edit</a></td>
                                 <td><a href="DeleteUser?UserID=<%=userlist.get(i).getUserID()%>">Delete</a></td>
-                                <td><a href="UpdateUser?UserID=<%=userlist.get(i).getUserID()%>">Change Role</a></td>
-                                <td><a href="DeleteUser?UserID=<%=userlist.get(i).getUserID()%>">Change Pass</a></td>
+                                <td><a href="ChangeRoleUser?UserID=<%=userlist.get(i).getUserID()%>">Change Role</a></td>
+                                <td><a href="ChangePassUser?UserID=<%=userlist.get(i).getUserID()%>">Change Password</a></td>
                             </tr>
                             <%}%>
                         </table>

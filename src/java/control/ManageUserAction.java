@@ -52,6 +52,12 @@ public class ManageUserAction extends ActionSupport implements SessionAware {
     private String EmailUpdate;
     private String PhoneUpdate;
     private String AddressUpdate;
+    
+    private int UserIDChangeRole;
+    private int RoleIDChangeRole;
+    
+    private int UserIDChangePassword;
+    private String UserPassChangePassword;
 
     public String GetAllUserView() throws ClassNotFoundException, SQLException, ParseException {
         Map session = ActionContext.getContext().getSession();
@@ -122,6 +128,42 @@ public class ManageUserAction extends ActionSupport implements SessionAware {
         userlist1 = userBean.getUserID(this.UserID);
 
         session.put("update_user", userlist1);
+        return "success";
+    }
+    
+    public String ChangeRoleUser() throws ClassNotFoundException, SQLException, ParseException {
+        Map session = ActionContext.getContext().getSession();
+        session.remove("update_user");
+        userBean = new UserBean();
+        UserBean userlist1 = new UserBean();
+        userlist1 = userBean.getUserID(this.UserID);
+
+        session.put("update_user", userlist1);
+        return "success";
+    }
+    
+    public String SaveChangeRoleUser() throws ClassNotFoundException, SQLException, ParseException, NoSuchAlgorithmException, UnsupportedEncodingException {
+        userBean = new UserBean();
+        userBean.changeRole(this.UserIDChangeRole, this.RoleIDChangeRole);
+        
+        return "success";
+    }
+    
+    public String ChangePassUser() throws ClassNotFoundException, SQLException, ParseException {
+        Map session = ActionContext.getContext().getSession();
+        session.remove("update_user");
+        userBean = new UserBean();
+        UserBean userlist1 = new UserBean();
+        userlist1 = userBean.getUserID(this.UserID);
+
+        session.put("update_user", userlist1);
+        return "success";
+    }
+    
+    public String SaveChangePasswordUser() throws ClassNotFoundException, SQLException, ParseException, NoSuchAlgorithmException, UnsupportedEncodingException {
+        userBean = new UserBean();
+        userBean.changePassword(this.UserIDChangePassword, this.UserPassChangePassword);
+        
         return "success";
     }
 
@@ -305,6 +347,38 @@ public class ManageUserAction extends ActionSupport implements SessionAware {
 
     public void setAddressUpdate(String AddressUpdate) {
         this.AddressUpdate = AddressUpdate;
+    }
+
+    public int getUserIDChangeRole() {
+        return UserIDChangeRole;
+    }
+
+    public void setUserIDChangeRole(int UserIDChangeRole) {
+        this.UserIDChangeRole = UserIDChangeRole;
+    }
+
+    public int getRoleIDChangeRole() {
+        return RoleIDChangeRole;
+    }
+
+    public void setRoleIDChangeRole(int RoleIDChangeRole) {
+        this.RoleIDChangeRole = RoleIDChangeRole;
+    }
+
+    public int getUserIDChangePassword() {
+        return UserIDChangePassword;
+    }
+
+    public void setUserIDChangePassword(int UserIDChangePassword) {
+        this.UserIDChangePassword = UserIDChangePassword;
+    }
+
+    public String getUserPassChangePassword() {
+        return UserPassChangePassword;
+    }
+
+    public void setUserPassChangePassword(String UserPassChangePassword) {
+        this.UserPassChangePassword = UserPassChangePassword;
     }
 
 }

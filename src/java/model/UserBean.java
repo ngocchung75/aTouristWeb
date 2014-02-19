@@ -91,8 +91,6 @@ public class UserBean {
         pre.setString(1, user);
         pre.setString(2, pass1);
         ResultSet rs = pre.executeQuery();
-        cnn.close();
-        pre.close();
         return rs.next();
     }
 
@@ -149,10 +147,8 @@ public class UserBean {
             String UserAddress1 = rs.getString(10);
 
             user = new UserBean(UserID1, RoleID1, UserName1, FullName1, Gender1, YearOfBirth1, Email1, Phone1, UserAddress1);
-            cnn.close();
             return user;
         } else {
-            cnn.close();
             return null;
         }
     }
@@ -167,7 +163,6 @@ public class UserBean {
         if (rs.next()) {
             kq = true;
         }
-        cnn.close();
         return kq;
     }
 
@@ -181,7 +176,6 @@ public class UserBean {
         if (rs.next()) {
             kq = true;
         }
-        cnn.close();
         return kq;
     }
 
@@ -196,7 +190,6 @@ public class UserBean {
         if (rs.next()) {
             kq = true;
         }
-        cnn.close();
         return kq;
     }
 
@@ -212,9 +205,36 @@ public class UserBean {
         if (check != 0) {
             kq = true;
         }
-        st.close();
-        cnn.close();
         return kq;
+    }
+
+    public void changePassword(int userID, String pass) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
+        String pass1 = HashMD5.convertToMD5(pass);
+        ConnectDatabase connect = new ConnectDatabase();
+        java.sql.Connection cnn = connect.Connect();
+        String update_account = "Update atourist_users set UserPass=? where UserID=?";
+        PreparedStatement pre = (PreparedStatement) cnn.prepareStatement(update_account);
+
+        // Parameters start with 1
+        pre.setString(1, pass1);
+        pre.setInt(2, userID);
+        pre.executeUpdate();
+        pre.close();
+        cnn.close();
+    }
+
+    public void changeRole(int userID, int roleID) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
+        ConnectDatabase connect = new ConnectDatabase();
+        java.sql.Connection cnn = connect.Connect();
+        String update_account = "Update atourist_users set RoleID=? where UserID=?";
+        PreparedStatement pre = (PreparedStatement) cnn.prepareStatement(update_account);
+
+        // Parameters start with 1
+        pre.setInt(1, roleID);
+        pre.setInt(2, userID);
+        pre.executeUpdate();
+        cnn.close();
+        pre.close();
     }
 
     public boolean updateProfile(String username, String FullName, String Gender, String YearOfBirth, String Email, String Mobile, String Address) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -228,8 +248,6 @@ public class UserBean {
         if (check != 0) {
             kq = true;
         }
-        st.close();
-        cnn.close();
         return kq;
     }
 
@@ -243,8 +261,6 @@ public class UserBean {
         while (rs.next()) {
             userID = rs.getInt("UserID");
         }
-        st.close();
-        cnn.close();
         return userID;
     }
 
