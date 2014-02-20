@@ -8,6 +8,8 @@ package model;
 import com.mysql.jdbc.PreparedStatement;
 import common.ConnectDatabase;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -26,18 +28,25 @@ public class BookingBean {
     private int UserID;
     private String UserName;
     private int RoomID;
+    private String RoomName;
     private int HotelID;
+    private String HotelName;
+    private String HotelEmail;
     private Date StartDate;
     private Date EndDate;
     private int RCountBook;
     private int Nights;
     private double RPrices;
     private double Total;
+    private BigInteger TotalVND;
     private int StatusID;
     private String StatusName;
     private Map<String, Object> sessionMap;
     UserBean userBean;
     StatusBean statusBean;
+    HotelBean hotelBean;
+    RoomBean roomBean;
+    int usdToVnd = 21000;
 
     public BookingBean() {
         super();
@@ -74,6 +83,27 @@ public class BookingBean {
         this.RPrices = RPrices;
         this.Total = Total;
         this.StatusID = StatusID;
+    }
+
+    public BookingBean(int BookID, int UserID, String UserName, int RoomID, String RoomName, int HotelID, String HotelName, String HotelEmail, Date StartDate, Date EndDate,
+            int RCountBook, int Nights, double RPrices, double Total, BigInteger TotalVND, int StatusID, String StatusName) {
+        this.BookID = BookID;
+        this.UserID = UserID;
+        this.UserName = UserName;
+        this.RoomID = RoomID;
+        this.RoomName = RoomName;
+        this.HotelID = HotelID;
+        this.HotelName = HotelName;
+        this.HotelEmail = HotelEmail;
+        this.StartDate = StartDate;
+        this.EndDate = EndDate;
+        this.RCountBook = RCountBook;
+        this.Nights = Nights;
+        this.RPrices = RPrices;
+        this.Total = Total;
+        this.TotalVND = TotalVND;
+        this.StatusID = StatusID;
+        this.StatusName = StatusName;
     }
 
     public List<BookingBean> getListAllBook() throws ClassNotFoundException, SQLException {
@@ -167,20 +197,91 @@ public class BookingBean {
 
         while (rs.next()) {
             BookingBean booking;
+            userBean = new UserBean();
+            statusBean = new StatusBean();
+            hotelBean = new HotelBean();
+            roomBean = new RoomBean();
+            UserBean userList1 = new UserBean();
+            StatusBean statusList1 = new StatusBean();
+            HotelBean hotelList1 = new HotelBean();
+            RoomBean roomList1 = new RoomBean();
+
             int BookID1 = rs.getInt(1);
             int UserID1 = rs.getInt(2);
+            userList1 = userBean.getUserID(UserID1);
+            String UserName1 = userList1.getUserName();
             int RoomID1 = rs.getInt(3);
+            roomList1 = roomBean.getRoomWithID(RoomID1);
+            String RoomName1 = roomList1.getRTypeName();
             int HotelID1 = rs.getInt(4);
+            hotelList1 = hotelBean.getHotel(HotelID1);
+            String HotelName1 = hotelList1.getHotelName();
+            String HotelEmail1 = hotelList1.getHotelEmail();
             Date StartDate1 = rs.getDate(5);
             Date EndDate1 = rs.getDate(6);
             int RCountBook1 = rs.getInt(7);
             int Nights1 = rs.getInt(8);
             double RPrices1 = rs.getDouble(9);
             double Total1 = rs.getDouble(10);
+            BigInteger TotalVND;
+            TotalVND = BigDecimal.valueOf(Total1).multiply(BigDecimal.valueOf(usdToVnd)).toBigInteger();
             int StatusID1 = rs.getInt(11);
+            statusList1 = statusBean.getStatusWithID(StatusID1);
+            String StatusName1 = statusList1.getStatusName();
 
-            booking = new BookingBean(BookID1, UserID1, RoomID1, HotelID1, StartDate1, EndDate1,
-                    RCountBook1, Nights1, RPrices1, Total1, StatusID1);
+            booking = new BookingBean(BookID1, UserID1, UserName1, RoomID1, RoomName1, HotelID1, HotelName1, HotelEmail1, StartDate1, EndDate1,
+                    RCountBook1, Nights1, RPrices1, Total1, TotalVND, StatusID1, StatusName1);
+            bookinglist.add(booking);
+        }
+        return bookinglist;
+    }
+
+    public List<BookingBean> getListBookWithHotelID(int hotelID) throws ClassNotFoundException, SQLException {
+        ConnectDatabase connect = new ConnectDatabase();
+        java.sql.Connection cnn = connect.Connect();
+        String sql = "select * from atourist_bookings where HotelID='" + hotelID + "';";
+        java.sql.Statement st = cnn.createStatement();
+        ResultSet rs;
+        rs = st.executeQuery(sql);
+        List<BookingBean> bookinglist = null;
+        bookinglist = new ArrayList();
+
+        while (rs.next()) {
+            BookingBean booking;
+            userBean = new UserBean();
+            statusBean = new StatusBean();
+            hotelBean = new HotelBean();
+            roomBean = new RoomBean();
+            UserBean userList1 = new UserBean();
+            StatusBean statusList1 = new StatusBean();
+            HotelBean hotelList1 = new HotelBean();
+            RoomBean roomList1 = new RoomBean();
+
+            int BookID1 = rs.getInt(1);
+            int UserID1 = rs.getInt(2);
+            userList1 = userBean.getUserID(UserID1);
+            String UserName1 = userList1.getUserName();
+            int RoomID1 = rs.getInt(3);
+            roomList1 = roomBean.getRoomWithID(RoomID1);
+            String RoomName1 = roomList1.getRTypeName();
+            int HotelID1 = rs.getInt(4);
+            hotelList1 = hotelBean.getHotel(HotelID1);
+            String HotelName1 = hotelList1.getHotelName();
+            String HotelEmail1 = hotelList1.getHotelEmail();
+            Date StartDate1 = rs.getDate(5);
+            Date EndDate1 = rs.getDate(6);
+            int RCountBook1 = rs.getInt(7);
+            int Nights1 = rs.getInt(8);
+            double RPrices1 = rs.getDouble(9);
+            double Total1 = rs.getDouble(10);
+            BigInteger TotalVND;
+            TotalVND = BigDecimal.valueOf(Total1).multiply(BigDecimal.valueOf(usdToVnd)).toBigInteger();
+            int StatusID1 = rs.getInt(11);
+            statusList1 = statusBean.getStatusWithID(StatusID1);
+            String StatusName1 = statusList1.getStatusName();
+
+            booking = new BookingBean(BookID1, UserID1, UserName1, RoomID1, RoomName1, HotelID1, HotelName1, HotelEmail1, StartDate1, EndDate1,
+                    RCountBook1, Nights1, RPrices1, Total1, TotalVND, StatusID1, StatusName1);
             bookinglist.add(booking);
         }
         return bookinglist;
@@ -361,6 +462,38 @@ public class BookingBean {
 
     public void setStatusName(String StatusName) {
         this.StatusName = StatusName;
+    }
+
+    public String getHotelName() {
+        return HotelName;
+    }
+
+    public void setHotelName(String HotelName) {
+        this.HotelName = HotelName;
+    }
+
+    public String getRoomName() {
+        return RoomName;
+    }
+
+    public void setRoomName(String RoomName) {
+        this.RoomName = RoomName;
+    }
+
+    public String getHotelEmail() {
+        return HotelEmail;
+    }
+
+    public void setHotelEmail(String HotelEmail) {
+        this.HotelEmail = HotelEmail;
+    }
+
+    public BigInteger getTotalVND() {
+        return TotalVND;
+    }
+
+    public void setTotalVND(BigInteger TotalVND) {
+        this.TotalVND = TotalVND;
     }
 
 }

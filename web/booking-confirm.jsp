@@ -28,7 +28,7 @@
                 <%@include file="pages/search.jsp" %>
             </header>         
             <h2 style="margin-top: 50px;"><span>Thank you</span>, your booking is complete</h2>  
-            <p>Please see the <a id="lbtMyAccount" href="mydashboard.jsp">My Bookings</a> for more details.</p>          
+            <p>Please see the <a id="lbtMyAccount" href="my-booking">My Bookings</a> for more details.</p>          
 
             <center> <img src="img/complete-check-md.png" width="222" height="222"></center></br></br>
 

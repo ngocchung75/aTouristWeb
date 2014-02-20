@@ -116,7 +116,7 @@ public class BookingAction extends ActionSupport implements SessionAware {
                 SearchRoom searchRoom = new SearchRoom();
                 roombean = searchRoom.getRoomDetail(noIDRoom);
                 double roomPrice = roombean.getRoomPrice();
-                double totalPrice = totalPrice = noroombook * nights * roomPrice;
+                double totalPrice = noroombook * nights * roomPrice;
                 grandTotal = grandTotal + totalPrice;
 
                 String NoRoomCount1 = noroomlist.get(i).getNoRoomCount();

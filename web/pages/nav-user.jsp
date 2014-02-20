@@ -25,6 +25,6 @@
         </script><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     </li>
     <li>
-        <p style="font-size: 1.2em;"><img src="images/account_icon.png" alt="account icon" height="20" width="20">Hi, ${sessionScope.userName}! (<a id="lbtMyAccount" href="mydashboard.jsp">My Account</a> | <a id="lbtSignOut" href="signout.jsp">Sign Out</a>)</p>
+        <p style="font-size: 1.2em;"><img src="images/account_icon.png" alt="account icon" height="20" width="20">Hi, ${sessionScope.userName}! (<a id="lbtMyAccount" href="my-booking">My Account</a> | <a id="lbtSignOut" href="signout.jsp">Sign Out</a>)</p>
     </li>
 </ul>

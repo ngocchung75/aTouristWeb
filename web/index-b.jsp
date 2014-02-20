@@ -67,12 +67,9 @@
                                 <legend>Book now</legend>
                                 <h3><span>01.</span> What?</h3>
                                 <ul class="check-c">
-                                    <li><label for="fcaa"><input type="radio" id="fcaa" name="fca" checked="checked"> Hotels</label></li>
-                                    <li><label for="fcab"><input type="radio" id="fcab" name="fca" > Flights</label></li>
-                                    <li><label for="fcac"><input type="radio" id="fcac" name="fca" > Cars</label></li>
-                                    <li><label for="fcad"><input type="radio" id="fcad" name="fca" > Rent car</label></li>
-                                    <li><label for="fcae"><input type="radio" id="fcae" name="fca" > Cruise</label></li>
-                                    <li><label for="fcaf"><input type="radio" id="fcaf" name="fca" > All</label></li>
+                                    <li><label for="fcaa"><input type="radio" id="fcaa" name="fca" value="Hotels"> Hotels</label></li>
+                                    <li><label for="fcab"><input type="radio" id="fcab" name="fca" value="Flights"> Flights</label></li>
+                                    <li><label for="fcac"><input type="radio" id="fcac" name="fca" value="Cars"> Cars</label></li>
                                 </ul>
                                 <h3><span>02.</span> Where?</h3>
                                 <p class="select-c">

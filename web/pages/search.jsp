@@ -5,14 +5,5 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<form action="./" method="post" id="search">
-    <fieldset>
-        <legend>Search</legend>
-        <p>
-            <label for="sa">Search</label>
-            <input type="text" id="sa" name="sa" required>
-            <button type="submit">Submit</button>
-        </p>
-    </fieldset>
-</form>
+
 <p class="tel">Call us today <span>(84) - 972 878 218</span></p>

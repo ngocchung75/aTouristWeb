@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import model.BookingBean;
+import model.HotelBean;
 import model.StatusBean;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -43,9 +44,15 @@ public class SupplierBookingAction extends ActionSupport implements SessionAware
             session.remove("all_booking");
             session.remove("all_status");
 
+            int userID123 = (Integer) session.get("session-userid");
+            HotelBean hotelBean = new HotelBean();
+            HotelBean hotelList1 = new HotelBean();
+            hotelList1 = hotelBean.getHotelWithUserID(userID123);
+            int hotelID123 = hotelList1.getHotelID();
+
             bookingBean = new BookingBean();
             bookingList = new ArrayList();
-            bookingList = bookingBean.getListAllBook();
+            bookingList = bookingBean.getListBookWithHotelID(hotelID123);
 
             StatusBean status = new StatusBean();
             statusList = new ArrayList();

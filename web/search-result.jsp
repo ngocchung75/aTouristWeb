@@ -67,6 +67,7 @@
                             <legend>Your Search Details</legend>
                             <h3><span>01.</span> <b>What?</b></h3>
                             <p>Hotel</p>
+                            <p><%=listbooknow.getFca()%></p>
 
                             <h3><span>02.</span> <b>Where?</b></h3>
                             <p><%=listbooknow.getFcb()%></p>

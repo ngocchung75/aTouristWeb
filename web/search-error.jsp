@@ -4,10 +4,8 @@
     Author     : CHUNG TOOC
 --%>
 <%@page import="model.CityBean"%>
-<%@page import="model.HotelBean"%>
 <%@page import="java.util.List"%>
 <%
-    List<HotelBean> hotellist = (List<HotelBean>) session.getValue("all_hotel");
     List<CityBean> citylist = (List<CityBean>) session.getValue("city_list");
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -37,24 +35,13 @@
                     <div>
                         <img src="temp/danang-rong.jpg" alt="Placeholder" width="693" height="200"> 
                     </div>
+                    </br></br>
+                    <div class="errors" style="color:red; font-size:12px; text-align:left; padding-left:0;">
+                        <ul class="errorMessage">
+                            <li><span>Function under construction. Please go back and refine your search.</span></li>	</ul>
 
-                    <div class="news-a">
-
-                        <%for (int i = 0; i < hotellist.size(); i++) {
-                        %>
-                        <article>
-                            <header>
-                                <h2><a href="GetDetailHotel?HotelID=<%=hotellist.get(i).getHotelID()%>"><%=hotellist.get(i).getHotelName()%></a></h2> <p class="rating-a <%=hotellist.get(i).getHotelRating()%>">5/5</p>
-                                <figure><img src="<%=hotellist.get(i).getHotelImage()%>" alt="Placeholder" width="128" height="102"></figure>
-                                <p><%=hotellist.get(i).getHotelAddress()%>, <%=hotellist.get(i).getHotelCity()%></p><div class="fit-a"></div>
-                            </header>
-                            <p><%=hotellist.get(i).getHotelDesShort()%></p>
-                            <footer>
-                                <p class="link-b"><a href="GetDetailHotel?HotelID=<%=hotellist.get(i).getHotelID()%>">View Details</a></p>
-                            </footer>
-                        </article>
-                        <%}%>
                     </div>
+
                 </div>
                 <aside>
                     <s:form action="GetSearchResult" method="GetSearchResult">

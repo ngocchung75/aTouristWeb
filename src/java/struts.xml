@@ -27,6 +27,15 @@
             <result name="error">myprofile.jsp</result>
         </action>
         
+        <action name="my-booking" method="GetMyBookingView" class="control.MyBookingAction">
+            <result name="success">mydashboard.jsp</result>
+            <result name="error">mydashboard.jsp</result>
+        </action>
+        <action name="CancelBooking" method="CancelBooking" class="control.MyBookingAction">
+            <result name="success" type="redirect">my-booking</result>
+            <result name="error">mydashboard.jsp</result>
+        </action>
+        
         <action name="GetAllHotel" method="GetAllHotel" class="control.HotelListAction">
             <result name="success">hotellist.jsp</result>
             <result name="error">hotellist.jsp</result>
@@ -42,7 +51,7 @@
         
         <action name="GetSearchResult" method="GetSearchResult" class="control.SearchResultAction">
             <result name="success">search-result.jsp</result>
-            <result name="error">search-result.jsp</result>
+            <result name="error" type="redirect">search-error.jsp</result>
         </action>
         <action name="GetSearchDetail" method="GetDetailHotel" class="control.HotelListAction">
             <result name="success">search-details.jsp</result>

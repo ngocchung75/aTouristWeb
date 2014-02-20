@@ -87,7 +87,7 @@
                             <tr>
                                 <th>Book ID</th>
                                 <th>User Name</th>
-                                <th>Room ID</th>
+                                <th>Room Name</th>
                                 <th>Check in</th>
                                 <th>Check Out</th>
                                 <th>Room Count</th>
@@ -103,7 +103,7 @@
                             <tr>
                                 <td><%=bookList.get(i).getBookID()%></td>
                                 <td><%=bookList.get(i).getUserName()%></td>
-                                <td><%=bookList.get(i).getRoomID()%></td>
+                                <td><%=bookList.get(i).getRoomName()%></td>
                                 <td><%=bookList.get(i).getStartDate()%></td>
                                 <td><%=bookList.get(i).getEndDate()%></td>
                                 <td><%=bookList.get(i).getRCountBook()%></td>
@@ -111,7 +111,7 @@
                                 <td><%=bookList.get(i).getRPrices()%></td>
                                 <td><%=bookList.get(i).getTotal()%></td>
                                 <td><%=bookList.get(i).getStatusName()%></td>
-                                <td><a href="UpdateBooking?BookID=<%=bookList.get(i).getBookID()%>">Edit</a></td>
+                                <td><a href="UpdateBooking?BookID=<%=bookList.get(i).getBookID()%>">Change Status</a></td>
                                 <td><a href="DeleteBooking?BookID=<%=bookList.get(i).getBookID()%>">Delete</a></td>
                             </tr>
                             <%}%>

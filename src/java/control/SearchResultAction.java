@@ -26,6 +26,7 @@ import org.apache.struts2.interceptor.SessionAware;
  */
 public class SearchResultAction extends ActionSupport implements SessionAware {
 
+    private String fca;
     private String fcb;
     private String fcc;
     private String fcd;
@@ -36,7 +37,8 @@ public class SearchResultAction extends ActionSupport implements SessionAware {
     public SearchResultAction() {
     }
 
-    public SearchResultAction(String fcb, String fcc, String fcd, String toNight) {
+    public SearchResultAction(String fca, String fcb, String fcc, String fcd, String toNight) {
+        this.fca = fca;
         this.fcb = fcb;
         this.fcc = fcc;
         this.fcd = fcd;
@@ -59,6 +61,7 @@ public class SearchResultAction extends ActionSupport implements SessionAware {
         java.util.Date dateEnd = formatter.parse(strDateEnd);
         int days = (int) ((dateEnd.getTime() - dateStart.getTime()) / (1000 * 60 * 60 * 24));
 
+        listbooknow.setFca(this.fca);
         listbooknow.setFcb(strWhere);
         listbooknow.setFcc(this.fcc);
         listbooknow.setFcd(this.fcd);
@@ -74,6 +77,10 @@ public class SearchResultAction extends ActionSupport implements SessionAware {
         if (hotellist.isEmpty()) {
             addActionError("No search found for " + strWhere + " city. Please go back and refine your search.");
             return "success";
+        }
+        if (!"Hotels".equals(listbooknow.getFca())) {
+            addActionError("Function under construction. Please go back and refine your search.");
+            return "error";
         }
 
         return "success";
@@ -133,6 +140,7 @@ public class SearchResultAction extends ActionSupport implements SessionAware {
         java.util.Date dateEnd = formatter.parse(strDateEnd);
         int days = (int) ((dateEnd.getTime() - dateStart.getTime()) / (1000 * 60 * 60 * 24));
 
+        listbooknow.setFca(this.fca);
         listbooknow.setFcb(strWhere);
         listbooknow.setFcc(this.fcc);
         listbooknow.setFcd(this.fcd);
@@ -202,6 +210,14 @@ public class SearchResultAction extends ActionSupport implements SessionAware {
 
     public void setToNight(String toNight) {
         this.toNight = toNight;
+    }
+
+    public String getFca() {
+        return fca;
+    }
+
+    public void setFca(String fca) {
+        this.fca = fca;
     }
 
 }
