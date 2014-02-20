@@ -100,7 +100,7 @@
                     </article>
                     <aside>
                         <h2 class="fn org"><%=detail_hotel.getHotelName()%></h2>
-                        <p class="scheme-a"><%=detail_hotel.getHotelAddress()%><%=detail_hotel.getHotelCity()%></p>
+                        <p class="scheme-a"><%=detail_hotel.getHotelAddress()%>, <%=detail_hotel.getHotelCity()%></p>
                         <p class="scheme-b">Price From <span>$ <%=detail_hotel.getHotelPriceFrom()%> <span>/ Night</span></span></p>
                     </aside>
                 </section>

@@ -3,10 +3,12 @@
     Created on : Jan 8, 2014, 10:11:06 AM
     Author     : CHUNG TOOC
 --%>
+<%@page import="model.CityBean"%>
 <%@page import="model.HotelBean"%>
 <%@page import="java.util.List"%>
 <%
     List<HotelBean> hotellist = (List<HotelBean>) session.getValue("all_hotel");
+    List<CityBean> citylist = (List<CityBean>) session.getValue("city_list");
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
@@ -35,21 +37,7 @@
                     <div>
                         <img src="temp/danang-rong.jpg" alt="Placeholder" width="693" height="200"> 
                     </div>
-                    <form action="./" method="post" class="module-b">
-                        <fieldset>
-                            <nav class="pagination-a" style="z-index: 19;">
-                                <p>Page 01 of 06</p>
-                                <ol>
-                                    <li class="prev"><a href="./">Previous</a></li>
-                                    <li class="active"><a href="./" style="cursor: default; text-decoration: none;">01</a></li>
-                                    <li><a href="./">02</a></li>
-                                    <li><a href="./">03</a></li>
-                                    <li><a href="./">04</a></li>
-                                    <li class="next"><a href="./">Next</a></li>
-                                </ol>
-                            </nav>
-                        </fieldset>
-                    </form>
+
                     <div class="news-a">
 
                         <%for (int i = 0; i < hotellist.size(); i++) {
@@ -58,7 +46,7 @@
                             <header>
                                 <h2><a href="GetDetailHotel?HotelID=<%=hotellist.get(i).getHotelID()%>"><%=hotellist.get(i).getHotelName()%></a></h2> <p class="rating-a <%=hotellist.get(i).getHotelRating()%>">5/5</p>
                                 <figure><img src="<%=hotellist.get(i).getHotelImage()%>" alt="Placeholder" width="128" height="102"></figure>
-                                <p><%=hotellist.get(i).getHotelAddress()%><%=hotellist.get(i).getHotelCity()%></p><div class="fit-a"></div>
+                                <p><%=hotellist.get(i).getHotelAddress()%>, <%=hotellist.get(i).getHotelCity()%></p><div class="fit-a"></div>
                             </header>
                             <p><%=hotellist.get(i).getHotelDesShort()%></p>
                             <footer>
@@ -69,9 +57,43 @@
                     </div>
                 </div>
                 <aside>
-                    <s:form action="booknow.action" method="post">
-                        <%@include file="pages/booknow.jsp" %>
-                    </s:form>
+                    <s:form action="GetSearchResult" method="GetSearchResult">
+                        <div class="form-c">
+                            <fieldset>
+                                <legend>Book now</legend>
+                                <h3><span>01.</span> What?</h3>
+                                <ul class="check-c">
+                                    <li><label for="fcaa"><input type="radio" id="fcaa" name="fca" checked="checked"> Hotels</label></li>
+                                    <li><label for="fcab"><input type="radio" id="fcab" name="fca" > Flights</label></li>
+                                    <li><label for="fcac"><input type="radio" id="fcac" name="fca" > Cars</label></li>
+                                    <li><label for="fcad"><input type="radio" id="fcad" name="fca" > Rent car</label></li>
+                                    <li><label for="fcae"><input type="radio" id="fcae" name="fca" > Cruise</label></li>
+                                    <li><label for="fcaf"><input type="radio" id="fcaf" name="fca" > All</label></li>
+                                </ul>
+                                <h3><span>02.</span> Where?</h3>
+                                <p class="select-c">
+                                    <label for="fcb">Location</label>
+                                    <select id="fcb" name="fcb">
+                                        <%for (int i = 0; i < citylist.size(); i++) {
+                                        %>
+                                        <option value="<%=citylist.get(i).getCityID()%>"><%=citylist.get(i).getHotelCity()%></option>
+                                        <%}%>
+                                    </select>
+                                </p>
+                                <h3><span>03.</span> When?</h3>
+                                <p class="date-a">
+                                    <span>
+                                        <label for="fcc">Check in</label>
+                                        <input type="text" id="fcc" name="fcc" required>
+                                    </span>
+                                    <span>
+                                        <label for="fcd">Check Out</label>
+                                        <input type="text" id="fcd" name="fcd" required>
+                                    </span>
+                                </p>
+                                <p class="submit"><button type="submit">Search</button></p>
+                            </fieldset>
+                        </s:form>
 
                 </aside>
             </article>

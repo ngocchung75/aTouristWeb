@@ -7,6 +7,8 @@ package model;
 
 import com.mysql.jdbc.PreparedStatement;
 import common.ConnectDatabase;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,6 +24,7 @@ public class BookingBean {
 
     private int BookID;
     private int UserID;
+    private String UserName;
     private int RoomID;
     private int HotelID;
     private Date StartDate;
@@ -31,11 +34,31 @@ public class BookingBean {
     private double RPrices;
     private double Total;
     private int StatusID;
+    private String StatusName;
     private Map<String, Object> sessionMap;
+    UserBean userBean;
+    StatusBean statusBean;
 
     public BookingBean() {
         super();
         // TODO Auto-generated constructor stub
+    }
+
+    public BookingBean(int BookID, int UserID, String UserName, int RoomID, int HotelID, Date StartDate, Date EndDate,
+            int RCountBook, int Nights, double RPrices, double Total, int StatusID, String StatusName) {
+        this.BookID = BookID;
+        this.UserID = UserID;
+        this.UserName = UserName;
+        this.RoomID = RoomID;
+        this.HotelID = HotelID;
+        this.StartDate = StartDate;
+        this.EndDate = EndDate;
+        this.RCountBook = RCountBook;
+        this.Nights = Nights;
+        this.RPrices = RPrices;
+        this.Total = Total;
+        this.StatusID = StatusID;
+        this.StatusName = StatusName;
     }
 
     public BookingBean(int BookID, int UserID, int RoomID, int HotelID, Date StartDate, Date EndDate,
@@ -65,8 +88,15 @@ public class BookingBean {
 
         while (rs.next()) {
             BookingBean booking;
+            userBean = new UserBean();
+            statusBean = new StatusBean();
+            UserBean userList1 = new UserBean();
+            StatusBean statusList1 = new StatusBean();
+
             int BookID1 = rs.getInt(1);
             int UserID1 = rs.getInt(2);
+            userList1 = userBean.getUserID(UserID1);
+            String UserName1 = userList1.getUserName();
             int RoomID1 = rs.getInt(3);
             int HotelID1 = rs.getInt(4);
             Date StartDate1 = rs.getDate(5);
@@ -76,9 +106,11 @@ public class BookingBean {
             double RPrices1 = rs.getDouble(9);
             double Total1 = rs.getDouble(10);
             int StatusID1 = rs.getInt(11);
+            statusList1 = statusBean.getStatusWithID(StatusID1);
+            String StatusName1 = statusList1.getStatusName();
 
-            booking = new BookingBean(BookID1, UserID1, RoomID1, HotelID1, StartDate1, EndDate1,
-                    RCountBook1, Nights1, RPrices1, Total1, StatusID1);
+            booking = new BookingBean(BookID1, UserID1, UserName1, RoomID1, HotelID1, StartDate1, EndDate1,
+                    RCountBook1, Nights1, RPrices1, Total1, StatusID1, StatusName1);
             bookinglist.add(booking);
         }
         return bookinglist;
@@ -94,8 +126,15 @@ public class BookingBean {
 
         if (rs.next()) {
             BookingBean booking;
+            userBean = new UserBean();
+            statusBean = new StatusBean();
+            UserBean userList1 = new UserBean();
+            StatusBean statusList1 = new StatusBean();
+
             int BookID1 = rs.getInt(1);
             int UserID1 = rs.getInt(2);
+            userList1 = userBean.getUserID(UserID1);
+            String UserName1 = userList1.getUserName();
             int RoomID1 = rs.getInt(3);
             int HotelID1 = rs.getInt(4);
             Date StartDate1 = rs.getDate(5);
@@ -105,9 +144,11 @@ public class BookingBean {
             double RPrices1 = rs.getDouble(9);
             double Total1 = rs.getDouble(10);
             int StatusID1 = rs.getInt(11);
+            statusList1 = statusBean.getStatusWithID(StatusID1);
+            String StatusName1 = statusList1.getStatusName();
 
-            booking = new BookingBean(BookID1, UserID1, RoomID1, HotelID1, StartDate1, EndDate1,
-                    RCountBook1, Nights1, RPrices1, Total1, StatusID1);
+            booking = new BookingBean(BookID1, UserID1, UserName1, RoomID1, HotelID1, StartDate1, EndDate1,
+                    RCountBook1, Nights1, RPrices1, Total1, StatusID1, StatusName1);
             return booking;
         } else {
             return null;
@@ -172,7 +213,7 @@ public class BookingBean {
         pre.close();
         return check;
     }
-    
+
     public int bookIDLast() throws ClassNotFoundException, SQLException {
         int BookID2 = 0;
         ConnectDatabase connect = new ConnectDatabase();
@@ -184,6 +225,34 @@ public class BookingBean {
             BookID2 = rs.getInt("BookID");
         }
         return BookID2;
+    }
+
+    public int deleteBooking(int bookID) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
+        ConnectDatabase connect = new ConnectDatabase();
+        java.sql.Connection cnn = connect.Connect();
+        String delete_booking = "delete from atourist_bookings where BookID=?";
+        PreparedStatement pre = (PreparedStatement) cnn.prepareStatement(delete_booking);
+        pre.setInt(1, bookID);
+
+        int check = pre.executeUpdate();
+        cnn.close();
+        pre.close();
+        return check;
+    }
+
+    public void updateStatusBooking(int bookID, int statusID) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
+        ConnectDatabase connect = new ConnectDatabase();
+        java.sql.Connection cnn = connect.Connect();
+        String update_booking = "Update atourist_bookings set StatusID=? where BookID=?";
+        PreparedStatement pre = (PreparedStatement) cnn.prepareStatement(update_booking);
+
+        // Parameters start with 1
+        pre.setInt(1, statusID);
+        pre.setInt(2, bookID);
+
+        pre.executeUpdate();
+        cnn.close();
+        pre.close();
     }
 
     public int getBookID() {
@@ -273,9 +342,25 @@ public class BookingBean {
     public void setNights(int Nights) {
         this.Nights = Nights;
     }
-    
+
     public void setSession(Map<String, Object> sessionMap) {
         this.sessionMap = sessionMap;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String UserName) {
+        this.UserName = UserName;
+    }
+
+    public String getStatusName() {
+        return StatusName;
+    }
+
+    public void setStatusName(String StatusName) {
+        this.StatusName = StatusName;
     }
 
 }

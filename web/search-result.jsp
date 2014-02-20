@@ -37,21 +37,7 @@
                     <div>
                         <img src="temp/danang-rong.jpg" alt="Placeholder" width="693" height="200"> 
                     </div>
-                    <form action="./" method="post" class="module-b">
-                        <fieldset>
-                            <nav class="pagination-a" style="z-index: 19;">
-                                <p>Page 01 of 06</p>
-                                <ol>
-                                    <li class="prev"><a href="./">Previous</a></li>
-                                    <li class="active"><a href="./" style="cursor: default; text-decoration: none;">01</a></li>
-                                    <li><a href="./">02</a></li>
-                                    <li><a href="./">03</a></li>
-                                    <li><a href="./">04</a></li>
-                                    <li class="next"><a href="./">Next</a></li>
-                                </ol>
-                            </nav>
-                        </fieldset>
-                    </form>
+
                     <s:if test="hasActionErrors()">
                         <div class="errors" style="color:red; font-size:12px; text-align:left; padding-left:0;">
                             <s:actionerror/>
@@ -64,7 +50,7 @@
                             <header>
                                 <h2><a href="GetSearchDetail?HotelID=<%=hotellist.get(i).getHotelID()%>"><%=hotellist.get(i).getHotelName()%></a></h2> <p class="rating-a <%=hotellist.get(i).getHotelRating()%>">5/5</p>
                                 <figure><img src="<%=hotellist.get(i).getHotelImage()%>" alt="Placeholder" width="128" height="102"></figure>
-                                <p><%=hotellist.get(i).getHotelAddress()%><%=hotellist.get(i).getHotelCity()%></p><div class="fit-a"></div>
+                                <p><%=hotellist.get(i).getHotelAddress()%>, <%=hotellist.get(i).getHotelCity()%></p><div class="fit-a"></div>
                             </header>
                             <p><%=hotellist.get(i).getHotelDesShort()%></p>
                             <footer>

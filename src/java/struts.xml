@@ -248,7 +248,7 @@
             <result name="error">manage-hotel.jsp</result>
         </action>
         
-        <!-- Configuration for the Manage Supplier Hotel -->
+        <!-- Configuration for the Manage Supplier Room -->
         <action name="GetAllRoomView" method="GetAllRoomView" class="control.SupplierRoomAction">
             <result name="success">manage-room.jsp</result>
             <result name="error" type="redirect">login.jsp</result>
@@ -270,6 +270,23 @@
             <result name="error">manage-room.jsp</result>
         </action>
         
+        <!-- Configuration for the Manage Supplier Booking -->
+        <action name="GetAllBookingView" method="GetAllBookingView" class="control.SupplierBookingAction">
+            <result name="success">manage-booking.jsp</result>
+            <result name="error" type="redirect">login.jsp</result>
+        </action>
+        <action name="UpdateBooking" method="UpdateBooking" class="control.SupplierBookingAction">
+            <result name="success" type="redirect">GetAllBookingView#openUpdate</result>
+            <result name="error">manage-booking.jsp</result>
+        </action>
+        <action name="SaveUpdateBooking" method="SaveUpdateBooking" class="control.SupplierBookingAction">
+            <result name="success" type="redirect">GetAllBookingView</result>
+            <result name="error">manage-booking.jsp</result>
+        </action>
+        <action name="DeleteBooking" method="DeleteBooking" class="control.SupplierBookingAction">
+            <result name="success" type="redirect">GetAllBookingView</result>
+            <result name="error">manage-booking.jsp</result>
+        </action>
     </package>
     
 </struts>

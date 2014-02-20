@@ -14,7 +14,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import model.CityBean;
 import model.HotelBean;
 import model.RoomBean;
 import org.apache.struts2.interceptor.SessionAware;
@@ -70,7 +69,7 @@ public class SupplierRoomAction extends ActionSupport implements SessionAware {
             if (room123 == null) {
                 session.remove("update_room");
                 RoomBean roomList1 = new RoomBean();
-                roomList1 = roomBean.getRoomWithID(1);
+                roomList1.setRoomID(1);
                 session.put("update_room", roomList1);
             }
 

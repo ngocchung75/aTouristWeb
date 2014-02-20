@@ -56,7 +56,7 @@
                                     <li><span>Check - In Time:</span> <%=detail_hotel.getTimeCheckIn()%></li>
                                     <li><span>Check - Out Time:</span> <%=detail_hotel.getTimeCheckOut()%></li>
                                 </ul>
-                                <p class="adr">Address: <span class="street-address"><%=detail_hotel.getHotelAddress()%><%=detail_hotel.getHotelCity()%></span></p>
+                                <p class="adr">Address: <span class="street-address"><%=detail_hotel.getHotelAddress()%>, <%=detail_hotel.getHotelCity()%></span></p>
                                 <p class="tel">Phone: <%=detail_hotel.getHotelPhone()%></p>
                                 <p>Website: <a rel="external" class="url" href="<%=detail_hotel.getHotelWebsite()%>"> <%=detail_hotel.getHotelWebsite()%></a></p>
                             </div>
@@ -78,7 +78,7 @@
                 </article>
                 <aside>
                     <h2 class="fn org"><%=detail_hotel.getHotelName()%></h2>
-                    <p class="scheme-a"><%=detail_hotel.getHotelAddress()%><%=detail_hotel.getHotelCity()%></p>
+                    <p class="scheme-a"><%=detail_hotel.getHotelAddress()%>, <%=detail_hotel.getHotelCity()%></p>
                     <p class="scheme-b">Price From <span>$<%=detail_hotel.getHotelPriceFrom()%> <span>/ Night</span></span></p>
 
                     <form action="HotelSearchBook" method="GetSearchDetailBook" class="form-a">

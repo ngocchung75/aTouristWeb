@@ -81,7 +81,7 @@
                         <h3>Hotel Summary</h3>
                         <div class="vcard a">
                             <h4 class="fn org"><%=detail_hotel.getHotelName()%></h4>
-                            <p class="adr"><%=detail_hotel.getHotelAddress()%><%=detail_hotel.getHotelCity()%></p>
+                            <p class="adr"><%=detail_hotel.getHotelAddress()%>, <%=detail_hotel.getHotelCity()%></p>
                         </div>
                         <ul class="list-c">
                             <li><span>Email Address</span> <%=detail_hotel.getHotelEmail()%></li>

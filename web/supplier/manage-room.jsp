@@ -31,7 +31,7 @@
                 <a href="" id="header-image" target="_blank"></a>
                 <ul class="subnav">
                     <li><a href="./logout.jsp" class="">Logout</a></li>
-                    <li><a href="./welcome.jsp" class="">Manage Booking</a></li>
+                    <li><a href="GetAllBookingView" class="">Manage Booking</a></li>
                     <li><a href="GetAllRoomView" class="focus">Manage Rooms</a></li>
                     <li><a href="GetSupplierHotelView" class="">Manage Hotel</a></li>
                     <li><a href="GetSupplierProfileView" class="">My Profile</a></li>
