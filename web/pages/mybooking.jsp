@@ -9,6 +9,19 @@
 <%
     List<BookingBean> bookList = (List<BookingBean>) session.getValue("all_booking");
 %>
+<script type="text/javascript">
+    function cancel_confirm(msg, url)
+    {
+        if (confirm(msg))
+        {
+            window.location.href = url;
+        }
+        else
+        {
+            false;
+        }
+    }
+</script>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div id="rightpage2">
     <div id="ctl00_ctl00_MainContent_ContentMain_udpBooking">
@@ -48,7 +61,7 @@
                 <td><%=bookList.get(i).getStatusName()%></td>
                 <%if (bookList.get(i).getStatusID() == 1) {
                 %>
-                <td><a href="CancelBooking?BookID=<%=bookList.get(i).getBookID()%>">Cancel</a></td>
+                <td><a onclick="cancel_confirm('Are you sure you want to cancel booking?', 'CancelBooking?BookID=<%=bookList.get(i).getBookID()%>')" href="#">Cancel</a></td>
                 <td><a href="https://www.baokim.vn/payment/product/version11?business=<%=bookList.get(i).getHotelEmail()%>&id=&order_description=&product_name=Hotel+Name:+<%=bookList.get(i).getHotelName()%>;+BookID:+<%=bookList.get(i).getBookID()%>;+Booking+Room:+<%=bookList.get(i).getRoomName()%>;+Room+Count:+<%=bookList.get(i).getRCountBook()%>&product_price=<%=bookList.get(i).getRPrices()%>&product_quantity=<%=bookList.get(i).getRCountBook()%>&total_amount=<%=bookList.get(i).getTotalVND()%>&url_cancel=&url_detail=&url_success=http%3A%2F%2Fdemo.atourist.net%2FaTouristWeb%2Fsuccess-payment.jsp">
                         <img src="img/paynow-s.png" alt="Secure payments with Bao Kim!" border="0" title="Secure payments with Bao Kim!"/></a>
                 </td>

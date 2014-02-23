@@ -319,7 +319,7 @@ public class BookingBean {
         int BookID2 = 0;
         ConnectDatabase connect = new ConnectDatabase();
         java.sql.Connection cnn = connect.Connect();
-        String sql = "select * from atourist_bookings";
+        String sql = "select * from atourist_bookings ORDER BY BookID ASC";
         java.sql.Statement st = cnn.createStatement();
         ResultSet rs = st.executeQuery(sql);
         while (rs.next()) {

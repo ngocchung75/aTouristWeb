@@ -50,7 +50,7 @@ public class TopHotelBean {
         int topHotelID = 0;
         ConnectDatabase connect = new ConnectDatabase();
         java.sql.Connection cnn = connect.Connect();
-        String sql = "select * from atourist_tophotels";
+        String sql = "select * from atourist_tophotels ORDER BY TopHotelID ASC";
         java.sql.Statement st = cnn.createStatement();
         ResultSet rs = st.executeQuery(sql);
         while (rs.next()) {

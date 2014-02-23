@@ -63,7 +63,8 @@
                             Hotel Name:</br>
                             <input id="HotelNameUpdate" name="HotelNameUpdate" placeholder="Hotel Name" type="text" value="<%=hotelSupplier.getHotelName()%>"></br></br> 
                             Hotel Email:</br>
-                            <input id="HotelEmailUpdate" name="HotelEmailUpdate" placeholder="Hotel Email" type="text" value="<%=hotelSupplier.getHotelEmail()%>"></br></br> 
+                            <input id="HotelEmailUpdate" name="HotelEmailUpdate" placeholder="Hotel Email" type="text" value="<%=hotelSupplier.getHotelEmail()%>"></br> 
+                            (Email account at baokim.vn)</br></br>
                             Hotel Phone:</br>
                             <input id="HotelPhoneUpdate" name="HotelPhoneUpdate" placeholder="Hotel Phone" type="text" value="<%=hotelSupplier.getHotelPhone()%>"></br></br> 
                             Hotel Address:</br>
@@ -83,7 +84,7 @@
                             <textarea id="HotelMapUpdate" name="HotelMapUpdate" rows="4"><%=hotelSupplier.getHotelMap()%></textarea></br></br> 
                             Hotel Rating:</br>
                             <input id="HotelRatingUpdate" name="HotelRatingUpdate" placeholder="Hotel Rating" type="text" value="<%=hotelSupplier.getHotelRating()%>"></br>
-                            (f - 5*; e - 4*;d - 3*;c - 2*;b - 1*;a - 0*;)</br> 
+                            (f - 5*; e - 4*;d - 3*;c - 2*;b - 1*;a - 0*;)</br></br>
                             Hotel Description:</br>
                             <textarea id="HotelDesUpdate" name="HotelDesUpdate" rows="4"><%=hotelSupplier.getHotelDes()%></textarea></br></br> 
                             Hotel Description Short:</br>

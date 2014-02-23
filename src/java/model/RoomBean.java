@@ -52,7 +52,7 @@ public class RoomBean {
         int roomID = 0;
         ConnectDatabase connect = new ConnectDatabase();
         java.sql.Connection cnn = connect.Connect();
-        String sql = "select * from atourist_rooms";
+        String sql = "select * from atourist_rooms ORDER BY RoomID ASC";
         java.sql.Statement st = cnn.createStatement();
         ResultSet rs = st.executeQuery(sql);
         while (rs.next()) {

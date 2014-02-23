@@ -20,6 +20,19 @@
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <link type="text/css" rel="stylesheet" href="css/style.css" />
         <%@include file="pages/head.jsp" %>
+        <script type="text/javascript">
+            function delete_confirm(msg, url)
+            {
+                if (confirm(msg))
+                {
+                    window.location.href = url;
+                }
+                else
+                {
+                    false;
+                }
+            }
+        </script>
     </head>
     <body>
         <s:if test="#session.logined != 'true' || #session.RoleID != 1">
@@ -101,7 +114,7 @@
                                 <td><%=topHotelList.get(i).getTopHotelID()%></td>
                                 <td><%=topHotelList.get(i).getHotelName()%></td>
                                 <td><a href="UpdateTopHotel?TopHotelID=<%=topHotelList.get(i).getTopHotelID()%>">Edit</a></td>
-                                <td><a href="DeleteTopHotel?TopHotelID=<%=topHotelList.get(i).getTopHotelID()%>">Delete</a></td>
+                                <td><a onclick="delete_confirm('Are you sure you want to delete top hotel?', 'DeleteTopHotel?TopHotelID=<%=topHotelList.get(i).getTopHotelID()%>')" href="#">Delete</a></td>
                             </tr>
                             <%}%>
                         </table>

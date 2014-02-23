@@ -306,7 +306,7 @@ public class HotelBean {
         int hotelID = 0;
         ConnectDatabase connect = new ConnectDatabase();
         java.sql.Connection cnn = connect.Connect();
-        String sql = "select * from atourist_hotels";
+        String sql = "select * from atourist_hotels ORDER BY HotelID ASC";
         java.sql.Statement st = cnn.createStatement();
         ResultSet rs = st.executeQuery(sql);
         while (rs.next()) {

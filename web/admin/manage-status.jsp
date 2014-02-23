@@ -19,6 +19,19 @@
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <link type="text/css" rel="stylesheet" href="css/style.css" />
         <%@include file="pages/head.jsp" %>
+        <script type="text/javascript">
+            function delete_confirm(msg, url)
+            {
+                if (confirm(msg))
+                {
+                    window.location.href = url;
+                }
+                else
+                {
+                    false;
+                }
+            }
+        </script>
     </head>
     <body>
         <s:if test="#session.logined != 'true' || #session.RoleID != 1">
@@ -86,7 +99,7 @@
                                 <td><%=statusList.get(i).getStatusID()%></td>
                                 <td><%=statusList.get(i).getStatusName()%></td>
                                 <td><a href="UpdateStatus?StatusID=<%=statusList.get(i).getStatusID()%>">Edit</a></td>
-                                <td><a href="DeleteStatus?StatusID=<%=statusList.get(i).getStatusID()%>">Delete</a></td>
+                                <td><a onclick="delete_confirm('Are you sure you want to delete status?', 'DeleteStatus?StatusID=<%=statusList.get(i).getStatusID()%>')" href="#">Delete</a></td>
                             </tr>
                             <%}%>
                         </table>

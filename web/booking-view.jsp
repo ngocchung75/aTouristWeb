@@ -80,7 +80,7 @@
                             </div>
                         </s:if>
                         <p class="scheme-h">Grand Total : <span><span>$</span>${sessionScope.grandTotal}</span></p>
-                        <p class="link-c"><button type="submit">Submit</button></p>
+                        <p class="link-c"><button type="submit" onclick="return confirm('Are you sure you want to submit booking?');">Submit</button></p>
                     </div>
                     <aside>
                         <h3>Hotel Summary</h3>
@@ -107,7 +107,7 @@
         </div>
         <script src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;language=en"></script>
         <script type="text/javascript">
-            head.js('javascript/jquery.min.js', 'javascript/jquery-ui.min.js', 'javascript/scripts.js', 'javascript/mobile.js');
+                            head.js('javascript/jquery.min.js', 'javascript/jquery-ui.min.js', 'javascript/scripts.js', 'javascript/mobile.js');
         </script>
     </body>
 </html>

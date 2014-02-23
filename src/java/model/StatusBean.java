@@ -37,7 +37,7 @@ public class StatusBean {
         int statusID = 0;
         ConnectDatabase connect = new ConnectDatabase();
         java.sql.Connection cnn = connect.Connect();
-        String sql = "select * from atourist_status";
+        String sql = "select * from atourist_status ORDER BY StatusID ASC";
         java.sql.Statement st = cnn.createStatement();
         ResultSet rs = st.executeQuery(sql);
         while (rs.next()) {

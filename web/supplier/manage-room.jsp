@@ -19,6 +19,19 @@
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <link type="text/css" rel="stylesheet" href="../admin/css/style.css" />
         <%@include file="pages/head.jsp" %>
+        <script type="text/javascript">
+            function delete_confirm(msg, url)
+            {
+                if (confirm(msg))
+                {
+                    window.location.href = url;
+                }
+                else
+                {
+                    false;
+                }
+            }
+        </script>
     </head>
     <body>
         <s:if test="#session.logined != 'true' || #session.RoleID != 3">
@@ -124,7 +137,7 @@
                                 <td><%=roomList.get(i).getRImage()%></td>
                                 <td><%=roomList.get(i).getRoomPrice()%></td>
                                 <td><a href="UpdateRoom?RoomID=<%=roomList.get(i).getRoomID()%>">Edit</a></td>
-                                <td><a href="DeleteRoom?RoomID=<%=roomList.get(i).getRoomID()%>">Delete</a></td>
+                                <td><a onclick="delete_confirm('Are you sure you want to delete room?', 'DeleteRoom?RoomID=<%=roomList.get(i).getRoomID()%>')" href="#">Delete</a></td>
                             </tr>
                             <%}%>
                         </table>

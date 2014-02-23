@@ -255,7 +255,7 @@ public class UserBean {
         int userID = 0;
         ConnectDatabase connect = new ConnectDatabase();
         java.sql.Connection cnn = connect.Connect();
-        String sql = "select * from atourist_users";
+        String sql = "select * from atourist_users ORDER BY UserID ASC";
         java.sql.Statement st = cnn.createStatement();
         ResultSet rs = st.executeQuery(sql);
         while (rs.next()) {

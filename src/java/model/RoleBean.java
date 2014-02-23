@@ -37,7 +37,7 @@ public class RoleBean {
         int roleID = 0;
         ConnectDatabase connect = new ConnectDatabase();
         java.sql.Connection cnn = connect.Connect();
-        String sql = "select * from atourist_roles";
+        String sql = "select * from atourist_roles ORDER BY RoleID ASC";
         java.sql.Statement st = cnn.createStatement();
         ResultSet rs = st.executeQuery(sql);
         while (rs.next()) {

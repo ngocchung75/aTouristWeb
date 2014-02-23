@@ -39,7 +39,7 @@ public class CityBean {
         int cityID = 0;
         ConnectDatabase connect = new ConnectDatabase();
         java.sql.Connection cnn = connect.Connect();
-        String sql = "select * from atourist_city";
+        String sql = "select * from atourist_city ORDER BY CityID ASC";
         java.sql.Statement st = cnn.createStatement();
         ResultSet rs = st.executeQuery(sql);
         while (rs.next()) {
