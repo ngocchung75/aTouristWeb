@@ -13,8 +13,15 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <%
-            response.sendRedirect("login.jsp");
-        %>
+        <s:if test="#session.logined == 'true' && #session.RoleID == 3">
+            <%
+                response.sendRedirect("welcome.jsp");
+            %>
+        </s:if>
+        <s:if test="#session.logined != 'true' || #session.RoleID != 3">
+            <%
+                response.sendRedirect("login.jsp");
+            %>
+        </s:if>
     </body>
 </html>

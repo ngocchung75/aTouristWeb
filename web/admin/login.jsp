@@ -25,6 +25,11 @@
         <script type="text/javascript" src="js/admin.js"></script>	
     </head>
     <body>
+        <s:if test="#session.logined == 'true' && #session.RoleID == 1">
+            <%
+                response.sendRedirect("welcome.jsp");
+            %>
+        </s:if>
         <div id="container">
             <div id="login-content">
                 <a href="" id="login-image" target="_blank"></a>

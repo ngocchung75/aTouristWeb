@@ -26,7 +26,7 @@
         <%@include file="pages/header.jsp" %>
     </head>
     <body>
-        <s:if test="#session.logined != 'true' || #session.session-role != 2">
+        <s:if test="#session.logined != 'true' || #session.RoleID != 2">
             <%
                 response.sendRedirect("signup.jsp");
             %>

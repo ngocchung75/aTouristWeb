@@ -24,7 +24,7 @@
             <header id="top">
                 <h1><a href="./" accesskey="h"></a></h1>
                 <nav id="nav">
-                    <s:if test="#session.logined == 'true' && #session.session-role == 2">
+                    <s:if test="#session.logined == 'true' && #session.RoleID == 2">
                         <%@include file="pages/nav-user.jsp" %>
                     </s:if><s:else>
                         <%@include file="pages/nav.jsp" %>

@@ -16,7 +16,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <s:if test="#session.logined == 'true' || #session.RoleID == 1">
+        <s:if test="#session.logined == 'true' && #session.RoleID == 1">
             <%
                 response.sendRedirect("welcome.jsp");
             %>

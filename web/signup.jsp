@@ -17,7 +17,7 @@
         <script type="text/javascript" src="javascript/scriptgeneral_home.min.js"></script>
     </head>
     <body>
-        <s:if test="#session.logined == 'true' && #session.session-role == 2">
+        <s:if test="#session.logined == 'true' && #session.RoleID == 2">
             <%
                 response.sendRedirect("GetTopHotel");
             %>
