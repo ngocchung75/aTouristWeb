@@ -17,7 +17,7 @@
     <head>
         <title>aTourist Service 1.0 | Manage Profile</title>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-        <link type="text/css" rel="stylesheet" href="css/style.css" />
+        <link type="text/css" rel="stylesheet" href="../admin/css/style.css" />
         <%@include file="pages/head.jsp" %>
     </head>
     <body>

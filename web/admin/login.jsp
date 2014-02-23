@@ -11,18 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>aTourist Service 1.0 | Login</title>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-        <link type="text/css" rel="stylesheet" href="libs/jquery/ui/css/flick/jquery.ui.core.css" />
-        <link type="text/css" rel="stylesheet" href="libs/jquery/ui/css/flick/jquery.ui.theme.css" />
-        <link type="text/css" rel="stylesheet" href="libs/jquery/ui/css/flick/jquery.ui.tabs.css" />
-        <link type="text/css" rel="stylesheet" href="css/admin.css" />
-        <script type="text/javascript" src="libs/jquery/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript" src="js/admin-core.js"></script>
-        <script type="text/javascript" src="libs/jquery/ui/js/jquery.ui.core.min.js"></script>
-        <script type="text/javascript" src="libs/jquery/ui/js/jquery.ui.widget.min.js"></script>
-        <script type="text/javascript" src="libs/jquery/ui/js/jquery.ui.tabs.min.js"></script>
-        <script type="text/javascript" src="libs/jquery/plugins/validate/js/jquery.validate.min.js"></script>
-        <script type="text/javascript" src="js/admin.js"></script>	
+        <%@include file="pages/head.jsp" %>
     </head>
     <body>
         <s:if test="#session.logined == 'true' && #session.RoleID == 1">
