@@ -419,6 +419,19 @@ public class HotelBean {
         cnn.close();
         pre.close();
     }
+    
+    public boolean checkExistUserHotel(int userID) throws ClassNotFoundException, SQLException {
+        ConnectDatabase connect = new ConnectDatabase();
+        java.sql.Connection cnn = connect.Connect();
+        String sql = "select * from atourist_hotels where UserID='" + userID + "';";
+        java.sql.Statement st = cnn.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        boolean kq = false;
+        if (rs.next()) {
+            kq = true;
+        }
+        return kq;
+    }
 
     public int getHotelID() {
         return HotelID;

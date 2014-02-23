@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -52,6 +53,10 @@ public class SearchResultAction extends ActionSupport implements SessionAware {
         CityBean city = new CityBean();
         SearchResultAction listbooknow = new SearchResultAction();
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        java.util.Date date = new java.util.Date();
+        String dateNow = dateFormat.format(date).toString();
+        java.util.Date date1 = formatter.parse(dateNow);
 
         int intWhere = Integer.parseInt(this.fcb.toString());
         String strWhere = city.getNameCity(intWhere);
@@ -60,6 +65,7 @@ public class SearchResultAction extends ActionSupport implements SessionAware {
         java.util.Date dateStart = formatter.parse(strDateStart);
         java.util.Date dateEnd = formatter.parse(strDateEnd);
         int days = (int) ((dateEnd.getTime() - dateStart.getTime()) / (1000 * 60 * 60 * 24));
+        int dayscheck = (int) ((dateStart.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24));
 
         listbooknow.setFca(this.fca);
         listbooknow.setFcb(strWhere);
@@ -74,13 +80,23 @@ public class SearchResultAction extends ActionSupport implements SessionAware {
 
         session.put("all_hotel", hotellist);
         session.put("list-booknow", listbooknow);
+
+        if (!"Hotels".equals(listbooknow.getFca())) {
+            addActionError("Please choose radio Hotels. Please go back and refine your search.");
+            return "error";
+        }
+        if (dayscheck < 0) {
+            addActionError("Please choose date Check in is greater than Date Now. Please go back and refine your search.");
+            return "error";
+        }
+        if (days <= 0) {
+            addActionError("Please choose date Check out is greater than Date Check in. Please go back and refine your search.");
+            return "error";
+        }
+
         if (hotellist.isEmpty()) {
             addActionError("No search found for " + strWhere + " city. Please go back and refine your search.");
             return "success";
-        }
-        if (!"Hotels".equals(listbooknow.getFca())) {
-            addActionError("Function under construction. Please go back and refine your search.");
-            return "error";
         }
 
         return "success";
@@ -130,6 +146,10 @@ public class SearchResultAction extends ActionSupport implements SessionAware {
         HotelBean detail_hotel = (HotelBean) session.get("detail_hotel");
         SearchResultAction listbooknow = new SearchResultAction();
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        java.util.Date date = new java.util.Date();
+        String dateNow = dateFormat.format(date).toString();
+        java.util.Date date1 = formatter.parse(dateNow);
 
         int intWhere1;
         intWhere1 = detail_hotel.getCityID();
@@ -139,6 +159,7 @@ public class SearchResultAction extends ActionSupport implements SessionAware {
         java.util.Date dateStart = formatter.parse(strDateStart);
         java.util.Date dateEnd = formatter.parse(strDateEnd);
         int days = (int) ((dateEnd.getTime() - dateStart.getTime()) / (1000 * 60 * 60 * 24));
+        int dayscheck = (int) ((dateStart.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24));
 
         listbooknow.setFca(this.fca);
         listbooknow.setFcb(strWhere);
@@ -163,6 +184,14 @@ public class SearchResultAction extends ActionSupport implements SessionAware {
         session.put("list-booknow", listbooknow);
         session.put("list-room", roomlist);
         session.put("searched", "true");
+        if (dayscheck < 0) {
+            addActionError("Please choose date Check in is greater than Date Now.");
+            return "error";
+        }
+        if (days <= 0) {
+            addActionError("Please choose date Check out is greater than Date Check in.");
+            return "error";
+        }
         if (roomlist.isEmpty()) {
             addActionError("No Empty Rooms for " + detail_hotel.getHotelName() + ". Please go back and refine your search.");
             return "success";

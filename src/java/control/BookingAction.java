@@ -42,6 +42,7 @@ public class BookingAction extends ActionSupport implements SessionAware {
     private String roomsel8;
     private String roomsel9;
     private String roomsel10;
+    private String feo;
 
     private Map<String, Object> sessionMap;
     RoomBean roombean;
@@ -128,6 +129,11 @@ public class BookingAction extends ActionSupport implements SessionAware {
             }
         }
 
+        if(roombooklist.isEmpty()){
+            addActionError("Please choose No. Rooms.");
+            session.put("error_check", "true");
+            return "error";
+        }
         sessionMap.put("grandTotal", grandTotal);
         session.put("grand-Total", grandTotal);
         session.put("noroom-list", noroomlist);
@@ -156,6 +162,11 @@ public class BookingAction extends ActionSupport implements SessionAware {
 
         java.util.Date dateEnd = formatter.parse(strDateEnd);
         java.sql.Date dateEnd1 = new java.sql.Date(dateEnd.getTime());
+        
+        if (!"check".equals(this.getFeo())) {
+            addActionError("Please choose radio Accept and confirm.");
+            return "error";
+        }
 
         for (int i = 0; i < roombooklist.size(); i++) {
             bookingbean = new BookingBean();
@@ -266,6 +277,14 @@ public class BookingAction extends ActionSupport implements SessionAware {
 
     public void setRoomsel10(String roomsel10) {
         this.roomsel10 = roomsel10;
+    }
+
+    public String getFeo() {
+        return feo;
+    }
+
+    public void setFeo(String feo) {
+        this.feo = feo;
     }
 
 }

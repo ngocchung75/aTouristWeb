@@ -24,10 +24,10 @@
             <header id="top">
                 <h1><a href="./" accesskey="h"></a></h1>
                 <nav id="nav">
-                    <s:if test="#session.logined != 'true'">
-                        <%@include file="pages/nav.jsp" %>
-                    </s:if><s:else>
+                    <s:if test="#session.logined == 'true' && #session.session-role == 2">
                         <%@include file="pages/nav-user.jsp" %>
+                    </s:if><s:else>
+                        <%@include file="pages/nav.jsp" %>
                     </s:else>
                 </nav>
                 <%@include file="pages/search.jsp" %>
@@ -66,7 +66,6 @@
                         <fieldset>
                             <legend>Your Search Details</legend>
                             <h3><span>01.</span> <b>What?</b></h3>
-                            <p>Hotel</p>
                             <p><%=listbooknow.getFca()%></p>
 
                             <h3><span>02.</span> <b>Where?</b></h3>

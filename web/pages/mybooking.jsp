@@ -31,7 +31,7 @@
                 <th>Total</th>
                 <th>Status Name</th>
                 <th></th>
-                <th></th>
+                <th>PaynowBaoKim</th>
             </tr>
             <%for (int i = 0; i < bookList.size(); i++) {
             %>
@@ -49,7 +49,8 @@
                 <%if (bookList.get(i).getStatusID() == 1) {
                 %>
                 <td><a href="CancelBooking?BookID=<%=bookList.get(i).getBookID()%>">Cancel</a></td>
-                <td><a href="https://www.baokim.vn/payment/product/version11?business=<%=bookList.get(i).getHotelEmail()%>&id=&order_description=&product_name=Hotel+Name:+<%=bookList.get(i).getHotelName()%>;+BookID:+<%=bookList.get(i).getBookID()%>;+Booking+Room:+<%=bookList.get(i).getRoomName()%>;+Room+Count:+<%=bookList.get(i).getRCountBook()%>&product_price=<%=bookList.get(i).getRPrices()%>&product_quantity=<%=bookList.get(i).getRCountBook()%>&total_amount=<%=bookList.get(i).getTotalVND()%>&url_cancel=&url_detail=&url_success=http%3A%2F%2Fdemo.atourist.net%2FaTouristWeb%2Fsuccess-payment.jsp"><img src="http://developer.baokim.vn/uploads/baokim_btn/paynow-s.png" alt="Secure payments with Bao Kim!" border="0" style="width: 95px;" title="Secure payments with Bao Kim!"/></a>
+                <td><a href="https://www.baokim.vn/payment/product/version11?business=<%=bookList.get(i).getHotelEmail()%>&id=&order_description=&product_name=Hotel+Name:+<%=bookList.get(i).getHotelName()%>;+BookID:+<%=bookList.get(i).getBookID()%>;+Booking+Room:+<%=bookList.get(i).getRoomName()%>;+Room+Count:+<%=bookList.get(i).getRCountBook()%>&product_price=<%=bookList.get(i).getRPrices()%>&product_quantity=<%=bookList.get(i).getRCountBook()%>&total_amount=<%=bookList.get(i).getTotalVND()%>&url_cancel=&url_detail=&url_success=http%3A%2F%2Fdemo.atourist.net%2FaTouristWeb%2Fsuccess-payment.jsp">
+                        <img src="img/paynow-s.png" alt="Secure payments with Bao Kim!" border="0" title="Secure payments with Bao Kim!"/></a>
                 </td>
                 <%} else {%>
                 <td></td>

@@ -32,8 +32,8 @@
     </div>
     <form action="./" method="post">
         <fieldset>
-            <legend>Newsletter</legend>
-            <p>Lorem emphasised est dolor sit ams...</p>
+            <legend>News letter</legend>
+            <p>Receive email discount information.</p>
             <p>
                 <label for="na">Enter your email</label>
                 <input type="email" id="na" name="na" required>

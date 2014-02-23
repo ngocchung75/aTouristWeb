@@ -22,10 +22,10 @@
             <header id="top">
                 <h1><a href="./" accesskey="h"></a></h1>
                 <nav id="nav">
-                    <s:if test="#session.logined != 'true'">
-                        <%@include file="pages/nav.jsp" %>
-                    </s:if><s:else>
+                    <s:if test="#session.logined == 'true' && #session.session-role == 2">
                         <%@include file="pages/nav-user.jsp" %>
+                    </s:if><s:else>
+                        <%@include file="pages/nav.jsp" %>
                     </s:else>
                 </nav>
                 <%@include file="pages/search.jsp" %>
@@ -38,8 +38,7 @@
                     </br></br>
                     <div class="errors" style="color:red; font-size:12px; text-align:left; padding-left:0;">
                         <ul class="errorMessage">
-                            <li><span>Function under construction. Please go back and refine your search.</span></li>	</ul>
-
+                            <li><span>Please choose radio Hotels, date Check out is greater than date Check in and date now. Please go back and refine your search.</span></li>	</ul>
                     </div>
 
                 </div>

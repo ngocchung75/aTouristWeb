@@ -21,10 +21,10 @@
             <header id="top">
                 <h1><a href="./" accesskey="h"></a></h1>
                 <nav id="nav">
-                    <s:if test="#session.logined != 'true'">
-                        <%@include file="pages/nav.jsp" %>
-                    </s:if><s:else>
+                    <s:if test="#session.logined == 'true' && #session.session-role == 2">
                         <%@include file="pages/nav-user.jsp" %>
+                    </s:if><s:else>
+                        <%@include file="pages/nav.jsp" %>
                     </s:else>
                 </nav>
                 <%@include file="pages/search.jsp" %>
@@ -92,6 +92,11 @@
                                     <input type="text" id="fcd" name="fcd" required>
                                 </span>
                             </p>
+                            <s:if test="hasActionErrors()">
+                                <div class="errors" style="color:red; font-size:12px; text-align:left; padding-left:0;">
+                                    <s:actionerror/>
+                                </div>
+                            </s:if>
                             <p class="submit"><button type="submit">Book now</button></p>
                         </fieldset>
                     </form>

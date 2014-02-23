@@ -11,6 +11,7 @@
     SearchResultAction listbooknow = (SearchResultAction) session.getValue("list-booknow");
     HotelBean detail_hotel = (HotelBean) session.getValue("detail_hotel");
     List<RoomBean> listroom = (List<RoomBean>) session.getValue("list-room");
+    String check = (String) session.getValue("error_check");
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -23,7 +24,7 @@
         <%@include file="pages/header.jsp" %>
     </head>
     <body>
-        <s:if test="#session.logined != 'true'">
+        <s:if test="#session.logined != 'true' || #session.session-role != 2">
             <%
                 response.sendRedirect("signup.jsp");
             %>
@@ -88,6 +89,10 @@
                                         <div class="errors" style="color:red; font-size:12px; text-align:left; padding-left:0;">
                                             <s:actionerror/>
                                         </div>
+                                        <%if (check == "true") {%>
+                                        <div style="border-top: 1px dashed #e5e5e5; border-top-style: solid;"></div>
+                                        <input type="submit" value=" Book now " class="button-book" style="margin-left: 560px; margin-top: 10px;">
+                                        <%}%>
                                     </s:if>
                                     <s:else>
                                         <div style="border-top: 1px dashed #e5e5e5; border-top-style: solid;"></div>

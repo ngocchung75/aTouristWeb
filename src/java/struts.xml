@@ -64,11 +64,11 @@
         </action>
         <action name="HotelDetailBook" method="GetHotelDetailBook" class="control.SearchResultAction">
             <result name="success">prebook.jsp</result>
-            <result name="error">GetAllHotel</result>
+            <result name="error" >hoteldetails.jsp</result>
         </action>
         <action name="GetBookingView" method="GetBookingView" class="control.BookingAction">
             <result name="success">booking-view.jsp</result>
-            <result name="error">booking-view.jsp</result>
+            <result name="error">prebook.jsp</result>
         </action>
         <action name="BookingSubmit" method="BookingSubmit" class="control.BookingAction">
             <result name="success">booking-confirm.jsp</result>

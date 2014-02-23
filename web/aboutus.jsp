@@ -18,10 +18,10 @@
             <header id="top">
                 <h1><a href="./" accesskey="h"></a></h1>
                 <nav id="nav">
-                    <s:if test="#session.logined != 'true'">
-                        <%@include file="pages/nav.jsp" %>
-                    </s:if><s:else>
+                    <s:if test="#session.logined == 'true' && #session.session-role == 2">
                         <%@include file="pages/nav-user.jsp" %>
+                    </s:if><s:else>
+                        <%@include file="pages/nav.jsp" %>
                     </s:else>
                 </nav>
                 <%@include file="pages/search.jsp" %>
@@ -29,7 +29,7 @@
             <nav id="breadcrumbs">
                 <ul>
                     <li><a href="./">Home</a></li>
-                    <li>Contact</li>
+                    <li>About us</li>
                 </ul>
             </nav>                
             <article id="content" class="cols-b">
@@ -57,9 +57,11 @@
                 </form>
                 <aside>
                     <h3>About us</h3>
-                    <li><span>Name: Ha Ngoc Chung</span></li>
-                    <li><span>Mobile: 0972878218</span></li>
-                    <li><span>Email: ngocchung75@gmail.com</span></li>
+                    <li><span>Bamboo Company Limited</span></li>
+                    <li><span>Chung, Ha Ngoc – CIO, Bamboo Co., Ltd</span></li>
+                    <li><span>Mobile: (84) - 972 878 218</span></li>
+                    <li><span>Email: chunghn@atourist.net</span></li>
+                    <li><span>Address: No.182 - Nguyen Van Linh Street, Danang City, Vietnam</span></li>
                 </aside>
             </article>
             <footer id="footer">
@@ -69,7 +71,7 @@
         </div>
         <script src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;language=en"></script>
         <script type="text/javascript">
-                                head.js('javascript/jquery.min.js', 'javascript/jquery-ui.min.js', 'javascript/scripts.js', 'javascript/mobile.js');
+                    head.js('javascript/jquery.min.js', 'javascript/jquery-ui.min.js', 'javascript/scripts.js', 'javascript/mobile.js');
         </script>
         <script type="text/javascript">
             function submitForm() {

@@ -24,10 +24,10 @@
             <header id="top">
                 <h1><a href="./" accesskey="h"></a></h1>
                 <nav id="nav">
-                    <s:if test="#session.logined != 'true'">
-                        <%@include file="pages/nav.jsp" %>
-                    </s:if><s:else>
+                    <s:if test="#session.logined == 'true' && #session.session-role == 2">
                         <%@include file="pages/nav-user.jsp" %>
+                    </s:if><s:else>
+                        <%@include file="pages/nav.jsp" %>
                     </s:else>
                 </nav>
                 <%@include file="pages/search.jsp" %>
@@ -36,9 +36,9 @@
             <article id="content" class="cols-c">
                 <div>
                     <div class="slider-a">
-                        <figure class="image-b"><img src="temp/693x276.gif"  alt="Placeholder" width="693" height="276"> <figcaption>Paris Eurostar Breaks</figcaption></figure>
-                        <figure class="image-a"><img src="temp/693x276(2).gif" alt="Placeholder" width="693" height="276"> <figcaption>Paris Eurostar Breaks <span>Curabitur fringilla mauris interdum nec magna</span> <span>From $350</span></figcaption></figure>
-                        <figure><img src="temp/693x276(1).gif" alt="Placeholder" width="693" height="276"></figure>
+                        <figure class="image-b"><img src="img/caurong-dn.jpg"  alt="Danang, Vietnam" width="693" height="276"> <figcaption><span>Danang, Vietnam</span></figcaption></figure>
+                        <figure class="image-a"><img src="img/danang-rive.jpg" alt="Danang, Vietnam" width="693" height="276"> <figcaption>Novotel Danang Hotel <span>From $109</span></figcaption></figure>
+                        <figure><img src="img/novel-dn.jpg" alt="Danang, Vietnam" width="693" height="276"></figure>
                     </div>
 
                     <h2 class="header-a">Hot deal</h2>

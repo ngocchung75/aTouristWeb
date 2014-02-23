@@ -26,7 +26,7 @@
         <%@include file="pages/header.jsp" %>
     </head>
     <body>
-        <s:if test="#session.logined != 'true'">
+        <s:if test="#session.logined != 'true' || #session.session-role != 2">
             <%
                 response.sendRedirect("signup.jsp");
             %>
@@ -73,7 +73,12 @@
 
                         <div style="border-top: 1px dashed #e5e5e5;border-top-style: solid;"></div>
                         <h4 class="scheme-g">Accept and confirm</h4>
-                        <p class="check-a"><label for="feo"><input type="checkbox" id="feo" name="feo" checked="checked"> I agree to the booking conditions.</label></p>
+                        <p class="check-a"><label for="feo"><input type="checkbox" id="feo" name="feo" value="check"> I agree to the booking conditions.</label></p>
+                                <s:if test="hasActionErrors()">
+                            <div class="errors" style="color:red; font-size:12px; text-align:left; padding-left:0;">
+                                <s:actionerror/>
+                            </div>
+                        </s:if>
                         <p class="scheme-h">Grand Total : <span><span>$</span>${sessionScope.grandTotal}</span></p>
                         <p class="link-c"><button type="submit">Submit</button></p>
                     </div>
