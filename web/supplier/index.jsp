@@ -4,7 +4,10 @@
     Author     : CHUNG TOOC
 --%>
 
+<%@page import="org.apache.struts2.ServletActionContext"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<%@ page language="java" contentType="text/html" import="java.util.*"%>
 <!DOCTYPE html>
 <html>
     <head>
