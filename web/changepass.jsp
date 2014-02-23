@@ -13,10 +13,7 @@
         <title>Change Password : Asean Tourist</title>
         <%@include file="pages/header.jsp" %>
         <link rel="stylesheet" type="text/css" href="styles/review.css">
-        <script type="text/javascript" src="javascript/agoda-http-v1.js"></script>
-        <script type="text/javascript" src="javascript/agoda-stats-v1.js"></script>
         <script type="text/javascript" src="javascript/reward.js"></script>
-
         <link rel="stylesheet" type="text/css" href="styles/signup.css">
         <script type="text/javascript" src="javascript/scriptgeneral.min.js"></script>
         <script type="text/javascript" src="javascript/scriptgeneral_home.min.js"></script>

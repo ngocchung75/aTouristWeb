@@ -15,8 +15,6 @@
         <title>My Dashboard : Asean Tourist</title>
         <%@include file="pages/header.jsp" %>
         <link rel="stylesheet" type="text/css" href="styles/review.css">
-        <script type="text/javascript" src="javascript/agoda-http-v1.js"></script>
-        <script type="text/javascript" src="javascript/agoda-stats-v1.js"></script>
         <script type="text/javascript" src="javascript/reward.js"></script>
     </head>
     <body>
