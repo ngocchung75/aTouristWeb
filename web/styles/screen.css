@@ -722,7 +722,7 @@ ul ul, ul ol, ol ol, ol ul { margin-bottom: 0; }
 .list-b li > span:first-child { position: absolute; left: 0; top: 0; width: 125px; color: #434343; }
 
 .list-c { list-style: none; margin: 0 0 14px; padding: 0; color: #1a90e0; }	
-.list-c li { position: relative; min-height: 24px; margin: 0; padding: 0 0 12px 142px; background: none; font-weight: 700; }
+.list-c li { position: relative; min-height: 24px; margin: 0; padding: 0 0 12px 100px; background: none; font-weight: 700; }
 .list-c li > span:first-child { position: absolute; left: 0; top: 0; color: #666; font-weight: 500; }
 .scheme-g + .list-c { padding-top: 12px; }
 .list-c + .scheme-g { margin-top: 0; }

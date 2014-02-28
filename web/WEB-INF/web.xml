@@ -14,7 +14,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index-a.jsp</welcome-file>
     </welcome-file-list>
     <error-page>
         <error-code>400</error-code>

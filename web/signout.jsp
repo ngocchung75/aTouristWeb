@@ -16,7 +16,7 @@
         <p>You are successfully logged out!</p>  
         <%
 		session.invalidate();  
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("index-a.jsp");
         %>
     </body>
 </html>

@@ -28,7 +28,7 @@
         </action>
         
         <action name="my-booking" method="GetMyBookingView" class="control.MyBookingAction">
-            <result name="success">mydashboard.jsp</result>
+            <result name="success" type="redirect">mydashboard.jsp</result>
             <result name="error">mydashboard.jsp</result>
         </action>
         <action name="CancelBooking" method="CancelBooking" class="control.MyBookingAction">
@@ -37,7 +37,7 @@
         </action>
         
         <action name="GetAllHotel" method="GetAllHotel" class="control.HotelListAction">
-            <result name="success">hotellist.jsp</result>
+            <result name="success" type="redirect">hotellist.jsp</result>
             <result name="error">hotellist.jsp</result>
         </action>
         <action name="GetDetailHotel" method="GetDetailHotel" class="control.HotelListAction">
@@ -45,8 +45,8 @@
             <result name="error">hotellist.jsp</result>
         </action>
         <action name="GetTopHotel" method="GetTopHotel" class="control.HotelListAction">
-            <result name="success">index-b.jsp</result>
-            <result name="error">index-b.jsp</result>
+            <result name="success" type="redirect">index.jsp</result>
+            <result name="error">index.jsp</result>
         </action>
         
         <action name="GetSearchResult" method="GetSearchResult" class="control.SearchResultAction">
@@ -84,7 +84,7 @@
         
         <!-- Configuration for the Manage Users -->
         <action name="GetAllUserView" method="GetAllUserView" class="control.ManageUserAction">
-            <result name="success">manage-users.jsp</result>
+            <result name="success" type="redirect">manage-users.jsp</result>
             <result name="error">manage-users.jsp</result>
         </action>
         <action name="AddNewUser" method="AddNewUser" class="control.ManageUserAction">
@@ -122,7 +122,7 @@
         
         <!-- Configuration for the Manage Status -->
         <action name="GetAllStatusView" method="GetAllStatusView" class="control.ManageStatusAction">
-            <result name="success">manage-status.jsp</result>
+            <result name="success" type="redirect">manage-status.jsp</result>
             <result name="error">manage-status.jsp</result>
         </action>
         <action name="AddNewStatus" method="AddNewStatus" class="control.ManageStatusAction">
@@ -144,7 +144,7 @@
         
         <!-- Configuration for the Manage City -->
         <action name="GetAllCityView" method="GetAllCityView" class="control.ManageCityAction">
-            <result name="success">manage-city.jsp</result>
+            <result name="success" type="redirect">manage-city.jsp</result>
             <result name="error">manage-city.jsp</result>
         </action>
         <action name="AddNewCity" method="AddNewCity" class="control.ManageCityAction">
@@ -166,7 +166,7 @@
         
         <!-- Configuration for the Manage Role -->
         <action name="GetAllRoleView" method="GetAllRoleView" class="control.ManageRoleAction">
-            <result name="success">manage-role.jsp</result>
+            <result name="success" type="redirect">manage-role.jsp</result>
             <result name="error">manage-role.jsp</result>
         </action>
         <action name="AddNewRole" method="AddNewRole" class="control.ManageRoleAction">
@@ -188,7 +188,7 @@
         
         <!-- Configuration for the Manage TopHotel -->
         <action name="GetAllTopHotelView" method="GetAllTopHotelView" class="control.ManageTopHotelAction">
-            <result name="success">manage-tophotel.jsp</result>
+            <result name="success" type="redirect">manage-tophotel.jsp</result>
             <result name="error">manage-tophotel.jsp</result>
         </action>
         <action name="AddNewTopHotel" method="AddNewTopHotel" class="control.ManageTopHotelAction">
@@ -210,7 +210,7 @@
         
         <!-- Configuration for the Manage Hotel -->
         <action name="GetAllHotelView" method="GetAllHotelView" class="control.ManageHotelAction">
-            <result name="success">manage-hotel.jsp</result>
+            <result name="success" type="redirect">manage-hotel.jsp</result>
             <result name="error">manage-hotel.jsp</result>
         </action>
         <action name="AddNewHotel" method="AddNewHotel" class="control.ManageHotelAction">
@@ -239,7 +239,7 @@
         </action>
         <!-- Configuration for the Manage Supplier Profile -->
         <action name="GetSupplierProfileView" method="GetSupplierProfileView" class="control.SupplierProfileAction">
-            <result name="success">manage-profile.jsp</result>
+            <result name="success" type="redirect">manage-profile.jsp</result>
             <result name="error" type="redirect">login.jsp</result>
         </action>
         <action name="SaveSupplierProfile" method="SaveSupplierProfile" class="control.SupplierProfileAction">
@@ -249,7 +249,7 @@
         
         <!-- Configuration for the Manage Supplier Hotel -->
         <action name="GetSupplierHotelView" method="GetSupplierHotelView" class="control.SupplierHotelAction">
-            <result name="success">manage-hotel.jsp</result>
+            <result name="success" type="redirect">manage-hotel.jsp</result>
             <result name="error" type="redirect">login.jsp</result>
         </action>
         <action name="SaveSupplierHotel" method="SaveSupplierHotel" class="control.SupplierHotelAction">
@@ -259,7 +259,7 @@
         
         <!-- Configuration for the Manage Supplier Room -->
         <action name="GetAllRoomView" method="GetAllRoomView" class="control.SupplierRoomAction">
-            <result name="success">manage-room.jsp</result>
+            <result name="success" type="redirect">manage-room.jsp</result>
             <result name="error" type="redirect">login.jsp</result>
         </action>
         <action name="AddNewRoom" method="AddNewRoom" class="control.SupplierRoomAction">
@@ -281,7 +281,7 @@
         
         <!-- Configuration for the Manage Supplier Booking -->
         <action name="GetAllBookingView" method="GetAllBookingView" class="control.SupplierBookingAction">
-            <result name="success">manage-booking.jsp</result>
+            <result name="success" type="redirect">manage-booking.jsp</result>
             <result name="error" type="redirect">login.jsp</result>
         </action>
         <action name="UpdateBooking" method="UpdateBooking" class="control.SupplierBookingAction">
