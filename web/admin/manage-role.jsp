@@ -99,7 +99,7 @@
                                 <td><%=roleList.get(i).getRoleID()%></td>
                                 <td><%=roleList.get(i).getRoleName()%></td>
                                 <td><a href="UpdateRole?RoleID=<%=roleList.get(i).getRoleID()%>">Edit</a></td>
-                                <td><a onclick="delete_confirm('Are you sure you want to delete hotel?', 'DeleteRole?RoleID=<%=roleList.get(i).getRoleID()%>')" href="#">Delete</a></td>
+                                <td><a onclick="delete_confirm('Are you sure you want to delete role?', 'DeleteRole?RoleID=<%=roleList.get(i).getRoleID()%>')" href="#">Delete</a></td>
                             </tr>
                             <%}%>
                         </table>
