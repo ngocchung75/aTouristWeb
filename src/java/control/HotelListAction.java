@@ -98,6 +98,7 @@ public class HotelListAction extends ActionSupport implements SessionAware {
         Map session = ActionContext.getContext().getSession();
         session.remove("top_hotel");
         session.remove("city_list");
+        session.remove("checkTop");
         try {
             hotel = new HotelBean();
             hotellist = new ArrayList();
@@ -117,6 +118,7 @@ public class HotelListAction extends ActionSupport implements SessionAware {
 
         session.put("top_hotel", hotellist);
         session.put("city_list", citylist);
+        session.put("checkTop", "true");
         return "success";
     }
 

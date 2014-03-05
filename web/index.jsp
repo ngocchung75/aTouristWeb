@@ -3,12 +3,22 @@
     Created on : Jan 10, 2014, 3:15:01 AM
     Author     : CHUNG TOOC
 --%>
+<%
+    HttpSession session2 = request.getSession();
+    if(session2.getAttribute("checkTop") == null){
+        response.sendRedirect("GetTopHotel"); 
+        return;
+    }
+    %>
 <%@page import="model.CityBean"%>
 <%@page import="model.HotelBean"%>
 <%@page import="java.util.List"%>
 <%
+    
     List<HotelBean> tophotellist = (List<HotelBean>) session.getValue("top_hotel");
     List<CityBean> citylist = (List<CityBean>) session.getValue("city_list");
+    String checkTop = (String) session.getValue("checkTop");
+    
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
@@ -20,6 +30,7 @@
         <%@include file="pages/header.jsp" %>
     </head>
     <body>
+        
         <div id="root">
             <header id="top">
                 <h1><a href="./" accesskey="h"></a></h1>
