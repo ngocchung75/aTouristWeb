@@ -6,9 +6,6 @@
 package model;
 
 import common.ConnectDatabase;
-import control.AddAccountAction;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -49,6 +46,8 @@ public class SearchRoom {
             room = new RoomBean(RoomID1, HotelID1, RTypeName1, RNumPeople1, RCountEmpty, RoomDes1, RImage1, RoomPrice1);
             roomlist.add(room);
         }
+        cnn.close();
+        st.close();
         return roomlist;
     }
 
@@ -80,6 +79,8 @@ public class SearchRoom {
                     RCountBook1, Nights1, RPrices1, Total1, StatusID1);
             bookinglist.add(booking);
         }
+        cnn.close();
+        st.close();
         return bookinglist;
     }
 
@@ -91,9 +92,12 @@ public class SearchRoom {
 
         int roomBusy = 0;
         for (int i = 0; i < bookinglist.size(); i++) {
-            Date endDateBoook = bookinglist.get(i).getEndDate();
-            if (StartDate.before(endDateBoook)) {
-                roomBusy = roomBusy + bookinglist.get(i).getRCountBook();
+            int statusID = bookinglist.get(i).getStatusID();
+            if (statusID == 1 || statusID == 2) {
+                Date endDateBoook = bookinglist.get(i).getEndDate();
+                if (StartDate.before(endDateBoook)) {
+                    roomBusy = roomBusy + bookinglist.get(i).getRCountBook();
+                }
             }
         }
         return RCount - roomBusy;
@@ -119,8 +123,12 @@ public class SearchRoom {
             double RoomPrice1 = rs.getDouble(8);
 
             room = new RoomBean(RoomID1, HotelID1, RTypeName1, RNumPeople1, RCount1, RoomDes1, RImage1, RoomPrice1);
+            cnn.close();
+            st.close();
             return room;
         } else {
+            cnn.close();
+            st.close();
             return null;
         }
     }

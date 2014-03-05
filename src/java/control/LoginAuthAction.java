@@ -42,6 +42,11 @@ public class LoginAuthAction extends ActionSupport implements SessionAware {
             }
         }
         if (!error) {
+            Map session = ActionContext.getContext().getSession();
+            session.remove("session-userid");
+            session.remove("session-role");
+            session.remove("session-gender");
+            session.remove("logined");
             
             UserBean rs = user.getUser(this.username.toString());
             int UserID1 = rs.getUserID();
@@ -63,8 +68,6 @@ public class LoginAuthAction extends ActionSupport implements SessionAware {
             sessionMap.put("Phone", Phone1);
             sessionMap.put("UserAddress", UserAddress1);
             
-
-            Map session = ActionContext.getContext().getSession();
             session.put("session-userid", UserID1);
             session.put("session-role", RoleID1);
             session.put("session-gender", Gender1);

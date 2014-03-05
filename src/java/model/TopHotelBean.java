@@ -56,6 +56,8 @@ public class TopHotelBean {
         while (rs.next()) {
             topHotelID = rs.getInt("TopHotelID");
         }
+        cnn.close();
+        st.close();
         return topHotelID;
     }
 
@@ -122,6 +124,7 @@ public class TopHotelBean {
             topHotelLiss.add(topHotel);
         }
         cnn.close();
+        st.close();
         return topHotelLiss;
     }
 
@@ -140,9 +143,11 @@ public class TopHotelBean {
             String HotelName1 = hotel.getHotel(HotelID1).getHotelName();
             topHotel = new TopHotelBean(TopHotelID1, HotelID1, HotelName1);
             cnn.close();
+            st.close();
             return topHotel;
         } else {
             cnn.close();
+            st.close();
             return null;
         }
     }
@@ -166,6 +171,7 @@ public class TopHotelBean {
             tophotellist.add(tophotel);
         }
         cnn.close();
+        st.close();
         return tophotellist;
     }
 

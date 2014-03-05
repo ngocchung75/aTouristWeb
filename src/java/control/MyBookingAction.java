@@ -43,11 +43,11 @@ public class MyBookingAction extends ActionSupport implements SessionAware {
             bookingList = new ArrayList();
             bookingList = bookingBean.getListBookUser(userID123);
 
+            session.put("all_booking", bookingList);
             if (bookingList.isEmpty()) {
                 addActionError("You currently have no active bookings to manage.");
+                return "error";
             }
-
-            session.put("all_booking", bookingList);
             return "success";
         }
     }
@@ -55,7 +55,7 @@ public class MyBookingAction extends ActionSupport implements SessionAware {
     public String CancelBooking() throws ClassNotFoundException, SQLException, ParseException, NoSuchAlgorithmException, UnsupportedEncodingException {
         bookingBean = new BookingBean();
         bookingBean.updateStatusBooking(this.BookID, 4);
-        
+
         return "success";
     }
 

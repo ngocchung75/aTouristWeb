@@ -74,6 +74,10 @@
                                             <p style="color: #ff5f46; font-weight: 700; font-size: 1.23em;">$<%=listroom.get(i).getRoomPrice()%> / night</p>
                                             <p>People max: <%=listroom.get(i).getRNumPeople()%></p>
                                             <p>Room info: <%=listroom.get(i).getRoomDes()%></p>
+                                            <%if (listroom.get(i).getRCount() == 0) {
+                                            %>
+                                            <p>No. Rooms: rooms are not available</p>
+                                            <%} else {%>
                                             <p>No. Rooms: <select id="roomsel<%=listroom.get(i).getRoomID()%>" name="roomsel<%=listroom.get(i).getRoomID()%>">
                                                     <%for (int j = 0; j <= listroom.get(i).getRCount(); j++) {
                                                     %>
@@ -81,6 +85,7 @@
                                                     <%}%>
                                                 </select>
                                             </p>
+                                            <%}%>
                                         </article>
                                         <%}%>
                                     </div>

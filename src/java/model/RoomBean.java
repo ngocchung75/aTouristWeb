@@ -58,6 +58,8 @@ public class RoomBean {
         while (rs.next()) {
             roomID = rs.getInt("RoomID");
         }
+        cnn.close();
+        st.close();
         return roomID;
     }
 
@@ -142,6 +144,8 @@ public class RoomBean {
             roomBean = new RoomBean(RoomID1, HotelID1, RTypeName1, RNumPeople1, RCount1, RoomDes1, RImage1, RoomPrice1);
             roomlist.add(roomBean);
         }
+        cnn.close();
+        st.close();
         return roomlist;
     }
 
@@ -154,7 +158,7 @@ public class RoomBean {
         rs = st.executeQuery(sql);
         List<RoomBean> roomlist = null;
         roomlist = new ArrayList();
-                
+
         while (rs.next()) {
             int RoomID1 = rs.getInt(1);
             int HotelID1 = rs.getInt(2);
@@ -168,6 +172,8 @@ public class RoomBean {
             roomBean = new RoomBean(RoomID1, HotelID1, RTypeName1, RNumPeople1, RCount1, RoomDes1, RImage1, RoomPrice1);
             roomlist.add(roomBean);
         }
+        cnn.close();
+        st.close();
         return roomlist;
     }
 
@@ -190,8 +196,12 @@ public class RoomBean {
             double RoomPrice1 = rs.getDouble(8);
 
             room1 = new RoomBean(RoomID1, HotelID1, RTypeName1, RNumPeople1, RCount1, RoomDes1, RImage1, RoomPrice1);
+            cnn.close();
+            st.close();
             return room1;
         } else {
+            cnn.close();
+            st.close();
             return null;
         }
     }

@@ -147,8 +147,12 @@ public class UserBean {
             String UserAddress1 = rs.getString(10);
 
             user = new UserBean(UserID1, RoleID1, UserName1, FullName1, Gender1, YearOfBirth1, Email1, Phone1, UserAddress1);
+            cnn.close();
+            st.close();
             return user;
         } else {
+            cnn.close();
+            st.close();
             return null;
         }
     }
@@ -163,6 +167,8 @@ public class UserBean {
         if (rs.next()) {
             kq = true;
         }
+        cnn.close();
+        st.close();
         return kq;
     }
 
@@ -176,6 +182,8 @@ public class UserBean {
         if (rs.next()) {
             kq = true;
         }
+        cnn.close();
+        st.close();
         return kq;
     }
 
@@ -190,6 +198,8 @@ public class UserBean {
         if (rs.next()) {
             kq = true;
         }
+        cnn.close();
+        st.close();
         return kq;
     }
 
@@ -205,6 +215,8 @@ public class UserBean {
         if (check != 0) {
             kq = true;
         }
+        cnn.close();
+        st.close();
         return kq;
     }
 
@@ -219,8 +231,8 @@ public class UserBean {
         pre.setString(1, pass1);
         pre.setInt(2, userID);
         pre.executeUpdate();
-        pre.close();
         cnn.close();
+        pre.close();
     }
 
     public void changeRole(int userID, int roleID) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -248,6 +260,8 @@ public class UserBean {
         if (check != 0) {
             kq = true;
         }
+        cnn.close();
+        st.close();
         return kq;
     }
 
@@ -261,6 +275,8 @@ public class UserBean {
         while (rs.next()) {
             userID = rs.getInt("UserID");
         }
+        cnn.close();
+        st.close();
         return userID;
     }
 
@@ -362,6 +378,7 @@ public class UserBean {
             usersliss.add(user);
         }
         cnn.close();
+        st.close();
         return usersliss;
     }
 
@@ -394,8 +411,8 @@ public class UserBean {
             user = new UserBean(UserID1, RoleID1, RoleName1, UserName1, FullName1, Gender1, YearOfBirth1, Email1, Phone1, UserAddress1, Created1);
             usersliss.add(user);
         }
-        st.close();
         cnn.close();
+        st.close();
         return usersliss;
     }
 
@@ -424,12 +441,12 @@ public class UserBean {
             Date Created1 = rs.getDate(11);
 
             user = new UserBean(UserID1, RoleID1, RoleName1, UserName1, FullName1, Gender1, YearOfBirth1, Email1, Phone1, UserAddress1, Created1);
-            st.close();
             cnn.close();
+            st.close();
             return user;
         } else {
-            st.close();
             cnn.close();
+            st.close();
             return null;
         }
     }

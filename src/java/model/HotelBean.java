@@ -119,6 +119,8 @@ public class HotelBean {
                     HotelMap1, HotelRating1, HotelDes1, HotelDesShort1, HotelPol1, HotelFac1, HotelImage1, HotelWebsite1, HotelPriceFrom1, TimeCheckIn1, TimeCheckOut1);
             hotellist.add(hotel);
         }
+        cnn.close();
+        st.close();
         return hotellist;
     }
 
@@ -163,6 +165,8 @@ public class HotelBean {
                     HotelMap1, HotelRating1, HotelDes1, HotelDesShort1, HotelPol1, HotelFac1, HotelImage1, HotelWebsite1, HotelPriceFrom1, TimeCheckIn1, TimeCheckOut1);
             hotellist.add(hotel);
         }
+        cnn.close();
+        st.close();
         return hotellist;
     }
 
@@ -202,12 +206,16 @@ public class HotelBean {
 
             hotel = new HotelBean(HotelID1, UserID1, UserName1, HotelName1, HotelEmail1, HotelPhone1, HotelAddress1, CityID1, HotelCity1,
                     HotelMap1, HotelRating1, HotelDes1, HotelDesShort1, HotelPol1, HotelFac1, HotelImage1, HotelWebsite1, HotelPriceFrom1, TimeCheckIn1, TimeCheckOut1);
+            cnn.close();
+            st.close();
             return hotel;
         } else {
+            cnn.close();
+            st.close();
             return null;
         }
     }
-    
+
     public HotelBean getHotelWithUserID(int userID) throws ClassNotFoundException, SQLException {
         ConnectDatabase connect = new ConnectDatabase();
         java.sql.Connection cnn = connect.Connect();
@@ -244,8 +252,12 @@ public class HotelBean {
 
             hotel = new HotelBean(HotelID1, UserID1, UserName1, HotelName1, HotelEmail1, HotelPhone1, HotelAddress1, CityID1, HotelCity1,
                     HotelMap1, HotelRating1, HotelDes1, HotelDesShort1, HotelPol1, HotelFac1, HotelImage1, HotelWebsite1, HotelPriceFrom1, TimeCheckIn1, TimeCheckOut1);
+            cnn.close();
+            st.close();
             return hotel;
         } else {
+            cnn.close();
+            st.close();
             return null;
         }
     }
@@ -299,6 +311,7 @@ public class HotelBean {
                 hotellist.add(hotel);
             }
         }
+        cnn.close();
         return hotellist;
     }
 
@@ -312,6 +325,8 @@ public class HotelBean {
         while (rs.next()) {
             hotelID = rs.getInt("HotelID");
         }
+        cnn.close();
+        st.close();
         return hotelID;
     }
 
@@ -367,7 +382,7 @@ public class HotelBean {
         PreparedStatement pre3 = (PreparedStatement) cnn.prepareStatement(delete_hotel);
         pre3.setInt(1, hotelID);
         int check = pre3.executeUpdate();
-        
+
         cnn.close();
         pre3.close();
         return check;
@@ -419,7 +434,7 @@ public class HotelBean {
         cnn.close();
         pre.close();
     }
-    
+
     public boolean checkExistUserHotel(int userID) throws ClassNotFoundException, SQLException {
         ConnectDatabase connect = new ConnectDatabase();
         java.sql.Connection cnn = connect.Connect();
@@ -430,6 +445,8 @@ public class HotelBean {
         if (rs.next()) {
             kq = true;
         }
+        cnn.close();
+        st.close();
         return kq;
     }
 

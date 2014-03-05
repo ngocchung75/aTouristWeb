@@ -143,6 +143,8 @@ public class BookingBean {
                     RCountBook1, Nights1, RPrices1, Total1, StatusID1, StatusName1);
             bookinglist.add(booking);
         }
+        cnn.close();
+        st.close();
         return bookinglist;
     }
 
@@ -179,8 +181,12 @@ public class BookingBean {
 
             booking = new BookingBean(BookID1, UserID1, UserName1, RoomID1, HotelID1, StartDate1, EndDate1,
                     RCountBook1, Nights1, RPrices1, Total1, StatusID1, StatusName1);
+            cnn.close();
+            st.close();
             return booking;
         } else {
+            cnn.close();
+            st.close();
             return null;
         }
     }
@@ -233,6 +239,8 @@ public class BookingBean {
                     RCountBook1, Nights1, RPrices1, Total1, TotalVND, StatusID1, StatusName1);
             bookinglist.add(booking);
         }
+        cnn.close();
+        st.close();
         return bookinglist;
     }
 
@@ -284,6 +292,8 @@ public class BookingBean {
                     RCountBook1, Nights1, RPrices1, Total1, TotalVND, StatusID1, StatusName1);
             bookinglist.add(booking);
         }
+        cnn.close();
+        st.close();
         return bookinglist;
     }
 
@@ -325,6 +335,8 @@ public class BookingBean {
         while (rs.next()) {
             BookID2 = rs.getInt("BookID");
         }
+        cnn.close();
+        st.close();
         return BookID2;
     }
 

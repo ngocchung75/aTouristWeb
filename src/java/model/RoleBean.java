@@ -32,7 +32,7 @@ public class RoleBean {
         this.RoleID = RoleID;
         this.RoleName = RoleName;
     }
-    
+
     public int roleIDLast() throws ClassNotFoundException, SQLException {
         int roleID = 0;
         ConnectDatabase connect = new ConnectDatabase();
@@ -43,6 +43,8 @@ public class RoleBean {
         while (rs.next()) {
             roleID = rs.getInt("RoleID");
         }
+        cnn.close();
+        st.close();
         return roleID;
     }
 
@@ -106,6 +108,8 @@ public class RoleBean {
             role = new RoleBean(RoleID1, RoleName1);
             roleLiss.add(role);
         }
+        cnn.close();
+        st.close();
         return roleLiss;
     }
 
@@ -121,8 +125,12 @@ public class RoleBean {
             int RoleID1 = rs.getInt(1);
             String RoleName1 = rs.getString(2);
             role = new RoleBean(RoleID1, RoleName1);
+            cnn.close();
+            st.close();
             return role;
         } else {
+            cnn.close();
+            st.close();
             return null;
         }
     }

@@ -43,6 +43,8 @@ public class StatusBean {
         while (rs.next()) {
             statusID = rs.getInt("StatusID");
         }
+        cnn.close();
+        st.close();
         return statusID;
     }
 
@@ -106,6 +108,8 @@ public class StatusBean {
             status = new StatusBean(StatusID1, StatusName1);
             statusLiss.add(status);
         }
+        cnn.close();
+        st.close();
         return statusLiss;
     }
 
@@ -121,8 +125,12 @@ public class StatusBean {
             int StatusID1 = rs.getInt(1);
             String StatusName1 = rs.getString(2);
             status = new StatusBean(StatusID1, StatusName1);
+            cnn.close();
+            st.close();
             return status;
         } else {
+            cnn.close();
+            st.close();
             return null;
         }
     }

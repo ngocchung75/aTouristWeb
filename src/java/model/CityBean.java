@@ -45,6 +45,8 @@ public class CityBean {
         while (rs.next()) {
             cityID = rs.getInt("CityID");
         }
+        cnn.close();
+        st.close();
         return cityID;
     }
 
@@ -109,6 +111,8 @@ public class CityBean {
             city = new CityBean(CityID1, HotelCity1);
             citylist.add(city);
         }
+        cnn.close();
+        st.close();
         return citylist;
     }
 
@@ -123,6 +127,8 @@ public class CityBean {
         if (rs.next()) {
             nameCity = rs.getString(2);
         }
+        cnn.close();
+        st.close();
         return nameCity;
     }
 
@@ -138,8 +144,12 @@ public class CityBean {
             int CityID1 = rs.getInt(1);
             String HotelCity1 = rs.getString(2);
             city1 = new CityBean(CityID1, HotelCity1);
+            cnn.close();
+            st.close();
             return city1;
         } else {
+            cnn.close();
+            st.close();
             return null;
         }
     }
