@@ -45,6 +45,12 @@ public class AddAccountAction extends ActionSupport implements SessionAware {
         } else {
             check = user.addAccount(this);
             if (check > 0) {
+                Map session = ActionContext.getContext().getSession();
+                session.remove("session-userid");
+                session.remove("session-role");
+                session.remove("session-gender");
+                session.remove("logined");
+
                 UserBean rs = user.getUser(this.RegisterUsername.toString());
                 int UserID1 = rs.getUserID();
                 int RoleID1 = rs.getRoleID();
@@ -65,7 +71,7 @@ public class AddAccountAction extends ActionSupport implements SessionAware {
                 sessionMap.put("Phone", Phone1);
                 sessionMap.put("UserAddress", UserAddress1);
 
-                Map session = ActionContext.getContext().getSession();
+                session.put("session-userid", UserID1);
                 session.put("session-role", RoleID1);
                 session.put("session-gender", Gender1);
                 session.put("logined", "true");
